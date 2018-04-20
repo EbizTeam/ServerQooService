@@ -1,0 +1,231 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+/*================================================*/
+/*Special Corresponds*/
+.spe-cor {
+  position: relative; 
+}
+.spe-cor .carousel-correspondence [class*="cloneditem-"] {
+  display: none;
+}
+/*border nut chuyen slider*/
+.carousel-correspondence .carousel-control.left, .carousel-correspondence .carousel-control.right, .carousel-video-thumb .carousel-control.left, .carousel-video-thumb .carousel-control.right {
+  background-image: none !important;
+  color: #c0c0c0;
+  height: 35px;
+  width: 35px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(224, 224, 224);
+  background-color: rgb(245, 245, 245);
+  margin: 0;
+}
+.carousel-correspondence .carousel-control.left:hover, .carousel-correspondence .carousel-control.right:hover, .carousel-video-thumb .carousel-control.left:hover, .carousel-video-thumb .carousel-control.right:hover {
+  
+}
+.carousel-correspondence .controls, .carousel-video-thumb .controls {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  width: 75px;
+  padding-right: 15px;
+  padding-left: 15px;
+  background: none;
+  top: 0;
+  right: 0;
+  margin-top: -40px;
+  height: 35px;
+}
+.carousel-correspondence .carousel-control, .carousel-video-thumb .carousel-control {
+  color: #fff;
+  padding: 0px;
+  padding-top: 3px;
+  color: #428BCA;
+  bottom: auto;
+  width: 35px;
+  height: 35px;
+  text-shadow: none;
+  opacity: 1;
+  top: 0;
+}
+.carousel-correspondence .carousel-control:hover, .carousel-video-thumb .carousel-control:hover {
+  color: #d9534f;
+}
+.carousel-correspondence .carousel-control.left, .carousel-correspondence .carousel-control.right, .carousel-video-thumb .carousel-control.left, .carousel-video-thumb .carousel-control.right {
+  background-image: none !important;
+}
+.carousel-correspondence .carousel-control.right, .carousel-video-thumb .carousel-control.right {
+  left: auto;
+}
+.carousel-correspondence .carousel-control.left, .carousel-video-thumb .carousel-control.left {
+  right: auto;
+}
+.carousel-correspondence .carousel-indicators, .carousel-video-thumb .carousel-indicators {
+  bottom: -30px;
+}
+.carousel-correspondence .carousel-indicators li, .carousel-video-thumb .carousel-indicators li {
+  border-radius: 0;
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border: 1px solid #ccc;
+}
+.carousel-correspondence .carousel-indicators .active, .carousel-video-thumb .carousel-indicators .active {
+  width: 12px;
+  height: 12px;
+  background: #3276b1;
+  border-color: #3276b1;
+}
+
+/*================================================*/
+
+/*Correspondece Slider*/
+@media all and (min-width:768px) {
+	.carousel-correspondence .carousel-inner > .active.left, .carousel-correspondence .carousel-inner > .prev {
+		left: -50%;
+	}
+	.carousel-correspondence .carousel-inner > .active.right, .carousel-correspondence .carousel-inner > .next {
+		left: 50%;
+	}
+	.carousel-correspondence .carousel-inner > .left, .carousel-correspondence .carousel-inner > .prev.right, .carousel-correspondence .carousel-inner > .active {
+		left: 0;
+	}
+	.carousel-correspondence .carousel-inner .cloneditem-1, .carousel-correspondence .carousel-inner .cloneditem-2 {
+		display: block;
+	}
+}
+@media all and (min-width:768px) and (transform-3d), all and (min-width:768px) and (-webkit-transform-3d) {
+	.carousel-correspondence .carousel-inner > .item.active.right, .carousel-correspondence .carousel-inner > .item.next {
+		-webkit-transform: translate3d(20%, 0, 0);
+		transform: translate3d(20%, 0, 0);
+		left: 0;
+	}
+	.carousel-correspondence .carousel-inner > .item.active.left, .carousel-correspondence .carousel-inner > .item.prev {
+		-webkit-transform: translate3d(-20%, 0, 0);
+		transform: translate3d(-20%, 0, 0);
+		left: 0;
+	}
+	.carousel-correspondence .carousel-inner > .item.left, .carousel-correspondence .carousel-inner > .item.prev.right, .carousel-correspondence .carousel-inner > .item.active {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+		left: 0;
+	}
+}
+@media all and (min-width:992px) and (max-width:1200px) {
+	.carousel-correspondence .carousel-inner > .active.left, .carousel-correspondence .carousel-inner > .prev {
+		left: -25%;
+	}
+	.carousel-correspondence .carousel-inner > .active.right, .carousel-correspondence .carousel-inner > .next {
+		left: 25%;
+	}
+	.carousel-correspondence .carousel-inner > .left, .carousel-correspondence .carousel-inner > .prev.right, .carousel-correspondence .carousel-inner > .active {
+		left: 0;
+	}
+	.carousel-correspondence .carousel-inner .cloneditem-2, .carousel-correspondence .carousel-inner .cloneditem-3 {
+		display: block;
+	}
+}
+@media all and (min-width:992px) and (transform-3d), all and (min-width:992px) and (-webkit-transform-3d) {
+	.carousel-correspondence .carousel-inner > .item.active.right, .carousel-correspondence .carousel-inner > .item.next {
+		-webkit-transform: translate3d(16.666%, 0, 0);
+		transform: translate3d(25%, 0, 0);
+		left: 0;
+	}
+	.carousel-correspondence .carousel-inner > .item.active.left, .carousel-correspondence .carousel-inner > .item.prev {
+		-webkit-transform: translate3d(-16.666%, 0, 0);
+		transform: translate3d(-25%, 0, 0);
+		left: 0;
+	}
+	.carousel-correspondence .carousel-inner > .item.left, .carousel-correspondence .carousel-inner > .item.prev.right, .carousel-correspondence .carousel-inner > .item.active {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+		left: 0;
+	}
+}
+@media all and (min-width:1200px) {
+	.carousel-correspondence .carousel-inner > .active.left, .carousel-correspondence .carousel-inner > .prev {
+		left: -16.666667%;
+	}
+	.carousel-correspondence .carousel-inner > .active.right, .carousel-correspondence .carousel-inner > .next {
+		left: 16.666667%;
+	}
+	.carousel-correspondence .carousel-inner > .left, .carousel-correspondence .carousel-inner > .prev.right, .carousel-correspondence .carousel-inner > .active {
+		left: 0;
+	}
+	.carousel-correspondence .carousel-inner .cloneditem-2, .carousel-correspondence .carousel-inner .cloneditem-3, .carousel-correspondence .carousel-inner .cloneditem-4, .carousel-correspondence .carousel-inner .cloneditem-5, .carousel-correspondence .carousel-inner .cloneditem-2 {
+		display: block;
+	}
+}
+@media all and (min-width:1200px) and (transform-3d), all and (min-width:1200px) and (-webkit-transform-3d) {
+	.carousel-correspondence .carousel-inner > .item.active.right, .carousel-correspondence .carousel-inner > .item.next {
+		-webkit-transform: translate3d(16.666667%, 0, 0);
+		transform: translate3d(16.666667%, 0, 0);
+		left: 0;
+	}
+	.carousel-correspondence .carousel-inner > .item.active.left, .carousel-correspondence .carousel-inner > .item.prev {
+		-webkit-transform: translate3d(-16.666667%, 0, 0);
+		transform: translate3d(-16.666667%, 0, 0);
+		left: 0;
+	}
+	.carousel-correspondence .carousel-inner > .item.left, .carousel-correspondence .carousel-inner > .item.prev.right, .carousel-correspondence .carousel-inner > .item.active {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+		left: 0;
+	}
+}           
+            .carousel-inner .active.left { left: -20%; }
+.carousel-inner .next        { left:  20%; }
+.carousel-control.left,.carousel-control.right {background-image:none;}
+            .carousel-inner{
+                text-align: center;
+                align-content: center;
+            }
+            
+            .carousel-inner > .next {
+    display: none;
+ }
+ .carousel-inner > .prev {
+    display: none;
+ }
+
+ .spe-cor h6{
+                text-align: left;
+                padding-left: 15px;
+                color: #1565c0;
+                height: 35px;
+            }
+ .spe-cor h5{
+                text-align: left;
+                padding-left: 15px;
+                color: #9e0039 ; 
+                
+            }
+
+.lineThrough {
+    text-decoration: line-through;
+    
+}
+.sale{
+    color:#d5d5d5!important;
+    float:left;
+}
+            .spe-cor a{
+                text-decoration: none;
+            }
+/*Correspondece Slider Ends*/
+                      
+                @media (min-width: 768px) 
+                {
+  .spe-cor .col-sm-5cols{
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+@media (min-width: 768px) {
+.spe-cor .col-sm-5cols {
+        width: 20%;
+        float: left;
+    }
+}
+              }

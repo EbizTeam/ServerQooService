@@ -1,0 +1,63 @@
+doctype html
+html
+	head
+		title Check Out
+		include link_css.pug
+	body
+		include head.pug
+		.container-fluid.mycontent
+			.container(style='margin-top:100px;margin-bottom:100px;border:1px solid #a8a8a8; background-color:white;')
+				.row
+					.col-md-12
+						h3
+							strong CUSTOMER PAYMENT REGISTRATION
+						br
+				.row
+					.col-md-12
+						.row
+							.col-md-3.text-center
+								img.img-responsive.center-block(src='./img/visa.png')
+								input(type='radio', name='pay')
+								|  VISA
+							.col-md-3.text-center
+								img.img-responsive.center-block(src='./img/mastercard.png')
+								input(type='radio', name='pay')
+								|  MASTERS
+							.col-md-3.text-center
+								img.img-responsive.center-block(src='./img/diners.png')
+								input(type='radio', name='pay')
+								|  DINERS
+							.col-md-3.text-center
+								img.img-responsive.center-block(src='./img/AME.png')
+								input(type='radio', name='pay')
+								|  AMERICAN EXPRESS
+						.row(style='margin-top:20px;')
+							.col-md-3.text-center
+								img.img-responsive.center-block(src='./img/paypal.png')
+								input(type='radio', name='pay')
+								|  PAYPAL
+							.col-md-3.text-center
+								img.img-responsive.center-block(src='./img/wire.PNG')
+								input(type='radio', name='pay')
+								|  WIRE TRANSFER from bank to bank
+							.col-md-3.text-center
+								img.img-responsive.center-block(src='./img/tq1.PNG')
+								input(type='radio', name='pay')
+								|  ALIPAY
+							.col-md-3.text-center
+								img.img-responsive.center-block(src='./img/applepay.PNG')
+								input(type='radio', name='pay')
+								|  APPLE PAY
+				.row
+					.col-md-1.col-md-offset-1(style='margin-top:30px;')
+						button.btn.btn-primary.form-control(type='submit')
+							b NEXT
+					.col-md-3.col-md-offset-7(style='margin-top:30px;')
+						.col-md-12(style=' margin-bottom: 50px;')
+							a.btn.btn-block.btn-social.btn-facebook
+								i.fa.fa-facebook
+								|  Sign in with Facebook
+							a.btn.btn-block.btn-social.btn-google-plus
+								i.fa.fa-google-plus
+								|  Sign in with Google
+		include foot.pug

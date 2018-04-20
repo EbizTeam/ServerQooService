@@ -1,0 +1,181 @@
+.social:hover {
+     -webkit-transform: scale(1.1);
+     -moz-transform: scale(1.1);
+     -o-transform: scale(1.1);
+ }
+ .social {
+     -webkit-transform: scale(0.8);
+     /* Browser Variations: */
+     
+     -moz-transform: scale(0.8);
+     -o-transform: scale(0.8);
+     -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+     -o-transition-duration: 0.5s;
+ }
+
+/*
+    Multicoloured Hover Variations
+*/
+ 
+ #social-fb:hover {
+     color: #3B5998;
+ }
+ #social-tw:hover {
+     color: #4099FF;
+ }
+ #social-gp:hover {
+     color: #d34836;
+ }
+ #social-em:hover {
+     color: #f39c12;
+ }
+.btn-social{position:relative;padding-left:44px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.btn-social :first-child{position:absolute;left:0;top:0;bottom:0;width:32px;line-height:34px;font-size:1.6em;text-align:center;border-right:1px solid rgba(0,0,0,0.2)}
+.btn-social.btn-lg{padding-left:61px}.btn-social.btn-lg :first-child{line-height:45px;width:45px;font-size:1.8em}
+.btn-social.btn-sm{padding-left:38px}.btn-social.btn-sm :first-child{line-height:28px;width:28px;font-size:1.4em}
+.btn-social.btn-xs{padding-left:30px}.btn-social.btn-xs :first-child{line-height:20px;width:20px;font-size:1.2em}
+.btn-social-icon{position:relative;padding-left:44px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;height:34px;width:34px;padding-left:0;padding-right:0}.btn-social-icon :first-child{position:absolute;left:0;top:0;bottom:0;width:32px;line-height:34px;font-size:1.6em;text-align:center;border-right:1px solid rgba(0,0,0,0.2)}
+.btn-social-icon.btn-lg{padding-left:61px}.btn-social-icon.btn-lg :first-child{line-height:45px;width:45px;font-size:1.8em}
+.btn-social-icon.btn-sm{padding-left:38px}.btn-social-icon.btn-sm :first-child{line-height:28px;width:28px;font-size:1.4em}
+.btn-social-icon.btn-xs{padding-left:30px}.btn-social-icon.btn-xs :first-child{line-height:20px;width:20px;font-size:1.2em}
+.btn-social-icon :first-child{border:none;text-align:center;width:100% !important}
+.btn-social-icon.btn-lg{height:45px;width:45px;padding-left:0;padding-right:0}
+.btn-social-icon.btn-sm{height:30px;width:30px;padding-left:0;padding-right:0}
+.btn-social-icon.btn-xs{height:22px;width:22px;padding-left:0;padding-right:0}
+.btn-bitbucket{color:#fff;background-color:#205081;border-color:rgba(0,0,0,0.2)}.btn-bitbucket:hover,.btn-bitbucket:focus,.btn-bitbucket:active,.btn-bitbucket.active,.open .dropdown-toggle.btn-bitbucket{color:#fff;background-color:#183c60;border-color:rgba(0,0,0,0.2)}
+.btn-bitbucket:active,.btn-bitbucket.active,.open .dropdown-toggle.btn-bitbucket{background-image:none}
+.btn-bitbucket.disabled,.btn-bitbucket[disabled],fieldset[disabled] .btn-bitbucket,.btn-bitbucket.disabled:hover,.btn-bitbucket[disabled]:hover,fieldset[disabled] .btn-bitbucket:hover,.btn-bitbucket.disabled:focus,.btn-bitbucket[disabled]:focus,fieldset[disabled] .btn-bitbucket:focus,.btn-bitbucket.disabled:active,.btn-bitbucket[disabled]:active,fieldset[disabled] .btn-bitbucket:active,.btn-bitbucket.disabled.active,.btn-bitbucket[disabled].active,fieldset[disabled] .btn-bitbucket.active{background-color:#205081;border-color:rgba(0,0,0,0.2)}
+.btn-dropbox{color:#fff;background-color:#1087dd;border-color:rgba(0,0,0,0.2)}.btn-dropbox:hover,.btn-dropbox:focus,.btn-dropbox:active,.btn-dropbox.active,.open .dropdown-toggle.btn-dropbox{color:#fff;background-color:#0d70b7;border-color:rgba(0,0,0,0.2)}
+.btn-dropbox:active,.btn-dropbox.active,.open .dropdown-toggle.btn-dropbox{background-image:none}
+.btn-dropbox.disabled,.btn-dropbox[disabled],fieldset[disabled] .btn-dropbox,.btn-dropbox.disabled:hover,.btn-dropbox[disabled]:hover,fieldset[disabled] .btn-dropbox:hover,.btn-dropbox.disabled:focus,.btn-dropbox[disabled]:focus,fieldset[disabled] .btn-dropbox:focus,.btn-dropbox.disabled:active,.btn-dropbox[disabled]:active,fieldset[disabled] .btn-dropbox:active,.btn-dropbox.disabled.active,.btn-dropbox[disabled].active,fieldset[disabled] .btn-dropbox.active{background-color:#1087dd;border-color:rgba(0,0,0,0.2)}
+.btn-facebook{color:#fff;background-color:#3b5998;border-color:rgba(0,0,0,0.2)}.btn-facebook:hover,.btn-facebook:focus,.btn-facebook:active,.btn-facebook.active,.open .dropdown-toggle.btn-facebook{color:#fff;background-color:#30487b;border-color:rgba(0,0,0,0.2)}
+.btn-facebook:active,.btn-facebook.active,.open .dropdown-toggle.btn-facebook{background-image:none}
+.btn-facebook.disabled,.btn-facebook[disabled],fieldset[disabled] .btn-facebook,.btn-facebook.disabled:hover,.btn-facebook[disabled]:hover,fieldset[disabled] .btn-facebook:hover,.btn-facebook.disabled:focus,.btn-facebook[disabled]:focus,fieldset[disabled] .btn-facebook:focus,.btn-facebook.disabled:active,.btn-facebook[disabled]:active,fieldset[disabled] .btn-facebook:active,.btn-facebook.disabled.active,.btn-facebook[disabled].active,fieldset[disabled] .btn-facebook.active{background-color:#3b5998;border-color:rgba(0,0,0,0.2)}
+
+.btn-google-plus{color:#fff;background-color:#dd4b39;border-color:rgba(0,0,0,0.2)}.btn-google-plus:hover,.btn-google-plus:focus,.btn-google-plus:active,.btn-google-plus.active,.open .dropdown-toggle.btn-google-plus{color:#fff;background-color:#ca3523;border-color:rgba(0,0,0,0.2)}
+.btn-google-plus:active,.btn-google-plus.active,.open .dropdown-toggle.btn-google-plus{background-image:none}
+.btn-google-plus.disabled,.btn-google-plus[disabled],fieldset[disabled] .btn-google-plus,.btn-google-plus.disabled:hover,.btn-google-plus[disabled]:hover,fieldset[disabled] .btn-google-plus:hover,.btn-google-plus.disabled:focus,.btn-google-plus[disabled]:focus,fieldset[disabled] .btn-google-plus:focus,.btn-google-plus.disabled:active,.btn-google-plus[disabled]:active,fieldset[disabled] .btn-google-plus:active,.btn-google-plus.disabled.active,.btn-google-plus[disabled].active,fieldset[disabled] .btn-google-plus.active{background-color:#dd4b39;border-color:rgba(0,0,0,0.2)}
+
+
+/* 
+ * Only for this example - not needed for the buttons
+ * ----------------------------------------------------- */
+.btn-social-icon {margin-bottom: 4px;}
+.social-class .social-hex{font-family:Monaco,Menlo,Consolas,"Courier New",monospace;font-size:10px;opacity:.3;float:right}
+.social-class li{margin-bottom:4px}.social-class li:hover .social-hex{opacity:1}
+.social-class li:hover code{background-color:#e8e8ee}
+.social-class code{cursor:default}
+
+/*icon page comparision*/
+.icon-circle .fa{
+    font-size           : 25px;
+    color               : #e84700;
+    margin              : 0 auto;
+    height              : 60px;
+    width               : 60px;
+    border-radius       : 50%;
+    border              :2px solid #e84700;
+    line-height         : 60px;
+    cursor              : pointer;
+    -webkit-transition  : all  ease-in-out 0.35s;
+    -moz-transition     : all  ease-in-out 0.35s;
+    -o-transition       : all  ease-in-out 0.35s;
+    -ms-transition      : all  ease-in-out 0.35s;
+    transition          : all  ease-in-out 0.20s,background-color ease-in-out 0.05s;
+}
+
+/*
+.icon-circle  .fa:hover{
+    
+    background-color        : #e84700;    
+    color                   : #fff;
+    border                  : 1px solid #e84711;
+    -moz-box-shadow         : inset 0px 0px 0px 5px #ffffff;
+    -o-box-shadow           : inset 0px 0px 0px 5px #ffffff;
+    -ms-box-shadow          : inset 0px 0px 0px 5px #ffffff;
+    -webkit-box-shadow      : inset 0px 0px 0px 5px #ffffff;
+    box-shadow              : inset 0px 0px 0px 5px #ffffff;
+    -ms-transform           : scale(1.2,1.2); 
+    -webkit-transform       : scale(1.2,1.2);
+    -moz-transform          : scale(1.2,1.2); 
+    -o-transform            : scale(1.2,1.2); 
+    transform               : scale(1.2,1.2);  
+}
+*/
+
+.icon-circle  i:before{
+    margin-left         : 0px;
+    font-size           : 30px;
+}
+
+@media (min-width:320px) and (max-width:768px) {
+
+
+ .icon-circle .fa{
+    font-size           : 15px;
+    color               : #e84700;
+    margin              : 0 auto;
+    height              : 40px;
+    width               : 40px;
+    border-radius       : 50%;
+    border              :2px solid #e84700;
+    line-height         : 40px;
+    cursor              : pointer;
+    -webkit-transition  : all  ease-in-out 0.35s;
+    -moz-transition     : all  ease-in-out 0.35s;
+    -o-transition       : all  ease-in-out 0.35s;
+    -ms-transition      : all  ease-in-out 0.35s;
+    transition          : all  ease-in-out 0.20s,background-color ease-in-out 0.05s;
+}
+
+.icon-circle  .fa:hover{
+    
+    background-color        : #e84700;    
+    color                   : #fff;
+    border                  : 1px solid #e84711;
+    -moz-box-shadow         : inset 0px 0px 0px 5px #ffffff;
+    -o-box-shadow           : inset 0px 0px 0px 5px #ffffff;
+    -ms-box-shadow          : inset 0px 0px 0px 5px #ffffff;
+    -webkit-box-shadow      : inset 0px 0px 0px 5px #ffffff;
+    box-shadow              : inset 0px 0px 0px 5px #ffffff;
+    -ms-transform           : scale(1.2,1.2); 
+    -webkit-transform       : scale(1.2,1.2);
+    -moz-transform          : scale(1.2,1.2); 
+    -o-transform            : scale(1.2,1.2); 
+    transform               : scale(1.2,1.2);  
+}
+
+.icon-circle  i:before{
+    margin-left         : 0px;
+    font-size           : 15px;
+}   
+}
+
+.ifacebook .fa{
+    color               :#135894;
+    border              :2px solid #135894;
+}
+
+.ifacebook .fa:hover{
+    
+    background-color        : #135894;    
+    color                   : #fff;
+    border                  : 1px solid #135894;
+
+}
+
+.itwittter .fa{
+    color               : #135894;
+    border              :2px solid #135894;
+}
+
+.itwittter .fa:hover{
+    
+    background-color        : #135894;    
+    color                   : #fff;
+    border                  : 1px solid #135894;
+
+}
+
+
+

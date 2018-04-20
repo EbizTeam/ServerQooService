@@ -1,0 +1,11 @@
+{
+  "vehicle_type" : "",
+  "car_make" : "",
+  "car_plate_number" : "",
+  "car_model" : "",
+  "last_date_of_serices" : "",
+  "require_servicing_maintenance" : "1",
+  "problem_description" : "",
+  "mileage" : "",
+  "require_spray_paiting" : "1"
+}

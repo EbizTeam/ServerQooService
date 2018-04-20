@@ -1,0 +1,269 @@
+doctype html
+html
+	head
+		title Qoo Services
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		include link_css.pug
+	body
+		include head.pug
+		.spe-cor(style={'background': '#e0e0e0'})
+			.container.text-center
+				.row(style={'padding': '10px'})
+					.col-sm-3cols
+						img.img-responsive.center-block(src='/img/homepage/1.PNG', alt='h1')
+					.col-sm-3cols
+						a(href='')
+							img.img-responsive.center-block(src='/img/homepage/2.PNG', alt='h2')
+						a(href='/service_details')
+							img.img-responsive.center-block(src='/img/homepage/3.PNG', alt='h3')
+					.col-sm-3cols
+						img.img-responsive.center-block(src='/img/homepage/4.PNG', alt='h4')
+					.col-sm-3cols
+						img.img-responsive.center-block(src='/img/homepage/5.PNG', alt='h5')
+					.col-sm-3cols
+						img.img-responsive.center-block(src='/img/homepage/6.PNG', alt='h6')
+					.col-sm-3cols
+						img.img-responsive.center-block(src='/img/homepage/7.PNG', alt='h7')
+			.container(style={'background': '#e0e0e0'})
+				.row
+					.col-xs-12.col-lg-2
+						h3(style='color:#d32f2f; font-weight:bold;float:left; padding-top:5px;') FLASH SALE
+					.col-xs-12.col-lg-3
+						h2(style='float:left;') 01 : 05 : 16 : 32
+			.spe-cor(style={'background': '#e0e0e0'})
+				.container.text-center
+					#sale.carousel.carousel-correspondence.slide(data-ride='carousel', data-interval='5000')
+						.col-sm-12.col-md-12(style='background-color:white;')
+							.carousel-inner
+								.item.active
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/1.PNG', alt='a')
+												h6 Guitar course 
+												h5 USD 10.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='/service_details')
+												img.img-responsive.center-block(src='./img/slider/2.PNG', alt='a')
+												h6 Cooking class for kids
+												h5 USD 99.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/3.PNG', alt='a')
+												h6 Pet care
+												h5 USD 199.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/4.PNG', alt='a')
+												h6
+													| Lorem ispum is simply dummy text
+													| of the printing and typesetting
+												h5 USD 10.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/5.PNG', alt='a')
+												h6 Guitar course 
+												h5 USD 10.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/6.PNG', alt='a')
+												h6
+													| Lorem ispum is simply dummy text
+													| of the printing and typesetting
+												h5 USD 10.00
+							a.left.carousel-control(data-slide='prev', href='#sale', style='margin-top:80px;')
+								span.glyphicon.glyphicon-chevron-left(style='color:#135894;')
+							a.right.carousel-control(data-slide='next', href='#sale', style='margin-top:80px;')
+								span.glyphicon.glyphicon-chevron-right(style={'color': '#135894'})
+			.container(style='background-color:#e0e0e0;')
+				.row
+					.col-xs-12.col-lg-12
+						h3(style='color:#424242;') Top Service
+			.spe-cor(style={'background': '#e0e0e0'})
+				.container
+					#tophome.carousel.carousel-correspondence.slide(data-ride='carousel', data-interval='15000')
+						.col-sm-12.col-md-12(style='background-color:white;')
+							.carousel-inner
+								.item.active
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/7.PNG', alt='a')
+												h6 Camera Repair- only $10
+												h5 USD 10.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/6.PNG', alt='a')
+												h6 Cooking class for kids
+												h5 USD 99.00
+												h5.lineThrough.sale USD 165.00
+												h5.sale - 60%
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/8.PNG', alt='a')
+												h6 Pet care
+												h5 USD 199.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='/img/slider/9.png', alt='a')
+												h6
+													| Lorem ispum is simply dummy text
+													| of the printing and typesetting
+												h5 USD 10.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='/img/slider/10.png', alt='a')
+												h6 Guitar course 
+												h5 USD 10.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='/img/slider/1.PNG', alt='a')
+												h6
+													| Lorem ispum is simply dummy text
+													| of the printing and typesetting
+												h5 USD 10.00
+							a.left.carousel-control(data-slide='prev', href='#tophome', style='margin-top:80px;')
+								span.glyphicon.glyphicon-chevron-left(style='color:#135894;')
+							a.right.carousel-control(data-slide='next', href='#tophome', style='margin-top:80px;')
+								span.glyphicon.glyphicon-chevron-right(style='color:#135894;')
+			.container(style='background-color:#e0e0e0;')
+				.row
+					.col-xs-12.col-lg-12
+						h3(style='color:#424242;') For your family
+			.spe-cor(style={'background': '#e0e0e0'})
+				.container
+					#family.carousel.carousel-correspondence.slide(data-ride='carousel', data-interval='23000')
+						.col-sm-12.col-md-12(style='background-color:white;')
+							.carousel-inner
+								.item.active
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/10.png', alt='a')
+												h6 Camera Repair- only $10
+												h5 USD 10.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/11.PNG', alt='a')
+												h6 Cooking class for kids
+												h5 USD 99.00
+												h5.lineThrough.sale USD 165.00
+												h5.sale - 60%
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/12.PNG', alt='a')
+												h6 Pet care
+												h5 USD 199.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/13.PNG', alt='a')
+												h6
+													| Lorem ispum is simply dummy text
+													| of the printing and typesetting
+												h5 USD 10.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/14.PNG', alt='a')
+												h6 Guitar course 
+												h5 USD 10.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/15.PNG', alt='a')
+												h6
+													| Lorem ispum is simply dummy text
+													| of the printing and typesetting
+												h5 USD 10.00
+							a.left.carousel-control(data-slide='prev', href='#family', style='margin-top:80px;')
+								span.glyphicon.glyphicon-chevron-left(style='color:#135894;')
+							a.right.carousel-control(data-slide='next', href='#family', style='margin-top:80px;')
+								span.glyphicon.glyphicon-chevron-right(style='color:#135894;')
+			.container(style='background-color:#e0e0e0;')
+				.row
+					.col-xs-12.col-lg-12
+						h3(style='color:#424242;') Best service for ladies
+			.spe-cor(style={'background': '#e0e0e0'})
+				.container
+					#best.carousel.carousel-correspondence.slide(data-ride='carousel', data-interval='12000')
+						.col-sm-12.col-md-12(style='background-color:white;')
+							.carousel-inner
+								.item.active
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/9.png',alt='a')
+												h6 Camera repair-only $10
+												h5 USD 10.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/15.PNG', alt='a')
+												h6 Cooking class for kids
+												h5 USD 99.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/16.PNG', alt='a')
+												h6 Pet care
+												h5 USD 199.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/17.PNG', alt='a')
+												h6
+													| Lorem ispum is simply dummy text
+													| of the printing and typesetting
+												h5 USD 10.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/18.PNG', alt='a')
+												h6 Guitar course 
+												h5 USD 10.00
+								.item
+									.col-xs-12.col-sm-4.col-md-3.col-sm-5cols
+										.row
+											a(href='')
+												img.img-responsive.center-block(src='./img/slider/1.PNG', alt='a')
+												h6
+													| Lorem ispum is simply dummy text
+													| of the printing and typesetting
+												h5 USD 10.00
+							a.left.carousel-control(data-slide='prev', href='#best', style='margin-top:80px;')
+								span.glyphicon.glyphicon-chevron-left(style='color:#135894;')
+							a.right.carousel-control(data-slide='next', href='#best', style='margin-top:80px;')
+								span.glyphicon.glyphicon-chevron-right(style='color:#135894;')
+		include foot.pug

@@ -1,0 +1,49 @@
+doctype html
+html
+	head
+		title Login
+		include link_css.pug
+	body
+		include head.pug
+		.container-fluid.mycontent
+			.container(style='margin-top:100px;margin-bottom:100px;border:1px solid #a8a8a8; background-color:white;')
+				.row
+					.col-md-12
+						h3
+							strong REGISTERED CUSTOMERS
+						br
+				.row
+					// form login
+					.col-md-5
+						span
+							form(action='', method='')
+								.row.form-group
+									label.col-sm-3.control-label(for='email', align='right') Email
+									.col-sm-9
+										input#txtMAil.form-control(type='email', style='width:250px')
+								.row.form-group
+									label.col-sm-3.control-label(for='pass', align='right') Password
+									.col-sm-9
+										input#txtPass.form-control(type='password', style='width:250px')
+								.row.form-group
+									.col-sm-9.col-sm-offset-3
+										a(href='', style='color:blue;') Forgot password?
+								.row.form-group
+									.col-sm-9.col-sm-offset-3
+										button#SI.btn.btn-primary(type='submit') SIGN IN
+								.row.form-group
+									.col-sm-9.col-sm-offset-3
+										| Not a member? 
+										a(href='', style='color:blue;') Sign up now
+					// end form login
+					// Sign in FB and GG
+					.col-md-7
+						.col-md-5(style=' margin-bottom: 50px;')
+							a.btn.btn-block.btn-social.btn-facebook
+								i.fa.fa-facebook
+								|  Sign in with Facebook
+							a.btn.btn-block.btn-social.btn-google-plus
+								i.fa.fa-google-plus
+								|  Sign in with Google
+					// end Sign in FB and GG
+		include foot.pug

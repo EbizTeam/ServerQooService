@@ -1,0 +1,11 @@
+{
+  "vehicle_type" : "SUV",
+  "car_make" : "hhhhh",
+  "car_plate_number" : "kkkkk",
+  "car_model" : "cccc",
+  "last_date_of_serices" : "kkkkkkk",
+  "require_servicing_maintenance" : "1",
+  "problem_description" : "Test Tho",
+  "mileage" : "vvvvv",
+  "require_spray_paiting" : "1"
+}

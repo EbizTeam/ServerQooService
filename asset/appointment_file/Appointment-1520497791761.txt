@@ -1,0 +1,11 @@
+{
+  "vehicle_type" : "MPV",
+  "car_make" : "vvvcg",
+  "car_plate_number" : "ggggg",
+  "car_model" : "ccvv",
+  "last_date_of_serices" : "gggggw",
+  "require_servicing_maintenance" : "1",
+  "problem_description" : " Ghhhhhbbbhhhbbbbbb",
+  "mileage" : "ggggg",
+  "require_spray_paiting" : "1"
+}

@@ -1,0 +1,19 @@
+{
+  "total_electric_power" : "54",
+  "floor_wall_tiles_bedroom" : "1",
+  "total_network" : "46",
+  "total_light_switches" : "21",
+  "window_grill_gate" : "1",
+  "carpentry_for_hall" : "1",
+  "painting" : "1",
+  "carpentry_for_bedroom" : "1",
+  "water_piping_work" : "1",
+  "total_lights_installation" : "12",
+  "carpentry_for_kitchen" : "1",
+  "floor_wall_tiles_kitchen" : "1",
+  "carpentry_for_toilets" : "1",
+  "flooring_bedroom" : "1",
+  "flooring_hall" : "1",
+  "total_telephone" : "73",
+  "gas_piping_work" : "1"
+}

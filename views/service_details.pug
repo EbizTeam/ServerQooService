@@ -1,0 +1,287 @@
+doctype html
+html
+	head
+		title Service Details
+		include link_css.pug
+		link(rel='stylesheet', type='text/css', href='/css/stars.css')
+		link(rel='stylesheet', type='text/css', href='/css/slider_vertical.css')
+		style.
+			@media screen and (max-device-width: 767px)
+			{
+			.col-xss-2{
+			position: relative;
+			padding-right: 14px;
+			padding-left: 14px;
+			width: 20%;
+			float: left;
+			}
+			}
+			@media screen and (min-device-width: 767px){
+			.slide-horizontal-hide{
+			display: none;
+			}
+			}
+			.tab-pane{
+			margin-top:30px;
+			}
+	body
+		include head.pug
+		.container-fluid(style='background-color: #ffffff')
+			.container.myfooter
+				span
+					p(style='margin:10px;') Home/ Education/ Enrichment classes for children/ Name of service
+			.container(style='margin-bottom:50px;')
+				.row
+					h3 Cooking class for children
+				.row
+					.col-md-5
+						span.stars-container.stars-80 ★★★★★
+						a(href='') (10)
+						i.fa.fa-pencil(aria-hidden='true')
+						a Write a review
+				.row
+					.col-md-8
+						p
+							span(style='padding-top:-50px;') Service provider:
+							a(href='') Chef G.R.
+							img(src='./img/cooking.PNG')
+							a(href='', style='margin-top:70px;') More services from this Service  Provider
+				.row
+					style.
+						@media screen and (max-device-width: 767px) {
+						.slide-hide-on-mobile { display: none; }
+						.border-hide{
+						border-right: 1px solid white;
+						}
+						}
+						@media screen and (min-device-width: 767px) {
+						.border-hide{
+						border-right:1px solid #135894;
+						}
+						}
+					// slider vertical
+					.col-sm-1.col-md-1
+						#carousel-pager.carousel.slide.slide-hide-on-mobile(data-ride='carousel', data-interval='50000')
+							// Carousel items
+							.carousel-inner.vertical
+								.active.item
+									a(href='')
+										img.img-responsive.sizeslider(src='./img/DetailPro/1.PNG', data-target='#carousel-main', data-slide-to='0')
+								.item
+									a(href='')
+										img.img-responsive.sizeslider(src='./img/DetailPro/2.PNG', data-target='#carousel-main', data-slide-to='1')
+								.item
+									a(href='')
+										img.img-responsive.sizeslider(src='./img/DetailPro/3.PNG', data-target='#carousel-main', data-slide-to='2')
+								.item
+									a(href='')
+										img.img-responsive.sizeslider(src='./img/DetailPro/4.PNG', data-target='#carousel-main', data-slide-to='3')
+								.item
+									a(href='')
+										img.img-responsive.sizeslider(src='./img/DetailPro/5.PNG', data-target='#carousel-main', data-slide-to='4')
+							// Controls
+							a.left.carousel-control(href='#carousel-pager', role='button', data-slide='prev')
+								span.glyphicon.glyphicon-chevron-up(aria-hidden='true', style='color:#8c8c8c;')
+								span.sr-only Previous
+							a.right.carousel-control(href='#carousel-pager', role='button', data-slide='next', style='margin-bottom:-30px')
+								span.glyphicon.glyphicon-chevron-down(aria-hidden='true', style='color:#8c8c8c;')
+								span.sr-only Next
+					// slider horizontal
+					// image
+					.col-xs-12.col-sm-5.col-md-5.border-hide(style='margin-bottom:25px;')
+						#carousel-main.carousel.slide(data-ride='carousel', data-interval='0')
+							// Carousel items
+							.carousel-inner
+								.active.item
+									img.img-responsive(src='./img/DetailPro/1.PNG')
+								.item
+									img.img-responsive(src='./img/DetailPro/2.PNG')
+								.item
+									img.img-responsive(src='./img/DetailPro/3.PNG')
+								.item
+									img.img-responsive(src='./img/DetailPro/4.PNG')
+								.item
+									img.img-responsive(src='./img/DetailPro/5.PNG')
+							// Controls
+					.row.slide-horizontal-hide(style='margin-top:50px;')
+						#detail.carousel.carousel-correspondence.slide(data-ride='carousel', data-interval='0')
+							.col-xs-12
+								.carousel-inner
+									.item.active
+										.col-xss-2
+											a(href='')
+												img.img-responsive(src='./img/DetailPro/1.PNG', alt='a', data-target='#carousel-main', data-slide-to='0')
+									.item
+										.col-xss-2
+											a(href='')
+												img.img-responsive(src='./img/DetailPro/2.PNG', alt='a', data-target='#carousel-main', data-slide-to='1')
+									.item
+										.col-xss-2
+											a(href='')
+												img.img-responsive(src='./img/DetailPro/3.PNG', alt='a', data-target='#carousel-main', data-slide-to='2')
+									.item
+										.col-xss-2
+											a(href='')
+												img.img-responsive(src='./img/DetailPro/4.PNG', alt='a', data-target='#carousel-main', data-slide-to='3')
+									.item
+										.col-xss-2
+											a(href='')
+												img.img-responsive(src='./img/DetailPro/5.PNG', alt='a', data-target='#carousel-main', data-slide-to='4')
+					.col-sm-5.col-md-5
+						.row(style='margin-top:40px;')
+							.col-md-12
+								ul
+									li Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+							.col-md-12
+								ul
+									li
+										| Lorem Ipsum has been the industry's standard dummy text
+										| ever since the 1500s, when an unknown printer took a galley
+										| of type and scrambled it to make a type  specimen book.
+										| [Service description]
+							.col-md-12
+								ul
+									li
+										| Lorem Ipsum has been the industry's standard dummy text
+										| ever since the 1500s
+							.col-md-12
+								h4(style='color:#666666; padding-left:35px;padding-top:50px;')
+									| Item Qty
+									select(style='background-color:#e0e0e0;width:60px;height:30px;margin-left:20px;')
+										option 1
+										option 2
+										option 3
+										option 4
+										option 5
+							.col-md-12
+								h3(style=' padding-left:35px;') USD 99.00
+							.col-md-12
+								button.btn.btn-primary(type='button', style='background-color:#135894;margin-left:35px;', width='400px;')
+									h3
+										| Add to cart
+										img(src='./img/giohang.PNG', width='30px', height='30px')
+							.col-md-12(style='margin-top:30px;margin-left:35px;')
+								a(href='')
+									input(type='checkbox', name='comparision')
+									|  Add to Compare
+				.row(style='margin-top:50px;')
+					.col-xs-12.col-md-12
+						ul.nav.nav-tabs.nav-justified
+							li.borderr(style='border-left:1px solid #acacac;')
+								a(href='#SI', data-toggle='tab') Service Info
+							li.borderr
+								a(href='#CR', data-toggle='tab') Customer Reviews
+							li.active.borderr
+								a(href='#QA', data-toggle='tab') Questions and Answer
+						style.
+							.nav-tabs.nav-justified>li>a{
+							border-bottom: 1px solid #135894;
+							border-top:1px solid #acacac;
+							color: #9f9f9f;
+							}
+							.nav-tabs.nav-justified>.active>a:focus{
+							color: #424242;
+							font-size: 15px;
+							border:1px solid #135894;
+							border-bottom: 1px solid white;
+							}
+							.borderr{
+							border-right:1px solid #acacac;
+							}
+							.borderr a:hover{
+							}
+				.tab-content
+					#QA.tab-pane.fade.in.active
+						.row
+							.col-xs-12.col-md-12(style='border-left: 2px solid #f3f2f2;')
+								table.table
+									thead
+										tr
+											.row
+												td.col-xs-12.col-md-12
+													| Please 
+													a(href='') Login
+													|  or 
+													a(href='') Register
+													|  to ask question to the seller.
+										tr
+											td
+												h4(style='color:#737373')
+													| Questions and answers from Fave (2)
+										tr
+											.row
+												td.col-xs-12.col-md-12
+													.row.row1
+														.col-xs-4.col-md-1
+															img(src='./img/user.PNG')
+														.col-xs-8.col-md-10
+															.cmt Hi, where is it? Can't seem to find it here
+															.time Davin - 2 weeks ago
+													.row.row1
+														.col-xs-4.col-md-1
+															img(src='./img/admin.PNG')
+														.col-xs-8.col-md-11
+															.cmt
+																| Apologies it seems we have made  a mistake. The reflexology voucher has gone out of stock. Do check out other options if you'd like
+															.time Fave - answered within 22 minutes
+										tr
+											.row
+												td.col-xs-12.col-md-12
+													.row.row1
+														.col-xs-4.col-md-1
+															img(src='./img/user.PNG')
+														.col-xs-8.col-md-10
+															.cmt Is the feet reflexology deal still available?
+															.time Davin - 2 weeks ago
+													.row.row1
+														.col-xs-4.col-md-1
+															img(src='./img/admin.PNG')
+														.col-xs-8.col-md-11
+															.cmt Hi there! Yes it is :)
+															.time Fave - answered within 28 minutes
+					#SI.tab-pane
+						.row
+							.col-md-12.col-xs-12
+								h4(style='color:#424242;') Service infomation Cooking class for children
+						.row
+							.col-md-2.col-xs-5
+								p(style=' font-size:17px;font-weight:500;') Service include: 
+							.col-md-10.col-xs-7
+								p 1x 1 year warranty
+						.row
+							.col-md-12.col-xs-12
+								p(style=' font-size:17px;font-weight:500;') Gereral features:
+						.row
+							.col-md-12.col-xs-12
+								table.table.table-bordered
+									tbody
+										tr.active
+											td SKU
+											td CO956HAAA29594VNAMZ-3856412
+										tr.active
+											td Wanrranty time
+											td 1 year
+										tr.active
+											td Type of wanrraty
+											td Invoice
+					#CR.tab-pane
+						.row
+							.col-md-10.col-xs-12
+								h4(style='color:#424242;') Review for service Cooking class for children
+							.col-md-2.col-xs-12
+								.form-group
+									button.form-control.btn.btn-primary.text-right(type='button') Review
+
+		style.
+			.row1{
+			margin-top: 15px;
+			}
+			.cmt{
+			font-weight: 400;
+			font-size: 15px;
+			}
+			.time{
+			color:#afb0ae;
+			}
+		include foot.pug
+		script(src='./js/slider_vertical.js')

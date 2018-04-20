@@ -1,0 +1,96 @@
+h4{
+    color:white;
+}
+span a{
+    color: white;
+                
+}
+span a:hover{
+    text-decoration: none;
+}
+a:hover{
+    color:darkorange;
+}
+.mymenu .navbar-default{
+	background:#135894;
+	border:none;
+}
+.mymenu .navbar-nav >li >a{
+    color: #cfd8dc;
+}
+.mymenu .navbar-nav >li >a:hover{
+	color:darkorange;
+}
+.mymenu #menu1 .navbar-nav li a{
+   font-family:"HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    font-weight:300;
+    color: white;
+}
+.mymenu #menu2 .navbar-nav li
+{
+    width: auto;
+}
+
+.mymenu #menu2 .navbar-nav >li >a{
+    font-family:"HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold'; 
+    font-weight:bold; 
+    font-size:9.1pt;
+/*   color: #cfd8dc;*/
+}
+.mymenu #menu2 .navbar-nav >li >a:hover{
+    color:darkorange;
+            }
+
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+}
+.navbar .navbar-collapse {
+    text-align: center;
+}
+ .navbar-default .navbar-collapse
+{
+    border-color:#135894;
+    background-color:#135894;
+    border: none!important;
+}
+/*submenu*/
+.navbar-default {
+    margin-bottom: 0;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:after {
+    border-bottom:solid 3px darkorange;
+    background: none;
+    color: #f9a825;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: darkorange;
+
+}
+.dropdown .dropdown-menu > li > a{
+    display: block;
+    padding:8px 15px;
+    text-align: center;
+    color: #135894;
+    font-weight: 600;
+}
+.navbar-nav>li>.dropdown-menu > li > a:hover{
+    text-decoration: underline;
+    color: #135894;
+    background: none;
+}
+ @media (max-width: 767px){
+     .navbar-default .navbar-nav >.open .dropdown-menu{
+         background: white;
+     }
+.navbar-default .navbar-nav >.open .dropdown-menu>li>a{
+/*    color: #fff3f3;*/
+    color: #135894;
+ }
+.navbar-default .navbar-nav >.open .dropdown-menu>li>a:hover{
+/*    color: #fff3f3;*/
+    text-decoration: underline;
+    color: #135894;
+    background: none;
+ }
+}

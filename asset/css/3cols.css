@@ -1,0 +1,10 @@
+@media (min-width: 768px)
+		{
+			.col-sm-3cols{
+			    position: relative;
+			    min-height: 5px;
+			    padding-right: 5px;
+			    width: 33.33333%;
+			    float: left;
+			}
+	    }

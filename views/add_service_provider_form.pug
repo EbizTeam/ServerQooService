@@ -1,0 +1,84 @@
+doctype html
+html
+	head
+		title="Qoo Service"
+		link(href="/css/bootstrap/css/bootstrap.min.css",rel="stylesheet",type="text/css")
+		link(href="/css/main.css",rel="stylesheet",type="text/css")
+		link(href="/css/home.css",rel="stylesheet",type="text/css")
+		script(src="/js/jquery.min.js")
+		script(src="/js/bootstrap/bootstrap.min.js")
+		script(src="/js/main.js")
+	body
+		h2 Add Service Provider
+		.form_content
+			form(action = "/ServiceProviderRegister", method = "POST")
+				.div_form
+					label(class="label_form",for = "Username") Email:
+					input(type="text" name = "p_email")
+				br
+				.div_form
+					label(class="label_form",for = "Password") Password:
+					input(type= "password" name = "p_password")
+				br
+				.div_form
+					label(class="label_form",for = "Password") Confirm Password:
+					input(type= "password" name = "p_confirm_password")
+				br
+				.div_form
+					label(class="label_form",for = "Password") First Name:
+					input(type= "text" name = "p_firstname")
+				br
+				.div_form
+					label(class="label_form",for = "Password") Last Name:
+					input(type= "text" name = "p_lastname")
+				br
+				.div_form
+					label(class="label_form",for = "mobile") Mobile:
+					input(type= "text" name = "p_mobile")
+				br
+				.div_form
+					label(class="label_form",for = "telephone") Address:
+					input(type= "text" name = "p_address")
+				br
+				.div_form
+					label(class="label_form",for = "Password") Country:
+					input(type= "text" name = "p_country")
+				br
+				.div_form
+					label(class="label_form",for = "region") Region:
+					input(type= "text" name = "p_region")
+				br
+				.div_form
+					label(class="label_form",for = "") Company Name:
+					input(type= "text" name = "p_company_name")
+				br
+				.div_form
+					label(class="label_form",for = "") Company Registration Number:
+					input(type= "text" name = "p_company_registration_number")
+				br
+				.div_form
+					label(class="label_form",for = "") Business Category:
+					input(type= "text" name = "p_business_category")
+				br
+				.div_form
+					label(class="label_form",for = "") Business Description:
+					input(type= "text" name = "p_business_description")
+				br
+				
+				.div_form
+					label(class="label_form",for = "") Business Year Stayed:
+					input(type= "text" name = "p_business_year_stayed")
+				br
+				
+				.div_form
+					label(class="label_form",for = "") Annual Business Revenue:
+					input(type= "text" name = "p_annual_business_revenue")
+				br
+				
+				.div_form
+					label(class="label_form",for = "") Business Employees:
+					input(type= "text" name = "p_business_employees")
+				br
+
+				.div_form_btn
+					button(class="btn btn-success",type = "submit") login

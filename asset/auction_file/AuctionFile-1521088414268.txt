@@ -1,0 +1,11 @@
+{
+  "vehicle_type" : "Truck",
+  "car_make" : "hzzh",
+  "car_plate_number" : "hzhzhx",
+  "car_model" : "uuus",
+  "last_date_of_serices" : "hzhzhx",
+  "require_servicing_maintenance" : "1",
+  "problem_description" : "",
+  "mileage" : "hzhzz",
+  "require_spray_paiting" : "1"
+}

@@ -1,0 +1,412 @@
+header.container-fluid.myheader
+	.container
+		.row
+			div.col-md-12.col-xs-12.mymenu(style='padding-left:0px; padding-right:0px;')
+				nav.navbar.navbar-default
+					.navbar-header
+						style.
+							.navbar-toggle {
+							margin-right: 0px;
+							}
+						button.navbar-toggle.collapsed.pull-left(type='button', data-toggle='collapse', data-target='#menu1', id='m1')
+							span.sr-only Toggle navigation
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+						button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#menu2', id='m2')
+							span.sr-only Toggle navigation
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+						a.logo-hide(href='http://5.189.151.166')
+							img.img-responsive.center-block(src='img/logo.PNG', alt='logo')
+							
+					// end of menu icon
+					#menu1.collapse.navbar-collapse(style='text-align:left')
+						ul.nav.navbar-nav.navbar-right
+							li
+								a#app(data-toggle='popover', data-container='body', data-placement='bottom', type='button', data-html='true', href='http://5.189.151.166#popover-content-app') GET THE APP &triangledown;
+							li
+								a(href='') SELL ON QooService
+							li
+								a#care(data-toggle='popover', data-container='body', data-placement='bottom', type='button', data-html='true', href='#popover-content-care') CUSTOMER CARE &triangledown;
+							li
+								a#track(data-toggle='popover', data-container='body', data-placement='bottom', type='button', data-html='true', href='#popover-content-track') TRACK MY ORDER &triangledown;
+							li
+								a(href='/login.html') LOGIN
+							li
+								a(href='/sign_up.html') SIGN UP
+					.row.logo-hide
+						#menu2.collapse.navbar-collapse(style='text-align:right')
+							ul.nav.navbar-nav
+								li.dropdown
+									a.dropdown-toggle(href='/service_type_education.html', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Education &triangledown;
+									ul.dropdown-menu
+										li
+											a(href='#') Tuition Services for Primary, Secondary & JC
+										li
+											a(href='#') Enrichment classes for children
+										li
+											a(href='#') Pre School education
+										li
+											a(href='#') Special needs education for children
+										li
+											a(href='#') Child Care Center/ Child minding
+								li.dropdown
+									a.dropdown-toggle(href='#', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Automotive Repair &triangledown;
+									ul.dropdown-menu
+										li
+											a(href='#') Car Services & Repair
+										li
+											a(href='#') Motor Cycle Services & Repair
+										li
+											a(href='#') E-Scooter & E-bicycle Services & Repairs
+										li
+											a(href='#') Bicycle Repairs
+										li
+											a(href='#') Heavy vehicles Services & Repair
+								li.dropdown
+									a.dropdown-toggle(href='index.php?page=comparision', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Information Technology &triangledown;
+									ul.dropdown-menu
+										li
+											a(href='#') Computer Repair (Laptop & Desktop)
+										li
+											a(href='#') Smart Phone & Tablet repair and services
+										li
+											a(href='#') Printer/ Scanner/ Camera services & repair
+										li
+											a(href='#') Software/ Apps Development Services
+										li
+											a(href='#') Networking & Internetworking Services
+								li.dropdown
+									a.dropdown-toggle(href='', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Personal care &triangledown;
+									ul.dropdown-menu
+										li
+											a(href='#') SPA & Massage
+										li
+											a(href='#') Pedicure & Manicure Services
+										li
+											a(href='#') Hair dressing Services
+										li
+											a(href='#') Beauty & Slimming Services
+										li
+											a(href='#') Personal Trainer
+								li.dropdown
+									a.dropdown-toggle(href='', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Home Renovation &triangledown;
+									ul.dropdown-menu
+										li
+											a(href='#') Carpentry work
+										li
+											a(href='#') Change of  room Doors, Gates, Windows and Grills
+										li
+											a(href='#') Cement & Tiling work
+										li
+											a(href='#') Painting Services
+										li
+											a(href='#') Plumbing & Piping work
+								li.dropdown
+									a.dropdown-toggle(href='', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Medical &triangledown;
+									ul.dropdown-menu
+										li
+											a(href='#') Ambulance
+										li
+											a(href='#') Chiropractic
+										li
+											a(href='#') Medical & Dental Clinical Services
+										li
+											a(href='#') Traditional Chinese Medicine Services
+										li
+											a(href='#') Medical Care& Clinical services & escort
+								li.dropdown
+									a.dropdown-toggle(href='', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Rental &triangledown;
+									ul.dropdown-menu
+										li
+											a(href='#') Automotive – Car, truck, Van and etc
+										li
+											a(href='#') House or Rooms
+										li
+											a(href='#') Heavy Transportation  & Equipment
+										li
+											a(href='#') Service or Virtual Office
+										li
+											a(href='#') Music room
+								li.dropdown
+									a.dropdown-toggle(href='', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Soft skill training &triangledown;
+									ul.dropdown-menu
+										li
+											a(href='#') Technical skill training services
+										li
+											a(href='#') Language skill training services
+										li
+											a(href='#') After child birth confinement care services
+										li
+											a(href='#') Locker Services to unlock doors or security safe
+										li
+											a(href='#') Food  & Beverage Catering Services
+								li.dropdown
+									a.dropdown-toggle(href='', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Watch & Jewelry &triangledown;
+									ul.dropdown-menu
+										li
+											a(href='#') Legal Services
+										li
+											a(href='#') Moving Services
+										li
+											a(href='#') Courier  & Express Services
+										li
+											a(href='#') Accounting & Secretarial Services
+										li
+											a(href='#') Counseling Services
+								li.dropdown
+									a.dropdown-toggle(href='', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Pet Care &triangledown;
+									ul.dropdown-menu
+										li
+											a(href='#') Personal Chef Services
+										li
+											a(href='#') Bridal Services
+										li
+											a(href='#') Language Translation Services
+										li
+											a(href='#') Interior Design Services
+										li
+											a(href='#') Photography & Videography Services
+								li.dropdown
+									a.dropdown-toggle(href='/service_comparision.html', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Others &triangledown;
+									ul.dropdown-menu
+										li
+											a(href='#') SPA & Massage
+										li
+											a(href='#') Pedicure & Manicure Services
+										li
+											a(href='#') Hair dressing Services
+										li
+											a(href='#') Beauty & Slimming Services
+										li
+											a(href='#') Personal Trainer
+					// track my order
+					// get the app
+					#popover-content-app.hide(style='background:#eeeeee;margin-bottom:20px;')
+						.row(style='margin-top:10px;')
+							.col-md-3
+								div(style='width:50px; height:50px; background:#0d47a1; border-radius:10px;')
+							.col-md-9
+								p(style='color:#135894')
+									a(href='', style='color:#e8a746') Dowload now
+									|  for the best deals
+						.row(style='margin-top:20px;')
+							.col-md-6
+								a(href='')
+									img.img-responsive.center-block(src='img/ios.PNG')
+							.col-md-6
+								a(href='')
+									img.img-responsive.center-block(src='img/android.PNG')
+					// customer care
+					#popover-content-care.hide(style='background:#eeeeee;margin-bottom:30px;')
+						.row.text-center(style='color:#135894;font-weight:600; font-size:15px;')
+							.col-md-12
+								p
+									a(href='') Help Center
+							.col-md-12
+								p
+									a(href='') Order & Payment
+							.col-md-12
+								p
+									a(href='') Return & Refund
+					// track my order
+					#popover-content-track.hide(style='background:#eeeeee;margin-bottom:30px;')
+						form.form-inline(role='form')
+							.form-group
+								label.control-label(style='color:#135894;') Please comfirm your email
+								input(type='email', name='mail', style='background:#c9c9c9;', required='')
+							.form-group(style='margin-top:20px;margin-bottom:20px;')
+								label.control-label(style='color:#135894;') Your order number:
+								.row
+									.col-md-12
+										input(type='text', name='mail', style='background:#c9c9c9;float:left;')
+										button(type='button', style='float:left;background:#135894;')
+											i.glyphicon.glyphicon-chevron-right(style='color:white')
+	.container
+		.row
+			.col-md-3.logo-hide1
+				a(href='http://5.189.151.166') 
+					img.img-responsive.center-block(src="img/logo.PNG", alt="logo")
+			div.col-md-7.search-margin-top
+				.row
+					.col-xs-9
+						form(action="" method="POST")
+							.row
+								.input-group
+									input.form-control(type='text', name='txtTK', placeholder='What services are you looking for?', style={'height': '40px'})
+									.input-group-btn
+										button(class="btn",name='timkiem', type='submit', style={'height': '40px', 'background-color': '#e8a131', 'border-color': '#e8a131', 'color': 'white'})
+											span.glyphicon.glyphicon-search
+					.col-xs-3
+						a(href='/mycart.html',style={'margin-bottom': '50px', 'margin-left': '20px'}) 
+							img(alt="Ghang", src="img/giohang.PNG")
+	.container
+		.row.logo-hide1
+			div.col-md-12.col-xs-12.mymenu(style='padding-left:0px; padding-right:0px')
+				nav.navbar.navbar-default
+					.navbar-header
+						button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#menu2')
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+					div#menu2.collapse.navbar-collapse
+						ul.nav.navbar-nav
+							li.dropdown
+									a.dropdown-toggle(href='/service_type_education.html', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Education
+									ul.dropdown-menu
+										li
+											a(href='#') Tuition Services for Primary, Secondary & JC
+										li
+											a(href='#') Enrichment classes for children
+										li
+											a(href='#') Pre School education
+										li
+											a(href='#') Special needs education for children
+										li
+											a(href='#') Child Care Center/ Child minding
+							li.dropdown
+								a.dropdown-toggle(href='#', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Automotive Repair
+								ul.dropdown-menu
+									li
+										a(href='#') Car Services & Repair
+									li
+										a(href='#') Motor Cycle Services & Repair
+									li
+										a(href='#') E-Scooter & E-bicycle Services & Repairs
+									li
+										a(href='#') Bicycle Repairs
+									li
+										a(href='#') Heavy vehicles Services & Repair
+							li.dropdown
+								a.dropdown-toggle(href='index.php?page=comparision', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Information Technology
+								ul.dropdown-menu
+									li
+										a(href='#') Computer Repair (Laptop & Desktop)
+									li
+										a(href='#') Smart Phone & Tablet repair and services
+									li
+										a(href='#') Printer/ Scanner/ Camera services & repair
+									li
+										a(href='#') Software/ Apps Development Services
+									li
+										a(href='#') Networking & Internetworking Services
+							li.dropdown
+								a.dropdown-toggle(href='', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Personal care
+								ul.dropdown-menu
+									li
+										a(href='#') SPA & Massage
+									li
+										a(href='#') Pedicure & Manicure Services
+									li
+										a(href='#') Hair dressing Services
+									li
+										a(href='#') Beauty & Slimming Services
+									li
+										a(href='#') Personal Trainer
+							li.dropdown
+								a.dropdown-toggle(href='', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Home Renovation
+								ul.dropdown-menu
+									li
+										a(href='#') Carpentry work
+									li
+										a(href='#') Change of  room Doors, Gates, Windows and Grills
+									li
+										a(href='#') Cement & Tiling work
+									li
+										a(href='#') Painting Services
+									li
+										a(href='#') Plumbing & Piping work
+							li.dropdown
+								a.dropdown-toggle(href='', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Medical
+								ul.dropdown-menu
+									li
+										a(href='#') Ambulance
+									li
+										a(href='#') Chiropractic
+									li
+										a(href='#') Medical & Dental Clinical Services
+									li
+										a(href='#') Traditional Chinese Medicine Services
+									li
+										a(href='#') Medical Care& Clinical services & escort
+							li.dropdown
+								a.dropdown-toggle(href='', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Rental
+								ul.dropdown-menu
+									li
+										a(href='#') Automotive – Car, truck, Van and etc
+									li
+										a(href='#') House or Rooms
+									li
+										a(href='#') Heavy Transportation  & Equipment
+									li
+										a(href='#') Service or Virtual Office
+									li
+										a(href='#') Music room
+							li.dropdown
+								a.dropdown-toggle(href='', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Soft skill training
+								ul.dropdown-menu
+									li
+										a(href='#') Technical skill training services
+									li
+										a(href='#') Language skill training services
+									li
+										a(href='#') After child birth confinement care services
+									li
+										a(href='#') Locker Services to unlock doors or security safe
+									li
+										a(href='#') Food  & Beverage Catering Services
+							li.dropdown
+								a.dropdown-toggle(href='', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Watch & Jewelry
+								ul.dropdown-menu
+									li
+										a(href='#') Legal Services
+									li
+										a(href='#') Moving Services
+									li
+										a(href='#') Courier  & Express Services
+									li
+										a(href='#') Accounting & Secretarial Services
+									li
+										a(href='#') Counseling Services
+							li.dropdown
+								a.dropdown-toggle(href='', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Pet Care
+								ul.dropdown-menu
+									li
+										a(href='#') Personal Chef Services
+									li
+										a(href='#') Bridal Services
+									li
+										a(href='#') Language Translation Services
+									li
+										a(href='#') Interior Design Services
+									li
+										a(href='#') Photography & Videography Services
+							li.dropdown
+								a.dropdown-toggle(href='/service_comparision.html', data-toggle='dropdown', data-hover='dropdown', data-close-others='false') Others
+								ul.dropdown-menu
+									li
+										a(href='#') SPA & Massage
+									li
+										a(href='#') Pedicure & Manicure Services
+									li
+										a(href='#') Hair dressing Services
+									li
+										a(href='#') Beauty & Slimming Services
+									li
+										a(href='#') Personal Trainer
+	style.
+		@media screen and (min-device-width:767px){
+		.logo-hide{
+		display: none;
+		}
+		.search-margin-top{
+		margin-top: 20px;
+		}
+		}
+		@media screen and (max-device-width:767px){
+		.logo-hide1{
+		display: none;
+		}
+		}
