@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const FindEmail = require("../models/findemail");
 const Providers = require('../models/provider');
+const Providers = require('../models/sendmailregister');
 
 
 //~ var passwordHash = require('password-hash');
