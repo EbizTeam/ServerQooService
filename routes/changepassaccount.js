@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const FindEmail = require("../models/findemail");
 const Providers = require('../models/provider');
-const Providers = require('../models/sendmailregister');
+
 
 
 //~ var passwordHash = require('password-hash');
@@ -10,7 +10,7 @@ var passwordHash = require("node-php-password");
 
 
 //add a new to the db
-router.post('/AccountChangePassword', function (req, res, next) {
+router.post('/', function (req, res, next) {
     //check account on service provider
     FindEmail(req.body.email).then((account) => {
         if (account) {

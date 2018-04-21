@@ -3,7 +3,7 @@ const router = express.Router();
 const FindEmail = require("../models/findemail");
 
 //add a new to the db
-router.post('/GetInfoAccount', function (req, res, next) {
+router.post('/', function (req, res, next) {
     FindEmail(req.body.p_email).then((account) => {
         if (account) {
             res.json({"response": account});

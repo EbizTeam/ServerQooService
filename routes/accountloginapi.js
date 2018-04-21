@@ -5,13 +5,15 @@ const Providers = require('../models/provider');
 const Spscategory = require('../models/spscategory');
 const spspayment = require('../models/payments');
 const wallet = require('../models/wallet');
+const config = require('../config');
+const jwt = require('jsonwebtoken');
 
 //~ var passwordHash = require('password-hash');
 var passwordHash = require("node-php-password");
 
 
 //add a new to the db
-router.post('/AccountLogin', function (req, res, next) {
+router.post('/', function (req, res, next) {
     //check account on service provider
     pathavatar = '/qooservice/system/public/uploadfile/avatar/';
 
@@ -27,7 +29,23 @@ router.post('/AccountLogin', function (req, res, next) {
                         res.json({"response": false});
                     } else {
                         if (account.member_ship === 0) {
-                            res.json({"response": account, "pathavatar": pathavatar});
+
+                            const payload = {
+                                member_ship: account.member_ship
+                            };
+
+                            var token = jwt.sign(payload, config.secret, {
+                                //expiresInMinutes: 1440 // expires in 24 hours
+                            });
+
+                            // return the information including token as JSON
+                            res.json({
+                                success: true,
+                                "response": account,
+                                "pathavatar": pathavatar,
+                                token: token
+                            });
+
                         } else {
                             category = 0;
                             PaymentType = 0;
@@ -44,14 +62,24 @@ router.post('/AccountLogin', function (req, res, next) {
                                 }
                             });
 
+                            const payload = {
+                                member_ship: account.member_ship
+                            };
+
+                            var token = jwt.sign(payload, config.secret, {
+                                //expiresInMinutes: 1440 // expires in 24 hours
+                            });
+
 
                             wallet.findOne({"user_id": account._id}, function (err, mw) {
                                 res.json({
+                                    success: true,
                                     "response": account,
                                     "pathavatar": pathavatar,
                                     'Category': category,
                                     'PaymentType': PaymentType,
-                                    "MyWallet": mw
+                                    "MyWallet": mw,
+                                    token: token
                                 });
                             });
                         }

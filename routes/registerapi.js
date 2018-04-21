@@ -8,7 +8,7 @@ var SendMailRegister = require("../models/sendmailregister");
 
 
 //add a new to the db
-router.post('/ServiceProviderRegister', function (req, res, next) {
+router.post('/', function (req, res, next) {
     FindEmail(req.body.email).then((email) => {
         if (email) {
             res.json({"response": false});

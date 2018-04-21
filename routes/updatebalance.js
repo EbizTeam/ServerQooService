@@ -5,10 +5,15 @@ const wallet = require('../models/wallet');
 
 
 //add a new to the db
-router.post('/update_balance', function (req, res, next) {
+router.post('/', function (req, res, next) {
     var sp_id = req.body.sp_id;
-    var balance = parseFloat(req.body.balance);
     wallet.find({"user_id": sp_id}, function (err, mywallet_info) {
+
+        var balance = 0;
+        if (req.body.balance) {
+             balance = parseFloat(req.body.balance);
+        }
+
         if(mywallet_info){
             var tt_balance = mywallet_info[0].balance;
             tt_balance += balance;
@@ -25,7 +30,6 @@ router.post('/update_balance', function (req, res, next) {
             });
         }
     }).catch(next);
-
 });
 
 module.exports = router;
