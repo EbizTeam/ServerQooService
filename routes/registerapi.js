@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-var FindEmail = require("../models/findemail");
+var FindEmail = require("../models/finduserfollowemail");
 var CreateNewUser = require("../models/createcustomer");
 var CreateNewWallet = require("../models/createwallet");
 var SendMailRegister = require("../models/sendmailregister");

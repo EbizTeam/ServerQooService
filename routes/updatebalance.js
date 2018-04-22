@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 const wallet = require('../models/wallet');
-
+router.use( function (req, res, next) {
+    Checktoken(req, res, next);
+});
 
 //add a new to the db
 router.post('/', function (req, res, next) {

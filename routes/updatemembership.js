@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Provider = require("../models/provider");
+const Provider = require("../models/useraccount");
 
+router.use( function (req, res, next) {
+    Checktoken(req, res, next);
+});
 
 //add a new to the db
 router.post('/', function (req, res, next) {

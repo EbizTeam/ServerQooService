@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Providers = require('../models/provider');
+const Providers = require('./useraccount');
 //~ var passwordHash = require('password-hash');
 const passwordHash = require("node-php-password");
 

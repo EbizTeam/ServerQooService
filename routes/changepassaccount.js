@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const FindEmail = require("../models/findemail");
-const Providers = require('../models/provider');
+const FindEmail = require("../models/finduserfollowemail");
+const Providers = require('../models/useraccount');
 
 
 
 //~ var passwordHash = require('password-hash');
 var passwordHash = require("node-php-password");
-
+router.use( function (req, res, next) {
+    Checktoken(req, res, next);
+});
 
 //add a new to the db
 router.post('/', function (req, res, next) {

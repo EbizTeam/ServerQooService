@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const Providers = require('../models/provider');
+const Providers = require('./useraccount');
 
-let FindEmail = (email) =>{
+let Finduserfollowemail = (email) =>{
     return new Promise((resolve, reject) => {
         Providers.findOne({
             'email': email
@@ -13,5 +13,5 @@ let FindEmail = (email) =>{
     });
 }
 
-module.exports = FindEmail;
+module.exports = Finduserfollowemail;
 
