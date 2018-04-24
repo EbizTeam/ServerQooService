@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5fc04216-1b8d-4742-a932-5e8744631058" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/indexbk2304.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/createaution.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/createprovidersendaution.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/findauctionfollowid.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/findprovidersendautionfollowid.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/accountforgotpass.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/accountresetpass.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/appointment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/getauctionlist.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/getorderlist.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/getservicebyproviderid.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/insertauctionfile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/insertcommentservice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/minh.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/searchservice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/sendauction.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/servicegetinfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/socket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/comments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/uploadfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/uploadfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/insertappointment.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/insertappointment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/updatebalance.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/updatebalance.js" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="indexbk2304.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indexbk2304.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="152" column="55" selection-start-line="152" selection-start-column="55" selection-end-line="152" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="searchservice.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/searchservice.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index bk2004.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index bk2004.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="367">
+              <caret line="224" column="4" selection-start-line="224" selection-start-column="4" selection-end-line="224" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index_bk.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index_bk.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="59" column="4" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="insertcommentservice.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/insertcommentservice.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="24" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="service.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/service.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="102" column="52" lean-forward="true" selection-start-line="102" selection-start-column="52" selection-end-line="102" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="appointment.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/appointment.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="updatebalance.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/updatebalance.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="51" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="checktoken.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/checktoken.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="12" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="minh.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/minh.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="659">
+              <caret line="116" column="33" selection-start-line="116" selection-start-column="13" selection-end-line="116" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>home</find>
+      <find>Autions</find>
+      <find>var</find>
+      <find>req.body</find>
+      <find>get_order_lists</find>
+      <find>get_order_list</find>
+      <find>search_services</find>
+      <find>search</find>
+      <find>BABookAppointment</find>
+      <find>App.</find>
+      <find>await</find>
+      <find>app</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>const</replace>
+      <replace>obj</replace>
+      <replace>appointment</replace>
+      <replace>router.</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/models/services.js" />
+        <option value="$PROJECT_DIR$/models/topservices.js" />
+        <option value="$PROJECT_DIR$/models/flashsales.js" />
+        <option value="$PROJECT_DIR$/models/foryourfamily.js" />
+        <option value="$PROJECT_DIR$/models/bestserviceforlady.js" />
+        <option value="$PROJECT_DIR$/models/singaporedistrict.js" />
+        <option value="$PROJECT_DIR$/models/bookappointments.js" />
+        <option value="$PROJECT_DIR$/models/autions.js" />
+        <option value="$PROJECT_DIR$/models/providersendaution.js" />
+        <option value="$PROJECT_DIR$/models/category.js" />
+        <option value="$PROJECT_DIR$/models/subcategory.js" />
+        <option value="$PROJECT_DIR$/config.js" />
+        <option value="$PROJECT_DIR$/models/provider.js" />
+        <option value="$PROJECT_DIR$/models/findemail.js" />
+        <option value="$PROJECT_DIR$/routes/registerapi2.js" />
+        <option value="$PROJECT_DIR$/models/SaveServiceProvider.js" />
+        <option value="$PROJECT_DIR$/models/wallet.js" />
+        <option value="$PROJECT_DIR$/models/createwallet.js" />
+        <option value="$PROJECT_DIR$/models/createcustomer.js" />
+        <option value="$PROJECT_DIR$/routes/registerapi.js" />
+        <option value="$PROJECT_DIR$/models/checkpassword.js" />
+        <option value="$PROJECT_DIR$/models/payments.js" />
+        <option value="$PROJECT_DIR$/routes/accountloginapi.js" />
+        <option value="$PROJECT_DIR$/routes/changepassaccount.js" />
+        <option value="$PROJECT_DIR$/routes/getaccount.js" />
+        <option value="$PROJECT_DIR$/routes/updatemembership.js" />
+        <option value="$PROJECT_DIR$/models/uploadfile.js" />
+        <option value="$PROJECT_DIR$/routes/insertappointment.js" />
+        <option value="$PROJECT_DIR$/models/createaution.js" />
+        <option value="$PROJECT_DIR$/routes/insertauctionfile.js" />
+        <option value="$PROJECT_DIR$/models/findprovidersendautionfollowid.js" />
+        <option value="$PROJECT_DIR$/routes/getauctionlist.js" />
+        <option value="$PROJECT_DIR$/models/findauctionfollowid.js" />
+        <option value="$PROJECT_DIR$/routes/sendauction.js" />
+        <option value="$PROJECT_DIR$/routes/getorderlist.js" />
+        <option value="$PROJECT_DIR$/routes/searchservice.js" />
+        <option value="$PROJECT_DIR$/routes/servicergetinfo.js" />
+        <option value="$PROJECT_DIR$/models/sendmailregister.js" />
+        <option value="$PROJECT_DIR$/routes/accountforgotpass.js" />
+        <option value="$PROJECT_DIR$/routes/accountresetpass.js" />
+        <option value="$PROJECT_DIR$/models/comments.js" />
+        <option value="$PROJECT_DIR$/routes/insertbookappointment.js" />
+        <option value="$PROJECT_DIR$/routes/appointment.js" />
+        <option value="$PROJECT_DIR$/routes/insertcommentservice.js" />
+        <option value="$PROJECT_DIR$/routes/service.js" />
+        <option value="$PROJECT_DIR$/routes/servicegetinfo.js" />
+        <option value="$PROJECT_DIR$/routes/getservicebyproviderid.js" />
+        <option value="$PROJECT_DIR$/routes/minh.js" />
+        <option value="$PROJECT_DIR$/routes/socket.js" />
+        <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/routes/updatebalance.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/apns/node_modules" />
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/apns/package.json" />
+      <path value="$PROJECT_DIR$/demo/package.json" />
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="5" />
+    <option name="y" value="22" />
+    <option name="width" value="1400" />
+    <option name="height" value="820" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ServerQooService" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ServerQooService" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.prettier" value="true" />
+    <property name="node.js.path.for.package.prettier" value="project" />
+    <property name="node.js.selected.package.prettier" value="" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\nodeproject\ServerQooService\routes" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\nodeproject\ServerQooService\routes" />
+      <recent name="D:\nodeproject\ServerQooService\models" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5fc04216-1b8d-4742-a932-5e8744631058" name="Default" comment="" />
+      <created>1524193837018</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1524193837018</updated>
+      <workItem from="1524193838951" duration="22971000" />
+      <workItem from="1524445792059" duration="27294000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="50265000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.2616361" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.32871014" />
+      <window_info id="npm" order="0" side_tool="true" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32871014" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="5" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info id="npm" order="0" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.22284909" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.32871014" />
+      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.32871014" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/getauctionlist.js</url>
+          <line>14</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/getservicebyproviderid.js</url>
+          <line>9</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="5" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/models/createwallet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" selection-end-line="20" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/wallet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/saveserviceprovider.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-265">
+          <caret line="4" column="19" selection-end-line="53" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/findemail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/provider.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/checkpassword.js" />
+    <entry file="file://$PROJECT_DIR$/models/createcustomer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/checkpass.js" />
+    <entry file="file://$PROJECT_DIR$/routes/registerapi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/payments.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="43" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/changepassaccount.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/updatemembership.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/createappointment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="7" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/autions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/auction.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/createaution.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/insertauctionfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-231">
+          <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/getauctionlist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="45" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/createprovidersendaution.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/findprovidersendautionfollowid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="30" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/sendauction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="59" column="3" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/findauctionfollowid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/finduserfollowemail.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/useraccount.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="41" column="34" selection-start-line="33" selection-start-column="3" selection-end-line="41" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/finduserfolloweid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="67" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/getorderlist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/sendmailregister.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/accountforgotpass.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/getaccount.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="6" selection-start-line="3" selection-end-line="7" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/accountresetpass.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/accountloginapi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="9" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/comments.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="65" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/insertappointment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-588">
+          <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/spscategory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index_bk22032018.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="229" column="44" selection-start-line="229" selection-start-column="32" selection-end-line="229" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/category.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/servicegetinfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/getservicebyproviderid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/uploadfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="2" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/socket.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="102" column="52" lean-forward="true" selection-start-line="102" selection-start-column="52" selection-end-line="102" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/insertcommentservice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index_bk.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="59" column="4" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index bk2004.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="224" column="4" selection-start-line="224" selection-start-column="4" selection-end-line="224" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indexbk2304.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="152" column="55" selection-start-line="152" selection-start-column="55" selection-end-line="152" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/appointment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/updatebalance.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="51" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/checktoken.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="12" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/minh.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="659">
+          <caret line="116" column="33" selection-start-line="116" selection-start-column="13" selection-end-line="116" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/searchservice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

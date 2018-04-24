@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const Checktoken = require('../models/checktoken');
 const wallet = require('../models/wallet');
 router.use( function (req, res, next) {
     Checktoken(req, res, next);

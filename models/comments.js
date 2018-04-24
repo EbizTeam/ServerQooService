@@ -26,4 +26,4 @@ const CustomerComment = new mongoose.Schema({
     recommenrded_this_provider: String
 });
 
-module.exports = mongoose.model('Comments',CustomerComment);
+module.exports = mongoose.model('customercomment',CustomerComment);
