@@ -2,32 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fc04216-1b8d-4742-a932-5e8744631058" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/indexbk2304.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/createaution.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/createprovidersendaution.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/findauctionfollowid.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/findprovidersendautionfollowid.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/accountforgotpass.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/accountresetpass.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/appointment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/getauctionlist.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/getorderlist.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/getservicebyproviderid.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/insertauctionfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/insertcommentservice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/minh.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/searchservice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/sendauction.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/servicegetinfo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/socket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/comments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/uploadfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/uploadfile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/serviceproviderdata.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/servicesbuytop.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/servicesdata.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/gettopservice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/search.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/finduserfolloweid.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/finduserfolloweid.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/services.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/insertappointment.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/insertappointment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/updatebalance.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/updatebalance.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/searchservice.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/searchservice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/socket.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/socketsearch.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -41,92 +27,74 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="indexbk2304.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/indexbk2304.js">
+      <file leaf-file-name="gettopservice.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/gettopservice.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="152" column="55" selection-start-line="152" selection-start-column="55" selection-end-line="152" selection-end-column="55" />
+            <state relative-caret-position="1904">
+              <caret line="112" column="64" lean-forward="true" selection-start-line="112" selection-start-column="64" selection-end-line="112" selection-end-column="64" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchservice.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/routes/searchservice.js">
+      <file leaf-file-name="createaution.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/createaution.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="102">
+              <caret line="6" column="26" selection-start-line="6" selection-start-column="8" selection-end-line="9" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index bk2004.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index bk2004.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="224" column="4" selection-start-line="224" selection-start-column="4" selection-end-line="224" selection-end-column="4" />
+            <state relative-caret-position="213">
+              <caret line="1194" column="34" selection-start-line="1191" selection-start-column="19" selection-end-line="1206" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index_bk.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index_bk.js">
+      <file leaf-file-name="insertappointment.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/insertappointment.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="59" column="4" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="4" />
+            <state relative-caret-position="238">
+              <caret line="23" column="32" selection-start-line="22" selection-start-column="23" selection-end-line="30" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="insertcommentservice.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/insertcommentservice.js">
+      <file leaf-file-name="registerapi.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/registerapi.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="24" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="24" />
+            <state relative-caret-position="92">
+              <caret line="13" column="35" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="service.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/service.js">
+      <file leaf-file-name="socketsearch.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/socketsearch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="102" column="52" lean-forward="true" selection-start-line="102" selection-start-column="52" selection-end-line="102" selection-end-column="52" />
+            <state>
+              <caret selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="appointment.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/appointment.js">
+      <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="51" />
+            <state relative-caret-position="323">
+              <caret line="19" column="14" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="updatebalance.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/updatebalance.js">
+      <file leaf-file-name="servicesbuytop.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/servicesbuytop.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="51" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="checktoken.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/checktoken.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="12" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="minh.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/minh.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="659">
-              <caret line="116" column="33" selection-start-line="116" selection-start-column="13" selection-end-line="116" selection-end-column="33" />
+            <state relative-caret-position="102">
+              <caret line="6" column="15" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -149,11 +117,18 @@
       <find>get_order_lists</find>
       <find>get_order_list</find>
       <find>search_services</find>
-      <find>search</find>
       <find>BABookAppointment</find>
       <find>App.</find>
       <find>await</find>
       <find>app</find>
+      <find>search</find>
+      <find>async</find>
+      <find>get_services</find>
+      <find>get_service</find>
+      <find>get_top_service</find>
+      <find>create</find>
+      <find>updated_at</find>
+      <find>get_services_by_services_provider</find>
     </findStrings>
     <replaceStrings>
       <replace>const</replace>
@@ -168,13 +143,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/models/services.js" />
-        <option value="$PROJECT_DIR$/models/topservices.js" />
-        <option value="$PROJECT_DIR$/models/flashsales.js" />
-        <option value="$PROJECT_DIR$/models/foryourfamily.js" />
-        <option value="$PROJECT_DIR$/models/bestserviceforlady.js" />
-        <option value="$PROJECT_DIR$/models/singaporedistrict.js" />
-        <option value="$PROJECT_DIR$/models/bookappointments.js" />
         <option value="$PROJECT_DIR$/models/autions.js" />
         <option value="$PROJECT_DIR$/models/providersendaution.js" />
         <option value="$PROJECT_DIR$/models/category.js" />
@@ -203,7 +171,6 @@
         <option value="$PROJECT_DIR$/models/findauctionfollowid.js" />
         <option value="$PROJECT_DIR$/routes/sendauction.js" />
         <option value="$PROJECT_DIR$/routes/getorderlist.js" />
-        <option value="$PROJECT_DIR$/routes/searchservice.js" />
         <option value="$PROJECT_DIR$/routes/servicergetinfo.js" />
         <option value="$PROJECT_DIR$/models/sendmailregister.js" />
         <option value="$PROJECT_DIR$/routes/accountforgotpass.js" />
@@ -217,8 +184,16 @@
         <option value="$PROJECT_DIR$/routes/getservicebyproviderid.js" />
         <option value="$PROJECT_DIR$/routes/minh.js" />
         <option value="$PROJECT_DIR$/routes/socket.js" />
-        <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/routes/updatebalance.js" />
+        <option value="$PROJECT_DIR$/routes/searchservice.js" />
+        <option value="$PROJECT_DIR$/models/serviceproviderdata.js" />
+        <option value="$PROJECT_DIR$/models/finduserfolloweid.js" />
+        <option value="$PROJECT_DIR$/views/search.ejs" />
+        <option value="$PROJECT_DIR$/routes/socketsearch.js" />
+        <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/models/servicesbuytop.js" />
+        <option value="$PROJECT_DIR$/models/services.js" />
+        <option value="$PROJECT_DIR$/routes/gettopservice.js" />
       </list>
     </option>
   </component>
@@ -263,6 +238,16 @@
               <item name="ServerQooService" type="b2602c69:ProjectViewProjectNode" />
               <item name="ServerQooService" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ServerQooService" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ServerQooService" type="462c0819:PsiDirectoryNode" />
+              <item name="asset" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ServerQooService" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ServerQooService" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -280,12 +265,13 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\nodeproject\ServerQooService\routes" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\nodeproject\ServerQooService\routes" />
       <recent name="D:\nodeproject\ServerQooService\models" />
+      <recent name="D:\nodeproject\ServerQooService\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\nodeproject\ServerQooService\routes" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -312,11 +298,12 @@
       <updated>1524193837018</updated>
       <workItem from="1524193838951" duration="22971000" />
       <workItem from="1524445792059" duration="27294000" />
+      <workItem from="1524532221670" duration="29934000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50265000" />
+    <option name="totallyTimeSpent" value="80199000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
@@ -346,19 +333,19 @@
       <window_info id="npm" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.22284909" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Run" order="6" weight="0.32871014" />
-      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32871014" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info anchor="bottom" id="Message" order="4" />
-      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.22284909" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,56 +360,18 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/getauctionlist.js</url>
           <line>14</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/getservicebyproviderid.js</url>
           <line>9</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="5" />
+      <option name="time" value="7" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/createwallet.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" selection-end-line="20" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/wallet.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="39" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/saveserviceprovider.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-265">
-          <caret line="4" column="19" selection-end-line="53" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/findemail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/provider.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="16" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/checkpassword.js" />
     <entry file="file://$PROJECT_DIR$/models/createcustomer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -431,13 +380,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/checkpass.js" />
-    <entry file="file://$PROJECT_DIR$/routes/registerapi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/payments.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -470,16 +412,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="41" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/auction.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/createaution.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -522,30 +454,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="32" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/finduserfollowemail.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/useraccount.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="41" column="34" selection-start-line="33" selection-start-column="3" selection-end-line="41" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/finduserfolloweid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="67" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -598,13 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/insertappointment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-588">
-          <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/spscategory.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -618,9 +519,6 @@
           <caret line="229" column="44" selection-start-line="229" selection-start-column="32" selection-end-line="229" selection-end-column="44" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/category.js">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/servicegetinfo.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -643,59 +541,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/socket.js">
+    <entry file="file://$PROJECT_DIR$/routes/minh.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="102" column="52" lean-forward="true" selection-start-line="102" selection-start-column="52" selection-end-line="102" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/insertcommentservice.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="24" />
+        <state relative-caret-position="1972">
+          <caret line="116" column="33" selection-start-line="116" selection-start-column="13" selection-end-line="116" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index_bk.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
+        <state relative-caret-position="17">
           <caret line="59" column="4" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index bk2004.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="224" column="4" selection-start-line="224" selection-start-column="4" selection-end-line="224" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/indexbk2304.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="152" column="55" selection-start-line="152" selection-start-column="55" selection-end-line="152" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/appointment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/updatebalance.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="51" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -706,17 +562,152 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/minh.js">
+    <entry file="file://$PROJECT_DIR$/routes/updatebalance.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
-          <caret line="116" column="33" selection-start-line="116" selection-start-column="13" selection-end-line="116" selection-end-column="33" />
+        <state relative-caret-position="34">
+          <caret line="2" column="51" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/appointment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/insertcommentservice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../ServerNode/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/searchservice.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="89" column="1" lean-forward="true" selection-start-line="77" selection-end-line="89" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/useraccount.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="41" column="34" lean-forward="true" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/soft/javascript/webservice/app.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/finduserfolloweid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/serviceproviderdata.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/servicesdata.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/search.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="45" column="25" lean-forward="true" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index bk2004.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-79431">
+          <caret line="7" column="23" selection-start-line="6" selection-end-line="11" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ghi chu.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1734">
+          <caret line="102" column="52" lean-forward="true" selection-start-line="102" selection-start-column="52" selection-end-line="102" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/registerapi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="13" column="35" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indexbk2304.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="156" column="43" selection-start-line="156" selection-start-column="16" selection-end-line="156" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/insertappointment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="23" column="32" selection-start-line="22" selection-start-column="23" selection-end-line="30" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/servicesbuytop.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="15" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/createaution.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="8" selection-end-line="9" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/socketsearch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="1194" column="34" selection-start-line="1191" selection-start-column="19" selection-end-line="1206" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/gettopservice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1904">
+          <caret line="112" column="64" lean-forward="true" selection-start-line="112" selection-start-column="64" selection-end-line="112" selection-end-column="64" />
         </state>
       </provider>
     </entry>

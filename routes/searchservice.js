@@ -78,7 +78,6 @@ router.post("/", function (req, res) {
 let sortOject =  (service_providers) =>{
     return new Promise((resolve, reject) => {
         if (service_providers) {
-
             let value4 =  sortBy(service_providers,'name');
             let value3 =  sortBy(value4,'no_of_neutral',{reverse: true});
             let value2 =  sortBy(value3,'no_of_recommended',{reverse: true});

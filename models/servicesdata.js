@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 var ServiceData = new mongoose.Schema({
     services_id: String,
     name: String,
-    detail: String,
     image: [],
     provider_id: String,
     sell_price: String,
@@ -16,9 +15,7 @@ var ServiceData = new mongoose.Schema({
     best_for_lady: Number,
     category_id: String,
     sub_category_id: String,
-    isAuction: Number,
-    updated_at: Number
-
+    isAuction: Number
 });
 
 

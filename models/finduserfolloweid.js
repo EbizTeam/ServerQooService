@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Providers = require('./useraccount');
+const Providers = require('./serviceproviderdata');
 
 let Finduserfollowemail = (id) =>{
     return new Promise((resolve, reject) => {
