@@ -102,21 +102,9 @@ let sorttopservice = async (servicesname, res) => {
                 }, function (err) {
                     // configs is now a map of JSON data
                     if(err)  res.json({"response": [], "value":false});
-                    else if (services.length > 20){
-                        let service20 = [];
-                        let i = 0;
-                        Async.forEachOf(services, function (item, key, callback) {
-                            i++;
-                            if(i <= 20){service20.push(item);}
-                            callback();
-                        }, function (err) {
-                            // configs is now a map of JSON data
-                            res.json({"response": service20, "value":true});
-                        });
-                    }   else{
+                    else {
                         res.json({"response": services, "value":true});
                     }
-
                 });
             }
         },
@@ -156,14 +144,25 @@ router.get("/", function (req, res) {
     });
 });
 
+
+
+
 router.post("/create", function (req, res) {
+
+    var dat = new Date();
+    Date.prototype.addDays = function(days) {
+        var dat = new Date(this.valueOf());
+        dat.setDate(dat.getDate() + days);
+        return dat;
+    }
+
     ServicesTop.create({
         service_id: req.body.service_id,
         create_buy: Date.now(),
-        create_end: Date.now()
+        create_end: dat.addDays(7).getTime()
     },function (err, service ) {
         if (err) res.json({"response": [], "value":false});
-        res.json({"response": service, "value":false});
+        res.json({"response": service, "value":true});
     });
 });
 

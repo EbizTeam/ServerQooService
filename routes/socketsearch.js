@@ -42,10 +42,12 @@ let findMemberShip = (servicesname) => {
                         }
                         callback();
                     },
-                    err=>{callback(err)}
+                    err => {
+                        callback(err)
+                    }
                 );
         }, function (err) {
-            if (err)  reject(err);
+            if (err) reject(err);
             // configs is now a map of JSON data
             resolve(service_providers);
         });
@@ -61,34 +63,45 @@ let sortandtoservice = async (servicesname, socket) => {
                 service_providers = serviceProviders;
             }
         }, err => {
-            console.log(err)
+            socket.emit("search", {'response': [], 'value': false});
         });
 
-     sortOject(service_providers).then(
+    sortOject(service_providers).then(
         service => {
             if (service) {
                 Async.forEachOf(service, function (item, key, callback) {
                     Services.findOne({_id: item.id},
                         function (err, sv) {
-                        if (err)  return callback(err)
-                        if (sv) {
+                            if (err) return callback(err)
+                            if (sv) {
+                                sv.detail = '/qooservice/system/public/provider/servicedetail/' + item.detail;
+                                let images = [];
+                                Async.forEachOf(sv.image, function (image, key, callback) {
+                                    images.push('/qooservice/system/public/uploadfile/services/' + image);
+                                    callback();
+                                }, function (err) {
+                                    // configs is now a map of JSON data
+                                    sv.image = images;
+                                });
                                 services.push(sv);
                             }
                             callback();
                         });
                 }, function (err) {
                     // configs is now a map of JSON data
-                    socket.emit("search", {'response': services, 'path': path});
+                    if (err) socket.emit("search", {'response': [], 'value': false});
+                    else
+                        socket.emit("search", {'response': services, 'value': true});
                 });
             }
         },
         err => {
-            console.log(err)
+            socket.emit("search", {'response': [], 'value': false});
         }
     );
 }
 
-exports.initialize = function (server,io) {
+exports.initialize = function (server, io) {
 
     //let io = require('socket.io')(server);
 
