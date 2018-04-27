@@ -12,8 +12,8 @@ module.exports =  {
     },
     deleteFileChat: function ()
     {
-        cron.schedule('*/720 * * * *', function(){
-            console.log('running a task every 720 minutes');
+        cron.schedule('0 */12 * * *', function(){
+            console.log('running a task every 12 hour');
             deletefilechat();
             deleteCommentprovider();
         });

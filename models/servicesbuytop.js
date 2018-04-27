@@ -7,5 +7,4 @@ var ServiceBuyTopData = new mongoose.Schema({
     provider_id:String,
 });
 
-
 module.exports = mongoose.model('servicesbuytop',ServiceBuyTopData);

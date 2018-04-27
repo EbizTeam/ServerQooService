@@ -2,114 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fc04216-1b8d-4742-a932-5e8744631058" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/models/service_provider_comments.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/deletebuytopservice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/service_provider_comment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/accountbuychat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/customerdata.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/roteswallet.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524110185876.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524126625064.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524126631273.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524127374197.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524127792671.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524127832148.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128438666.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128442334.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128442412.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128442420.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128442421.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128442424.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128442425.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128442427.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128442447.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128442714.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128451728.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128452036.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128452138.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128452426.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128452532.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128452723.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128452883.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128453071.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128453229.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128453415.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128453594.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128453767.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128453918.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128454142.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128454275.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128454670.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128454691.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128454844.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128454986.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128455178.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128455384.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128455631.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128455707.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128455874.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128456068.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128456276.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128456462.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128456640.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128456807.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128456986.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128457162.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128457356.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128457634.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128457771.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128457972.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128458136.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128458317.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128458517.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128458716.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128458904.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128459073.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128459245.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128708252.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524128712873.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524129167253.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130128954.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130133681.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130141659.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130190205.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130196358.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130200180.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130203583.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130214647.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130218779.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130221746.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130227353.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130228449.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130234081.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130288324.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130291621.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130295330.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524130670977.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524132969002.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524134399957.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524140500776.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524140500933.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524140501081.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524141506911.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524141506914.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524141506931.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524141513139.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524191630844.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524192926868.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524192942473.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524193170967.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524193433805.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524193441855.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524193444730.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader_1524049278595_IMG_20180106_154200_749.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader_1524109726431_IMG_20180106_154200_749.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ghi chu.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/auction.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/auction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/servicesbuytop.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/servicesbuytop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/wallet.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/wallet.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/gettopservice.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/gettopservice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/searchservice.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/searchservice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/socketsearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/socketsearch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/deletebuytopservice.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/deletebuytopservice.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -126,8 +28,8 @@
       <file leaf-file-name="gettopservice.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/gettopservice.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
-              <caret line="108" column="13" lean-forward="true" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
+            <state relative-caret-position="782">
+              <caret line="108" column="13" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -135,8 +37,44 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="383" column="22" selection-start-line="383" selection-start-column="22" selection-end-line="383" selection-end-column="22" />
+            <state relative-caret-position="963">
+              <caret line="254" column="79" selection-start-line="254" selection-start-column="79" selection-end-line="254" selection-end-column="79" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index bk2004.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index bk2004.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="279" column="4" selection-start-line="279" selection-start-column="4" selection-end-line="329" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="roteswallet.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/roteswallet.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="socketsearch.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/socketsearch.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="500">
+              <caret line="94" column="19" lean-forward="true" selection-start-line="71" selection-start-column="16" selection-end-line="94" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/services.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -144,8 +82,26 @@
       <file leaf-file-name="deletebuytopservice.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/deletebuytopservice.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="11" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+            <state relative-caret-position="272">
+              <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="servicesbuytop.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/servicesbuytop.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="accountbuychat.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/accountbuychat.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -153,8 +109,8 @@
       <file leaf-file-name="service_provider_comment.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/service_provider_comment.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="20" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="20" />
+            <state relative-caret-position="95">
+              <caret line="9" column="14" lean-forward="true" selection-start-line="3" selection-end-line="17" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -170,14 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>home</find>
-      <find>Autions</find>
-      <find>var</find>
-      <find>req.body</find>
-      <find>get_order_lists</find>
-      <find>get_order_list</find>
-      <find>search_services</find>
-      <find>BABookAppointment</find>
       <find>App.</find>
       <find>await</find>
       <find>app</find>
@@ -191,14 +139,30 @@
       <find>fs</find>
       <find>sear</find>
       <find>get_services_by_services_provider</find>
-      <find>register</find>
+      <find>pars</find>
       <find>request</find>
+      <find>request_promise</find>
+      <find>forgot</find>
+      <find>&quot;http://120.72.107.187</find>
+      <find>http://120.72.107.187</find>
+      <find>'http://120.72.107.187</find>
+      <find>walle</find>
+      <find>/wallet</find>
+      <find>io.</find>
+      <find>login</find>
+      <find>update</find>
+      <find>.update</find>
+      <find>get_service_category</find>
+      <find>ResetPassword</find>
+      <find>register</find>
+      <find>CustomerRegister</find>
     </findStrings>
     <replaceStrings>
       <replace>const</replace>
       <replace>obj</replace>
       <replace>appointment</replace>
       <replace>router.</replace>
+      <replace>urlapi+'</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -207,11 +171,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/models/provider.js" />
-        <option value="$PROJECT_DIR$/models/findemail.js" />
-        <option value="$PROJECT_DIR$/routes/registerapi2.js" />
         <option value="$PROJECT_DIR$/models/SaveServiceProvider.js" />
-        <option value="$PROJECT_DIR$/models/wallet.js" />
         <option value="$PROJECT_DIR$/models/createwallet.js" />
         <option value="$PROJECT_DIR$/models/createcustomer.js" />
         <option value="$PROJECT_DIR$/routes/registerapi.js" />
@@ -248,7 +208,6 @@
         <option value="$PROJECT_DIR$/models/finduserfolloweid.js" />
         <option value="$PROJECT_DIR$/views/search.ejs" />
         <option value="$PROJECT_DIR$/models/services.js" />
-        <option value="$PROJECT_DIR$/models/servicesbuytop.js" />
         <option value="$PROJECT_DIR$/models/service_provider_comment.js" />
         <option value="$PROJECT_DIR$/routes/socketsearch.js" />
         <option value="$PROJECT_DIR$/models/auction.js" />
@@ -257,6 +216,11 @@
         <option value="$PROJECT_DIR$/routes/service_provider_comment.js" />
         <option value="$PROJECT_DIR$/routes/gettopservice.js" />
         <option value="$PROJECT_DIR$/routes/deletebuytopservice.js" />
+        <option value="$PROJECT_DIR$/models/wallet.js" />
+        <option value="$PROJECT_DIR$/routes/roteswallet.js" />
+        <option value="$PROJECT_DIR$/models/servicesbuytop.js" />
+        <option value="$PROJECT_DIR$/models/accountbuychat.js" />
+        <option value="$PROJECT_DIR$/models/customerdata.js" />
         <option value="$PROJECT_DIR$/index.js" />
       </list>
     </option>
@@ -280,7 +244,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="5" />
     <option name="y" value="22" />
     <option name="width" value="1400" />
@@ -294,7 +258,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -302,20 +265,11 @@
               <item name="ServerQooService" type="b2602c69:ProjectViewProjectNode" />
               <item name="ServerQooService" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="ServerQooService" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ServerQooService" type="462c0819:PsiDirectoryNode" />
-              <item name="asset" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ServerQooService" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ServerQooService" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -329,13 +283,13 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\nodeproject\ServerQooService\models" />
+      <recent name="D:\nodeproject\ServerQooService\routes" />
+      <recent name="D:\nodeproject\ServerQooService\views" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\nodeproject\ServerQooService\routes" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\nodeproject\ServerQooService\routes" />
-      <recent name="D:\nodeproject\ServerQooService\models" />
-      <recent name="D:\nodeproject\ServerQooService\views" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -364,16 +318,18 @@
       <workItem from="1524445792059" duration="27294000" />
       <workItem from="1524532221670" duration="29934000" />
       <workItem from="1524705608260" duration="29399000" />
+      <workItem from="1524791970126" duration="30376000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109598000" />
+    <option name="totallyTimeSpent" value="139974000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.2764457" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.27574047" />
       <window_info anchor="bottom" id="TODO" order="10" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
@@ -381,7 +337,7 @@
       <window_info anchor="bottom" id="Run" order="6" weight="0.32871014" />
       <window_info id="npm" order="0" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.20804438" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.33148405" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -396,20 +352,20 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info id="npm" order="0" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.32871014" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.22284909" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.32871014" />
+      <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32871014" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="5" />
       <window_info id="Favorites" order="1" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -435,7 +391,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/gettopservice.js</url>
           <line>5</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
@@ -443,41 +398,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/payments.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="43" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/changepassaccount.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/updatemembership.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/createappointment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="7" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/autions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="41" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/insertauctionfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-231">
@@ -538,13 +458,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/getaccount.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="6" selection-start-line="3" selection-end-line="7" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -681,13 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index bk2004.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-79431">
-          <caret line="7" column="23" selection-start-line="6" selection-end-line="11" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/service.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1734">
@@ -709,13 +615,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/createaution.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -723,24 +622,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/servicesbuytop.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="14" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/indexbk2304.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="153" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/socketsearch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="73" column="44" selection-end-line="121" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -758,27 +643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/searchservice.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="90" column="110" selection-start-line="90" selection-start-column="110" selection-end-line="90" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/service_provider_comment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="20" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/deletebuytopservice.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="11" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/request/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -786,17 +650,108 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/finduserfollowemail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="11" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/getaccount.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/wallet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/service_provider_comment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="9" column="14" lean-forward="true" selection-start-line="3" selection-end-line="17" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/deletebuytopservice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/servicesbuytop.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/accountbuychat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/gettopservice.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="108" column="13" lean-forward="true" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
+        <state relative-caret-position="782">
+          <caret line="108" column="13" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/socketsearch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="94" column="19" lean-forward="true" selection-start-line="71" selection-start-column="16" selection-end-line="94" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/searchservice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="90" column="110" selection-start-line="90" selection-start-column="110" selection-end-line="90" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/roteswallet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/customerdata.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index bk2004.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="279" column="4" selection-start-line="279" selection-start-column="4" selection-end-line="329" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="383" column="22" selection-start-line="383" selection-start-column="22" selection-end-line="383" selection-end-column="22" />
+        <state relative-caret-position="963">
+          <caret line="254" column="79" selection-start-line="254" selection-start-column="79" selection-end-line="254" selection-end-column="79" />
         </state>
       </provider>
     </entry>

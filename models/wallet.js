@@ -1,10 +1,9 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Mongoose = require('mongoose');
 
-
-const  MyWalletSchema = new mongoose.Schema({
+var MyWallet = new Mongoose.Schema({
     user_id: String,
     balance: Number,
 });
 
-module.exports = mongoose.model('Wallet',MyWalletSchema);
+
+module.exports = Mongoose.model("my_wallet", MyWallet);
