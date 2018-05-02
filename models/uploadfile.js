@@ -46,37 +46,17 @@ let uploadchat = multer({
         callback(null, true)
     },
     limits:{
-        fileSize: 1024 * 1024
+        fileSize: 1024 * 1024 *12
     }
 }).single('imgUploader'); //Field name and max count
 
 
  let uploadappoint = multer({
-    storage: StorageAppoint,
-    fileFilter: function (req, file, callback) {
-        var ext = path.extname(file.originalname);
-        if( ext !== '.txt') {
-            return callback(new Error('Only  file txt are allowed'))
-        }
-        callback(null, true)
-    },
-    limits:{
-        fileSize: 1024 * 1024
-    }
+    storage: StorageAppoint
 }).single('Appointment'); //Field name and max count
 
  let uploadaution = multer({
-    storage: StorageAution,
-    fileFilter: function (req, file, callback) {
-        var ext = path.extname(file.originalname);
-        if( ext !== '.txt') {
-            return callback(new Error('Only  file txt are allowed'))
-        }
-        callback(null, true)
-    },
-    limits:{
-        fileSize: 1024 * 1024
-    }
+    storage: StorageAution
 }).single('AuctionFile'); //Field name and max count
 
 let UploadFile = ( req, res, loai) =>{

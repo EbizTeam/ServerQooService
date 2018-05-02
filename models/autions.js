@@ -15,4 +15,4 @@ var Auction = new mongoose.Schema({
     create_at: String,
 });
 
-module.exports = mongoose.model('auctions',Auction);
+module.exports = mongoose.model('auction',Auction);

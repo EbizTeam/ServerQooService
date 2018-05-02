@@ -1,5 +1,6 @@
 const ServicesTop = require('../models/servicesbuytop');
 const Comment = require('../models/service_provider_comments');
+const ProviderSendRequiment = require('../models/providersendaution');
 var cron = require('node-cron');
 
 module.exports =  {
@@ -16,6 +17,7 @@ module.exports =  {
             console.log('running a task every 12 hour');
             deletefilechat();
             deleteCommentprovider();
+            deleteDocumentRequiment();
         });
     }
 };
@@ -95,8 +97,43 @@ let Delscomment = (ID) => {
         Comment.deleteOne({
             _id: ID
         }, function (err, user) {
-            if (err) return reject(new Error('Delete buy top: ' + ID));
+            if (err) return reject(new Error('Delscomment: ' + ID));
             resolve(user.ok);
         });
+    });
+}
+
+// xoa requiment rpovider post
+let DelRequiment = (ID) => {
+    return new Promise((resolve, reject) => {
+        ProviderSendRequiment.deleteOne({
+            _id: ID
+        }, function (err, user) {
+            if (err) return reject(new Error('Delscomment: ' + ID));
+            resolve(user.ok);
+        });
+    });
+}
+
+let deleteDocumentRequiment = () => {
+    ProviderSendRequiment.find({}, function (err, Requiment) {
+        if (err) return;
+        if (Requiment) {
+            Requiment.forEach(function(element) {
+                var dat = new Date();
+                Date.prototype.addDays = function(days) {
+                    var dat = new Date(this.valueOf());
+                    dat.setDate(dat.getDate() + days);
+                    return dat;
+                }
+                if ((element.create_at <= dat.addDays(-7).getTime())) {
+                    DelRequiment(element._id)
+                        .then(
+                            res =>{console.log(res)}
+                            ,err =>{console.log(err)}
+                        );
+                }
+            });
+        }
     });
 }
