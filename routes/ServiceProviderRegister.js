@@ -147,11 +147,17 @@ router.post("/", function (req, res) {
                             RegisterProvider(req.body)
                                 .then(user => {
                                     if (user){
-                                        CreateWallet(user._id)
-                                            .then(
-                                                wl => {},
-                                                err => {console.log(err)}
-                                            );
+                                        Wallet.findOne({
+                                            "user_id":user._id
+                                        },function (err, wlet) {
+                                            if(wlet === null){
+                                                CreateWallet(user._id)
+                                                    .then(
+                                                        wl => {},
+                                                        err => {console.log(err)}
+                                                    );
+                                            }
+                                        });
                                         SendMail(user.email, user.firstname,user.lastname )
                                             .then(
                                                 result => {

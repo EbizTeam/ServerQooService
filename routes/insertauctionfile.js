@@ -58,7 +58,8 @@ router.post('/', function (req, res) {
             // An error occurred when uploading
             res.json({
                 "response": false,
-                "message": err
+                "message": 1,
+                "value": "loi insert"
             });
         }
         else {
@@ -71,7 +72,6 @@ router.post('/', function (req, res) {
                                 UpdateWallet(req.body.customer_id, temp)
                                     .then(
                                         wal => {
-                                            console.log(wal);
                                             if (wal) {
                                                 //Add to Auction
                                                 new_auction = new Auctions({
@@ -91,25 +91,29 @@ router.post('/', function (req, res) {
                                                         if (auction) {
                                                             res.json({
                                                                 "response": true,
+                                                                "message": temp,
                                                                 "value": auction
                                                             });
                                                         } else {
                                                             res.json({
                                                                 "response": false,
-                                                                "message": auction
+                                                                "message": 1,
+                                                                "value": "loi insert"
                                                             });
                                                         }
                                                     }, err => {
                                                         res.json({
                                                             "response": false,
-                                                            "message": err
+                                                            "message": 1,
+                                                            "value": "loi insert"
                                                         });
                                                     });
                                             }
                                             else {
                                                 res.json({
                                                     "response": false,
-                                                    "message": wal
+                                                    "message": 4,
+                                                    "value": "Cap nhat gio hang bi loi"
                                                 });
                                             }
 
@@ -119,21 +123,23 @@ router.post('/', function (req, res) {
                             } else {
                                 res.json({
                                     "response": false,
-                                    "message": wallet
+                                    "message": 3,
+                                    "value": wallet.balance
                                 });
                             }
                         } else {
                             res.json({
                                 "response": false,
-                                "message": "wallet not exits"
+                                "message": 2,
+                                "value": "loi gio hang khong ton tai"
                             });
                         }
                     },
                     err => {
-                        console.log(err);
                         res.json({
                             "response": false,
-                            "message": err
+                            "message": 2,
+                            "value": "loi gio hang khong ton tai"
                         });
                     }
                 );

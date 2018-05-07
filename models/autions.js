@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 
 //AUCTION FUNCTION
-var Auction = new mongoose.Schema({
+var Auction = new Schema({
     customer_id: String,
     category_id: String,
     sub_category_id: String,

@@ -10,7 +10,7 @@ const Findauctionfollowid = require('../models/findauctionfollowid');
 const Provider = require('../models/serviceproviderdata');
 const Wallet = require('../models/wallet');
 
-let FindProvicer = (id) =>{
+let FindProvicer = (id) => {
     return new Promise((resolve, reject) => {
         Provider.findOne({
             '_id': id
@@ -56,7 +56,37 @@ let UpdateWallet = (userID, balance) => {
 //     Checktoken(req, res, next);
 // });
 
-let CreateRequiment = (obj , res) =>{
+let CountProviderAuction = (auction_id) => {
+    return new Promise((resolve, reject) => {
+        Providersendaution.find({
+            "auction_id": auction_id
+        }, function (err, proderauction) {
+            if (err) return reject(err);
+            resolve(proderauction.length);
+        });
+    });
+}
+
+//create chathistory
+let UpdateAuction = (auction_id, num_order_list) => {
+    return new Promise((resolve, reject) => {
+        let myquery = {
+            '_id': auction_id
+        };
+
+        let newvalues = {
+            $set: {
+                'num_of_order_list': num_order_list,
+            }
+        };
+        Autions.updateOne(myquery, newvalues, function (err, res) {
+            if (err) return reject(err);
+            resolve(res.ok);
+        });
+    });
+}
+
+let CreateRequiment = (obj, res, balance) => {
     //Add New
     new_provider_auction = new Providersendaution({
         provider_id: obj.provider_id,
@@ -69,35 +99,53 @@ let CreateRequiment = (obj , res) =>{
 
     Createaution(new_provider_auction)
         .then(
-            new_provider_auction =>{
+            new_provider_auction => {
                 if (new_provider_auction) {
-                    Findauctionfollowid(obj.auction_id)
+                    CountProviderAuction(obj.auction_id)
                         .then(
-                            aution=>{
-                                if (aution){
-                                    var num_order_list = aution.num_of_order_list;
-                                    num_order_list++;
-                                    Autions.update({'_id': obj.auction_id}, {$set: {num_of_order_list: num_order_list}}, {upsert: false}, function (err, acc) {
-                                        if (err) {
-                                            res.json({"response": false});
+                            num_order_list => {
+                                UpdateAuction(obj.auction_id, num_order_list)
+                                    .then(
+                                        result => {
+                                            if (result === 1) {
+                                                res.json({
+                                                    "response": true,
+                                                    "message": balance,
+                                                    "value": new_provider_auction
+                                                });
+                                            }
+                                            else {
+                                                res.json({
+                                                    "response": false,
+                                                    "message": 1,
+                                                    "value": "loi update auction"
+                                                });
+                                            }
                                         }
-                                        else {
+                                        , err => {
                                             res.json({
-                                                "response": true,
-                                                "value": new_provider_auction
+                                                "response": false,
+                                                "message": 1,
+                                                "value": "loi update auction"
                                             });
-                                        }
-                                    });
-                                }
+                                        });
                             }
-                            ,err => {
-                                res.json({"response": false});
+                            , err => {
+                                res.json({
+                                    "response": false,
+                                    "message": 2,
+                                    "value": "loi tim kiem auction"
+                                });
                             }
-                        )
+                        );
                 }
             },
-            err=>{
-                res.json({"response": false});
+            err => {
+                res.json({
+                    "response": false,
+                    "message": 3,
+                    "value": "loi tao moi provider auction"
+                });
             }
         );
 
@@ -107,11 +155,11 @@ let CreateRequiment = (obj , res) =>{
 router.post('/', function (req, res) {
     FindProvicer(req.body.provider_id)
         .then(
-            provider =>{
-                if (provider){
-                    if (provider.member_ship > 1){
+            provider => {
+                if (provider) {
+                    if (provider.member_ship > 1) {
                         CreateRequiment(req.body, res);
-                    } else{
+                    } else {
                         FindWallet(req.body.provider_id)
                             .then(
                                 wallet => {
@@ -126,7 +174,8 @@ router.post('/', function (req, res) {
                                                     } else {
                                                         res.json({
                                                             "response": false,
-                                                            "message": wal
+                                                            "message": 4,
+                                                            "value": "loi update wallet"
                                                         });
                                                     }
                                                 }
@@ -134,35 +183,40 @@ router.post('/', function (req, res) {
                                         } else {
                                             res.json({
                                                 "response": false,
-                                                "message": wallet
+                                                "message": 5,
+                                                "value": "loi khong du tien"
                                             });
                                         }
                                     } else {
                                         res.json({
                                             "response": false,
-                                            "message": "wallet not exits"
+                                            "message": 6,
+                                            "value": "wallet khong ton tai"
                                         });
                                     }
                                 },
                                 err => {
                                     res.json({
                                         "response": false,
-                                        "message": err
+                                        "message": 6,
+                                        "value": "wallet khong ton tai"
                                     });
                                 }
                             );
                     }
-                } else{
+                } else {
                     res.json({
                         "response": false,
-                        "message":err
+                        "message": 7,
+                        "value": "khong tim thay provider"
                     });
                 }
             }
-            ,err => {
+            , err => {
                 res.json({
                     "response": false,
-                    "message":err
+                    "message": 7,
+                    "value": "khong tim thay provider"
                 });
             }
         );

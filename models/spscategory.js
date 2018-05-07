@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 
 // Create SpsCategory
-const SPsCategory = new mongoose.Schema({
+const SPsCategory = new Schema({
     provider_id: String,
     category_id: String,
 });
