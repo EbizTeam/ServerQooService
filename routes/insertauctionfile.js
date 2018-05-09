@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Auctions = require('../models/autions');
 const Createaution = require('../models/createaution');
+const Historypayment = require('../models/historypayment');
 const Wallet = require('../models/wallet');
 var multer = require('multer');
 
@@ -73,6 +74,17 @@ router.post('/', function (req, res) {
                                     .then(
                                         wal => {
                                             if (wal) {
+
+                                                Historypayment.create({
+                                                    payment: 5,
+                                                    user_id: req.body.customer_id,
+                                                    service:3,
+                                                    create_at: Date.now()
+                                                },function (err, htr ) {
+                                                    if (err) console.log(err);
+                                                    else console.log(htr);
+                                                });
+
                                                 //Add to Auction
                                                 new_auction = new Auctions({
                                                     customer_id: req.body.customer_id,

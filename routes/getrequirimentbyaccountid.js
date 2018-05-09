@@ -169,18 +169,48 @@ router.post("/", function (req, res) {
         AAuction.find({
             'customer_id': account_id
         }, function (err, auctionslist) {
-            if (err) {
-                res.json({
-                    "response": false,
-                    "value": []
+            let listauction = [];
+            Async.forEachOf(auctionslist, function (auction, key, callback) {
+                PSAProviderSentAuction.find({
+                    auction_id: auction._id,
+                    status: {$not: /Decline/},
+                }, function (err, providerauction) {
+                    if (err) {
+                        res.json({
+                            "response": false,
+                            "value": []
+                        });
+                    }else{
+                        listauction.push({
+                            _id:auction._id,
+                            customer_id: auction.customer_id,
+                            category_id: auction.category_id,
+                            sub_category_id: auction.sub_category_id,
+                            status: auction.status,
+                            time_auction: auction.time_auction,
+                            num_of_order_list: providerauction.length,
+                            link_file: auction.link_file,
+                            user_deleted: auction.user_deleted,
+                            create_at: auction.create_at,
+                            });
+                    }
+                    callback();
                 });
-            }
-            else{
-                res.json({
-                    "response": true,
-                    "value": auctionslist
-                });
-            }
+            }, function (err) {
+                if (err)  {
+                    res.json({
+                        "response": false,
+                        "value": []
+                    });
+                }
+                else{
+                    res.json({
+                        "response": true,
+                        "value": listauction
+                    });
+                }
+
+            });
         });
     }
 });

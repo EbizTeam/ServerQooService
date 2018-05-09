@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const Services = require('../models/services');
+const Wallet = require('../models/wallet');
 const ServicesTop = require('../models/servicesbuytop');
 const findProvider = require('../models/finduserfolloweid');
 const Async = require("async");
 const sortBy = require('array-sort');
-
+const Historypayment = require('../models/historypayment');
 let FindServiceTop = (service) => {
     return new Promise((resolve, reject) => {
         let service_top = [];
@@ -142,10 +143,40 @@ router.get("/", function (req, res) {
             }
         }
     });
+
+
 });
 
 
+let FindWallet = (user_id) => {
+    return new Promise((resolve, reject) => {
+        Wallet.findOne({
+            'user_id': user_id
+        }, function (err, wl) {
+            if (err) return reject(new Error('loi tim id: ' + user_id));
+            resolve(wl);
+        });
+    });
+}
 
+let UpdateWallet = (userID, balance) => {
+    return new Promise((resolve, reject) => {
+        let myquery = {
+            user_id: userID
+        };
+
+        let newvalues = {
+            $set: {
+                balance: balance
+            }
+        };
+        Wallet.updateOne(myquery, newvalues, function (err, res) {
+            if (err) return reject(new Error('UpdateWallet: ' + balance));
+            console.log(res);
+            resolve(res);
+        });
+    });
+}
 
 router.post("/create", function (req, res) {
 
@@ -155,15 +186,81 @@ router.post("/create", function (req, res) {
         dat.setDate(dat.getDate() + days);
         return dat;
     }
+    let phidv = 5;
+    let date = 7;
+    FindWallet(req.body.provider_id)
+        .then(
+            wallet => {
+                if (wallet) {
+                    if (wallet.balance >= phidv) {
+                        UpdateWallet(req.body.provider_id, wallet.balance - phidv)
+                            .then(
+                                wal => {
+                                    if (wal) {
+                                        ServicesTop.create({
+                                            service_id: req.body.service_id,
+                                            provider_id: req.body.provider_id,
+                                            create_at: Date.now(),
+                                            create_end: dat.addDays(date).getTime()
+                                        },function (err, service ) {
+                                            if (err) res.json({"response": [], "value":false});
+                                            else
+                                                FindWallet(req.body.provider_id)
+                                                    .then(
+                                                        walletafter => {
+                                                            res.json({"response": walletafter, "value":true});
+                                                            },
+                                                        err=>{
+                                                            res.json({"response": [], "value":false});
+                                                        });
+                                        });
 
-    ServicesTop.create({
-        service_id: req.body.service_id,
-        create_buy: Date.now(),
-        create_end: dat.addDays(7).getTime()
-    },function (err, service ) {
-        if (err) res.json({"response": [], "value":false});
-        res.json({"response": service, "value":true});
-    });
+                                        Historypayment.create({
+                                            payment: phidv,
+                                            user_id: req.body.provider_id,
+                                            service:1,
+                                            create_at: Date.now()
+                                        },function (err, htr ) {
+                                            if (err) console.log(err);
+                                            else console.log(htr);
+                                        });
+                                    }
+                                    else {
+                                        res.json({
+                                            "response": false,
+                                            "message": 4,
+                                            "value": "Cap nhat gio hang bi loi"
+                                        });
+                                    }
+
+                                }
+                            );
+
+                    } else {
+                        res.json({
+                            "response": false,
+                            "message": 3,
+                            "value": wallet.balance
+                        });
+                    }
+                } else {
+                    res.json({
+                        "response": false,
+                        "message": 2,
+                        "value": "loi gio hang khong ton tai"
+                    });
+                }
+            },
+            err => {
+                res.json({
+                    "response": false,
+                    "message": 2,
+                    "value": "loi gio hang khong ton tai"
+                });
+            }
+        );
+
+
 });
 
 module.exports = router;

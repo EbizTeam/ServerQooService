@@ -6,7 +6,7 @@ const FindPSAuction = require('../models/findprovidersendautionfollowid');
 const Providersendaution = require('../models/providersendaution');
 const Createaution = require('../models/createaution');
 const Findauctionfollowid = require('../models/findauctionfollowid');
-
+const Historypayment = require('../models/historypayment');
 const Provider = require('../models/serviceproviderdata');
 const Wallet = require('../models/wallet');
 
@@ -67,7 +67,7 @@ let CountProviderAuction = (auction_id) => {
     });
 }
 
-//create chathistory
+
 let UpdateAuction = (auction_id, num_order_list) => {
     return new Promise((resolve, reject) => {
         let myquery = {
@@ -180,6 +180,15 @@ router.post('/', function (req, res) {
                                                     }
                                                 }
                                             );
+                                            Historypayment.create({
+                                                payment: phidv,
+                                                user_id: obj.userID,
+                                                service:2,
+                                                create_at: Date.now()
+                                            },function (err, htr ) {
+                                                if (err) console.log(err);
+                                                else console.log(htr);
+                                            });
                                         } else {
                                             res.json({
                                                 "response": false,

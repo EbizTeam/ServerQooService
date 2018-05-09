@@ -4,6 +4,7 @@ const Providersendaution = require('../models/providersendaution');
 const Provider = require('../models/serviceproviderdata');
 const ChatUsers = require('../models/userchat');
 const Async = require("async");
+const Autions = require('../models/autions');
 
 let FindProvider = (provider_id) => {
     return new Promise((resolve, reject) => {
@@ -32,7 +33,7 @@ router.get("/:auction_id", function (req, res) {
     let data = [];
     Providersendaution.find({
         auction_id: req.params.auction_id,
-        status: { $not:/Decline/ },
+        status: {$not: /Decline/},
     }, function (err, providerauction) {
         if (err) {
             res.json({
@@ -109,7 +110,7 @@ router.get("/:auction_id", function (req, res) {
                 });
             });
 
-        }else{
+        } else {
             res.json({
                 "response": false,
                 "value": "not find with auction id: " + req.params.auction_id
@@ -119,23 +120,23 @@ router.get("/:auction_id", function (req, res) {
 });
 
 
-let FindOneProviderAuction = (_id) =>{
+let FindOneProviderAuction = (_id) => {
     return new Promise((resolve, reject) => {
         Providersendaution.findOne({"_id": _id}, function (err, providerAuction) {
             if (err) reject(err);
-           resolve(providerAuction);
+            resolve(providerAuction);
         });
     });
 }
 
-let FindProviderAuction = (auction_id) =>{
+let FindProviderAuction = (auction_id) => {
     return new Promise((resolve, reject) => {
         Providersendaution.find({
             "auction_id": auction_id,
             "status": "Sent Auction",
         }, function (err, providerAuctions) {
             if (err) reject(err);
-           resolve(providerAuctions);
+            resolve(providerAuctions);
         });
     });
 }
@@ -148,7 +149,7 @@ let UpdateProviderAuction = (_id, status) => {
 
         let newvalues = {
             $set: {
-                status:status
+                status: status
             }
         };
         Providersendaution.updateOne(myquery, newvalues, function (err, res) {
@@ -159,36 +160,89 @@ let UpdateProviderAuction = (_id, status) => {
     });
 }
 
+let CountProviderAuction = (auction_id) => {
+    return new Promise((resolve, reject) => {
+        Providersendaution.find({
+            "auction_id": auction_id,
+            status: {$not: /Decline/},
+        }, function (err, proderauction) {
+            if (err) return reject(err);
+            resolve(proderauction.length);
+        });
+    });
+}
+
+
+let UpdateAuction = (auction_id, num_order_list) => {
+    return new Promise((resolve, reject) => {
+        let myquery = {
+            '_id': auction_id
+        };
+
+        let newvalues = {
+            $set: {
+                'num_of_order_list': num_order_list,
+            }
+        };
+        Autions.updateOne(myquery, newvalues, function (err, res) {
+            if (err) return reject(err);
+            resolve(res.ok);
+        });
+    });
+}
+
+let updateNumberlist = (auction_id) => {
+    CountProviderAuction(auction_id)
+        .then(
+            num_order_list => {
+                UpdateAuction(auction_id, num_order_list)
+                    .then(
+                        result => {
+
+                        }
+                        , err => {
+                            console.log(err);
+                        });
+            }
+            , err => {
+
+                console.log(err);
+
+            }
+        );
+}
+
 router.post('/change_status_provider_list', function (req, res) {
- let id = req.body.id;
- let status = req.body.status;
+    let id = req.body.id;
+    let status = req.body.status;
     //1 decline
     // 2 Approve
     if (status == 2) {
         UpdateProviderAuction(id, "Approve")
             .then(
                 ressult => {
-                    if (ressult == 1){
+                    if (ressult == 1) {
                         FindOneProviderAuction(id)
                             .then(
                                 providerauction => {
-                                    if (providerauction){
+                                    if (providerauction) {
                                         FindProviderAuction(providerauction.auction_id)
                                             .then(
                                                 proauctions => {
-                                                 if (proauctions.length > 0){
-                                                     for (let k in proauctions){
-                                                         UpdateProviderAuction(proauctions[k]._id, "Decline")
-                                                             .then(
-                                                                 ressult => {
-                                                                     console.log(ressult);
-                                                                 },
-                                                                 err => {
-                                                                     console.log(err);
-                                                                 }
-                                                             );
-                                                     }
-                                                 }
+                                                    if (proauctions.length > 0) {
+                                                        for (let k in proauctions) {
+                                                            UpdateProviderAuction(proauctions[k]._id, "Decline")
+                                                                .then(
+                                                                    ressult => {
+                                                                        console.log(ressult);
+                                                                        updateNumberlist(providerauction.auction_id);
+                                                                    },
+                                                                    err => {
+                                                                        console.log(err);
+                                                                    }
+                                                                );
+                                                        }
+                                                    }
                                                 }
                                             );
                                         res.json({
@@ -219,19 +273,22 @@ router.post('/change_status_provider_list', function (req, res) {
                     });
                 }
             );
-    }else{
+    } else {
         UpdateProviderAuction(id, "Decline")
             .then(
                 ressult => {
-                    if (ressult == 1){
+                    if (ressult == 1) {
                         FindOneProviderAuction(id)
                             .then(
                                 providerauction => {
-                                    if (providerauction){
+                                    if (providerauction) {
+                                        updateNumberlist(providerauction.auction_id);
+                                        console.log("updateNumberlist"+providerauction.auction_id);
                                         res.json({
                                             "response": true,
                                             "value": providerauction
                                         });
+
                                     }
                                 },
                                 err => {
@@ -241,12 +298,14 @@ router.post('/change_status_provider_list', function (req, res) {
                                     });
                                 }
                             );
+
                     } else {
                         res.json({
                             "response": false,
                             "value": "update fail"
                         });
                     }
+
                 },
                 err => {
                     res.json({
@@ -263,7 +322,7 @@ router.get("/get_provider_send_auction/:provider_id", function (req, res) {
     let data = [];
     Providersendaution.find({
         provider_id: req.params.provider_id,
-        status: { $not:/Sent Auction/ },
+        status: {$not: /Sent Auction/},
     }, function (err, providerauction) {
         if (err) {
             res.json({
@@ -275,7 +334,7 @@ router.get("/get_provider_send_auction/:provider_id", function (req, res) {
                 "response": true,
                 "value": providerauction
             });
-        }else{
+        } else {
             res.json({
                 "response": false,
                 "value": "not find with provider id: " + req.params.provider_id
