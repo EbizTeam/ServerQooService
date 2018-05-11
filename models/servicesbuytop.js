@@ -5,7 +5,6 @@ var ServiceBuyTopData = new mongoose.Schema({
     provider_id: String,
     create_at:Number,
     create_end:Number,
-    provider_id:String,
 });
 
 module.exports = mongoose.model('servicesbuytop',ServiceBuyTopData);

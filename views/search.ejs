@@ -40,15 +40,27 @@
 <script src = "/socket.io/socket.io.js"></script>
 
 <script>
-    var socket =  io.connect('http://localhost:4000/searchservice');
+    //var socket =  io.connect('http://localhost:4000/searchservice');
 
-    socket.on("search",function(data) {
-       console.log(data);
+    var socketRoot =  io.connect('http://localhost:4000');
+
+    socketRoot.on("search",function(data) {
+       alert(data);
+    });
+
+    socketRoot.on("server-notify-auction-provider",function(data) {
+        alert(JSON.stringify(data));
     });
 
     $(document).ready(function(){
+        // $('#btnSend').click(function() {
+        //     socket.emit("search",$("#textMessage").val());
+        //     console.log($("#textMessage").val());
+        //
+        // });
+
         $('#btnSend').click(function() {
-            socket.emit("search",$("#textMessage").val());
+            socketRoot.emit("consumer-send-auction-category",$("#textMessage").val());
             console.log($("#textMessage").val());
 
         });

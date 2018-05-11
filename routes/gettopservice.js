@@ -7,6 +7,7 @@ const findProvider = require('../models/finduserfolloweid');
 const Async = require("async");
 const sortBy = require('array-sort');
 const Historypayment = require('../models/historypayment');
+
 let FindServiceTop = (service) => {
     return new Promise((resolve, reject) => {
         let service_top = [];
@@ -218,7 +219,7 @@ router.post("/create", function (req, res) {
                                         Historypayment.create({
                                             payment: phidv,
                                             user_id: req.body.provider_id,
-                                            service:1,
+                                            service:0,
                                             create_at: Date.now()
                                         },function (err, htr ) {
                                             if (err) console.log(err);

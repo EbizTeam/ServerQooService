@@ -1,0 +1,11 @@
+Server k/h 
+
+5.189.151.166
+user: ebizweb
+
+pass: pass@word1
+
+Server 187 
+120.72.107.187
+user: ebizweb
+pass: pass@word1

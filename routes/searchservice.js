@@ -2,21 +2,80 @@ const sortBy = require('array-sort');
 const express = require('express');
 const routes = express.Router();
 const Services = require('../models/services');
+const ServiceProvider = require('../models/serviceproviderdata');
 const findProvider = require('../models/finduserfolloweid');
 var Async = require("async");
 
 
 //add a new to the db
 routes.post("/", function (req, res) {
-    var query = {name: {$regex: req.body.searchtext, $options: 'i'}};
-    Services.find(query,
-        function (err, servicesname) {
-            if (servicesname) {
-                sortandtoservice(servicesname, res);
-            } else {
-                res.json({"response": [], "value": false});
-            }
-        });
+    if (req.body.searchtext) {
+        if (req.body.filter == 1) {
+            let query = {company_name: {$regex: req.body.searchtext, $options: 'i'}};
+            ServiceProvider.find(query,
+                function (err, provider) {
+                    if (err) {
+                        res.json({"response": [], "value": false});
+                    }
+                    else if (provider) {
+                        sortOject(provider)
+                            .then(
+                                providers => {
+                                    if (providers.length > 0) {
+                                        let services = [];
+                                        Async.forEachOf(providers, function (serPro, key, callback) {
+                                            Services.find({provider_id: serPro._id},
+                                                function (err, servicesm) {
+                                                    if (err) return callback(err)
+                                                    if (servicesm) {
+                                                        Async.forEachOf(servicesm, function (sv, key, callback) {
+                                                            sv.detail = '/qooservice/system/public/provider/servicedetail/' + sv.detail;
+                                                            let images = [];
+                                                            Async.forEachOf(sv.image, function (image, key, callback) {
+                                                                images.push('/qooservice/system/public/uploadfile/services/' + image);
+                                                                callback();
+                                                            },function (err) {
+                                                                sv.image = images;
+                                                                services.push(sv);
+                                                            });
+                                                            callback();
+                                                        }, function (err) {
+
+                                                        });
+                                                    }
+                                                    callback();
+                                                });
+                                        }, function (err) {
+                                            // configs is now a map of JSON data
+                                            if (err)  res.json({"response": [], "value": false});
+                                            res.json({"response": services, "value": true});
+                                        });
+                                    } else {
+                                        res.json({"response": [], "value": false});
+                                    }
+                                }
+                                , err => {
+                                    res.json({"response": [], "value": false});
+                                }
+                            )
+                    } else {
+                        res.json({"response": [], "value": false});
+                    }
+                });
+        } else {
+            let query = {name: {$regex: req.body.searchtext, $options: 'i'}};
+            Services.find(query,
+                function (err, servicesname) {
+                    if (servicesname) {
+                        sortandtoservice(servicesname, res);
+                    } else {
+                        res.json({"response": [], "value": false});
+                    }
+                });
+
+        }
+    }
+
 });
 
 

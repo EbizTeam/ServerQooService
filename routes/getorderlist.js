@@ -5,6 +5,8 @@ const Provider = require('../models/serviceproviderdata');
 const ChatUsers = require('../models/userchat');
 const Async = require("async");
 const Autions = require('../models/autions');
+const Consumer = require('../models/customerdata');
+
 
 let FindProvider = (provider_id) => {
     return new Promise((resolve, reject) => {
@@ -317,6 +319,69 @@ router.post('/change_status_provider_list', function (req, res) {
     }
 });
 
+let FindConsumer  = (uerID) => {
+    return new Promise((resolve, reject) => {
+        Consumer.findOne({"_id": uerID}, function (err, consumer) {
+            if (err) reject(err);
+            resolve(consumer);
+        });
+    });
+}
+
+
+let FindAuction  = (auction_id) => {
+    return new Promise((resolve, reject) => {
+        Autions.findOne({"_id": auction_id}, function (err, auction) {
+            if (err) reject(err);
+            resolve(auction);
+        });
+    });
+}
+
+
+let FindUserAuction  = (auction_id) => {
+    return new Promise((resolve, reject) => {
+        FindAuction(auction_id)
+        .then(
+            auction =>{
+                if(auction){
+                    FindConsumer(auction.customer_id)
+                    .then(
+                        consumer =>{
+                            if(consumer){
+                                resolve({
+                                    link_file: auction.link_file,
+                                    sub_category_id: auction.sub_category_id,
+                                    "consumer_info":consumer,
+                                    "category_id": auction.category_id,
+                                })
+                            }else{
+                                resolve({
+                                    link_file: auction.link_file,
+                                    sub_category_id: auction.sub_category_id,
+                                    "consumer_info":{},
+                                    "category_id": auction.category_id,
+                                })
+                            }                              
+
+                        }
+                        ,err=>{
+                            reject(err);
+                        }
+                    );
+                }else{
+                    reject(new Error("khong tim thay auction"));
+                }
+            }
+            ,err => {
+                reject(err);
+            }
+        );
+    });
+}
+
+
+
 //provider get provider auction
 router.get("/get_provider_send_auction/:provider_id", function (req, res) {
     let data = [];
@@ -330,9 +395,41 @@ router.get("/get_provider_send_auction/:provider_id", function (req, res) {
                 "value": err
             });
         } else if (providerauction) {
-            res.json({
-                "response": true,
-                "value": providerauction
+            let proOder =[];
+            Async.forEachOf(providerauction, function (item, key, callback) {
+                FindUserAuction(item.auction_id)
+                .then(
+                    Cateauction => {
+                        proOder.push({
+                            link_file: Cateauction.link_file,
+                            sub_category_id: Cateauction.sub_category_id,
+                            "consumer_info": Cateauction.consumer_info,
+                            "category_id": Cateauction.category_id,
+                           "_id":item._id,
+                            "provider_id": item.provider_id,
+                            "auction_id": item.auction_id,
+                            "status": item.status,
+                            "from_price": item.from_price,
+                            "to_price": item.to_price,
+                            "create_at": item.create_at,
+                        });
+                        callback();
+                    }
+                    ,err =>{
+                        callback(err);
+                    }
+                );
+            }, function (err) {
+                if (err) {
+                    res.json({
+                        "response": false,
+                        "value": err
+                    });
+                }
+                res.json({
+                    "response": true,
+                    "value": proOder
+                });
             });
         } else {
             res.json({

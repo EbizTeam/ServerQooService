@@ -1,14 +1,18 @@
 const ServicesTop = require('../models/servicesbuytop');
 const Comment = require('../models/service_provider_comments');
 const ProviderSendRequiment = require('../models/providersendaution');
+const Banner = require('../models/ServiceProviderBuyBannerData');
+const Advertise = require('../models/ServiceProviderBuyAdvertiseData');
 var cron = require('node-cron');
-
+const fs = require('fs');
 module.exports =  {
     deletetopservice: function ()
     {
         cron.schedule('*/30 * * * *', function(){
             console.log('running a task every thrity minutes');
             deleteBuyTop();
+            deleteBannerTop();
+            deleteAdvertiseTop();
         });
     },
     deleteFileChat: function ()
@@ -21,6 +25,53 @@ module.exports =  {
         });
     }
 };
+
+let deleteBannerTop = () => {
+    Banner.find({}, function (err, service) {
+        if (err) return;
+        if (service) {
+            service.forEach(function(element) {
+               if (element.create_end <= Date.now() ) {
+                   Delservice(element._id)
+                       .then(
+                           res =>{console.log(res)}
+                           ,err =>{console.log(err)}
+                       );
+                   try {
+                       fs.unlinkSync("./asset"+element.link_banner);
+                   } catch (err) {
+                       console.log(err);
+                   }
+
+               }
+            });
+        }
+    });
+}
+
+let deleteAdvertiseTop = () => {
+    Advertise.find({}, function (err, service) {
+        if (err) return;
+        if (service) {
+            service.forEach(function(element) {
+               if (element.create_end <= Date.now() ) {
+                   Delservice(element._id)
+                       .then(
+                           res =>{console.log(res)}
+                           ,err =>{console.log(err)}
+                       );
+                   try {
+                       fs.unlinkSync("./asset"+element.link_banner);
+                   } catch (err) {
+                       console.log(err);
+                   }
+               }
+            });
+        }
+    });
+}
+
+
 
 let deleteBuyTop = () => {
     ServicesTop.find({}, function (err, service) {
@@ -64,7 +115,6 @@ let deleteCommentprovider = () => {
 
 let deletefilechat = () => {
     const testFolder ='./asset/chat/';
-    const fs = require('fs');
     var dat = new Date();
     Date.prototype.addDays = function(days) {
         var dat = new Date(this.valueOf());

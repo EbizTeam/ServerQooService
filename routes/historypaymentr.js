@@ -8,6 +8,8 @@ service.push("Buy service top");//0
 service.push("Auction serivce");//1
 service.push("Change membership");//2
 service.push("Send requiriment service");//3
+service.push("Buy banner top");//4
+service.push("Buy advertise top");//5
 
 //get history
 router.get("/get_payment_service/:user_id", function (req, res) {
