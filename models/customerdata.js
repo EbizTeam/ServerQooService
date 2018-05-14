@@ -24,6 +24,9 @@ var CustomerData = new Mongoose.Schema({
     member_ship_time: Number,
     confirm_status: Number,
     isPlatform: Number,
+    create_at: Number,
+    updated_at: Number,
+
 });
 
 

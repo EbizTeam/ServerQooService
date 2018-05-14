@@ -159,6 +159,15 @@ router.post('/', function (req, res) {
                 if (provider) {
                     if (provider.member_ship > 1) {
                         CreateRequiment(req.body, res);
+                        Historypayment.create({
+                            payment: phidv,
+                            user_id: req.body.provider_id,
+                            service:1,
+                            create_at: Date.now()
+                        },function (err, htr ) {
+                            if (err) console.log(err);
+                            else console.log(htr);
+                        });
                     } else {
                         FindWallet(req.body.provider_id)
                             .then(
@@ -171,6 +180,15 @@ router.post('/', function (req, res) {
                                                     console.log(wal);
                                                     if (wal) {
                                                         CreateRequiment(req.body, res);
+                                                        Historypayment.create({
+                                                            payment: phidv,
+                                                            user_id: req.body.provider_id,
+                                                            service:1,
+                                                            create_at: Date.now()
+                                                        },function (err, htr ) {
+                                                            if (err) console.log(err);
+                                                            else console.log(htr);
+                                                        });
                                                     } else {
                                                         res.json({
                                                             "response": false,
@@ -180,15 +198,6 @@ router.post('/', function (req, res) {
                                                     }
                                                 }
                                             );
-                                            Historypayment.create({
-                                                payment: phidv,
-                                                user_id: obj.userID,
-                                                service:2,
-                                                create_at: Date.now()
-                                            },function (err, htr ) {
-                                                if (err) console.log(err);
-                                                else console.log(htr);
-                                            });
                                         } else {
                                             res.json({
                                                 "response": false,

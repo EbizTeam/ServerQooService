@@ -56,6 +56,7 @@ let RegisterCustomer = (customer) =>{
             occupation: customer.occupation,
             //Set true value for test
             isActived: false,
+            create_at: Date.now(),
             member_ship: 0,
             member_ship_time: 0,
             confirm_status: 0
@@ -202,5 +203,47 @@ router.post("/", function (req, res) {
             });
         });
 });
+
+router.post("/update_consumer", function (req, res) {
+       let myquery = {
+        _id: req.body._id
+    };
+
+    let newvalues = {
+        $set: {
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            mobile: req.body.mobile,
+            building_name: req.body.building_name,
+            postal_code: req.body.postal_code,
+            city: req.body.city,
+            country: req.body.country,
+            birth_date: req.body.birth_date,
+            sex: req.body.sex,
+            home_number: req.body.home_number,
+            address1: req.body.address1,
+            address2: req.body.address2,
+            occupation: req.body.occupation,
+            confirm_status: req.body.confirm_status,
+            updated_at: Date.now(),
+        }
+    };
+    Customer.updateOne(myquery, newvalues, function (err, res) {
+        if (err) {
+            res.json({
+                response:err,
+                value:false
+            });
+        }else{
+            res.json({
+                response:res.result.ok,
+                value:true
+            });
+        }
+    });
+
+
+});
+
 
 module.exports = router;

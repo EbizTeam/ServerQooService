@@ -41,6 +41,7 @@ var ServiceProviderData = new Mongoose.Schema({
     no_of_neutral: Number,
     no_of_not_recommended: Number,
     isPlatform: Number,
+    create_at: Number,
     updated_at: Number,
     info_provider : String,
     logo_provider : String,

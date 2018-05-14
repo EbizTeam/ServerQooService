@@ -11,9 +11,6 @@ const Async = require("async");
 const sortBy = require('array-sort');
 
 
-
-
-
 let UpdateWallet = (userID, balance) => {
     return new Promise((resolve, reject) => {
         let myquery = {
@@ -84,7 +81,7 @@ router.post("/inser_advertise", function (req, res) {
     Error.push("4. Upload Image banner fail");
 
     var dat = new Date();
-    Date.prototype.addDays = function(days) {
+    Date.prototype.addDays = function (days) {
         var dat = new Date(this.valueOf());
         dat.setDate(dat.getDate() + days);
         return dat;
@@ -108,9 +105,9 @@ router.post("/inser_advertise", function (req, res) {
                                                 Historypayment.create({
                                                     payment: pay,
                                                     user_id: req.body.provider_id,
-                                                    service:5,
+                                                    service: 5,
                                                     create_at: Date.now()
-                                                },function (err, htr ) {
+                                                }, function (err, htr) {
                                                     if (err) console.log(err);
                                                     else console.log(htr);
                                                 });
@@ -121,7 +118,7 @@ router.post("/inser_advertise", function (req, res) {
                                                     link_banner: '/advertise/' + req.file.filename,
                                                     create_end: dat.addDays(date).getTime(),
                                                     create_at: Date.now()
-                                                },function (err, SPBBanner ) {
+                                                }, function (err, SPBBanner) {
                                                     if (err) {
                                                         console.log(err);
                                                         res.json({
@@ -134,7 +131,8 @@ router.post("/inser_advertise", function (req, res) {
                                                             "response": SPBBanner,
                                                             "value": 0
                                                         });
-                                                    };
+                                                    }
+                                                    ;
                                                 });
 
                                             }
@@ -184,7 +182,7 @@ let FindBanner = () => {
     });
 }
 
-let FindProviderID = (id) =>{
+let FindProviderID = (id) => {
     return new Promise((resolve, reject) => {
         ServiceProvider.findOne({
             '_id': id
@@ -203,16 +201,25 @@ let findMemberShip = (Baner) => {
                 .then(
                     provider => {
                         if (provider) {
-                            service_providers.push(
-                                provider
-                            );
+                            service_providers.push({
+                                provider_id: item.provider_id,
+                                link_banner: item.link_banner,
+                                create_at: item.create_at,
+                                create_end: item.create_end,
+                                member_ship: provider.member_ship,
+                                no_of_hight_recommended: provider.no_of_hight_recommended,
+                                no_of_recommended: provider.no_of_recommended,
+                                no_of_neutral: provider.no_of_neutral,
+                            });
                         }
                         callback();
                     },
-                    err=>{callback(err)}
+                    err => {
+                        callback(err)
+                    }
                 );
         }, function (err) {
-            if (err)  reject(err);
+            if (err) reject(err);
             // configs is now a map of JSON data
             resolve(service_providers);
         });
@@ -250,7 +257,7 @@ let sorttopAdvertise = async (res) => {
                 sprBanner = banner;
             }
         }, err => {
-            res.json({"response": Errors, "value":4});
+            res.json({"response": Errors, "value": 4});
         });
 
     await findMemberShip(sprBanner)
@@ -259,40 +266,47 @@ let sorttopAdvertise = async (res) => {
                 service_providers = aa;
             }
         }, err => {
-            res.json({"response": Errors, "value":3});
+            res.json({"response": Errors, "value": 3});
         });
 
     sortOject(service_providers).then(
         svpro => {
             if (svpro) {
-                Async.forEachOf(svpro, function (sprovider, key, callback) {
-                    SPrBuyAdvertise.findOne({
-                        provider_id:sprovider._id
-                    },function(err, banner){
-                        console.log(banner);
-                        if (err)  callback(err);
-                        Banners.push(banner);
-                        callback();
-                    });
-                }, function (err) {
-                    if(err)  res.json({"response": Errors, "value":1});
-                    res.json({"response": Banners, "value":0});
-
-                });
-            }else{
-                res.json({"response": Errors, "value":1});
+                res.json({"response": svpro, "value": 0});
+            } else {
+                res.json({"response": Errors, "value": 1});
             }
         },
         err => {
-            res.json({"response": Errors, "value":2});
+            res.json({"response": Errors, "value": 2});
             //console.log(err);
         }
     );
 }
 
 //add a new to the db
-router.get("/get_advertise_top", function (req, res) {
-    sorttopAdvertise(res);
+router.get("/get_advertise_top",  async function (req, res) {
+    //sorttopAdvertise(res);
+        let num = await SPrBuyAdvertise.count({});
+        if (num > 3) {
+            let random = await Math.floor(Math.random() * num);
+            SPrBuyAdvertise.find({}, function (err, svpro) {
+                if (svpro) {
+                    res.json({"response": svpro, "value": 0});
+                } else {
+                    res.json({"response": Errors, "value": 1});
+                }
+            }).limit(3).skip(random);
+        } else{
+            SPrBuyAdvertise.find({}, function (err, svpro) {
+                if (svpro) {
+                    res.json({"response": svpro, "value": 0});
+                } else {
+                    res.json({"response": Errors, "value": 1});
+                }
+            });
+        }
+
 });
 
 module.exports = router;

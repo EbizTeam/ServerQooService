@@ -62,6 +62,7 @@ let RegisterProvider = (provider) =>{
             device_token: provider.device_token,
             device_token_old: "",
             isActived: false,
+            create_at: Date.now(),
             member_ship: 1,
             member_ship_time: 0,
             confirm_status: 0,
@@ -125,6 +126,52 @@ let SendMail = (email, firstname, lastname) =>{
     });
 }
 
+
+router.post("/update_service_provider", function (req, res) {
+    let myquery = {
+        _id: req.body._id
+    };
+
+    let newvalues = {
+        $set: {
+            firstname: req.body.first_name,
+            lastname: req.body.last_name,
+            mobile: req.body.mobile_number,
+            building_name: req.body.building_name,
+            postal_code: req.body.postal_code,
+            city: req.body.city,
+            country: req.body.country,
+            birth_date: req.body.birth_date,
+            sex: req.body.sex,
+            company_name: req.body.company_name,
+            retail_outlets: req.body.retail_outlets,
+            any_operation_overseas: req.body.any_operation_overseas,
+            businesstitle_position: req.body.businesstitle_position,
+            job_responsibilities: req.body.job_responsibilities,
+            office_number: req.body.office_number,
+            main_office_address1: req.body.main_office_address1,
+            main_office_address2: req.body.main_office_address2,
+            maps_latitude: req.body.maps_latitude,
+            maps_longitude: req.body.maps_longitude,
+            updated_at: Date.now(),
+        }
+    };
+    Providers.updateOne(myquery, newvalues, function (err, res) {
+        if (err) {
+            res.json({
+                response:err,
+                value:false
+            });
+        }else{
+            res.json({
+                response:res.result.ok,
+                value:true
+            });
+        }
+    });
+
+
+});
 
 router.post("/", function (req, res) {
 
