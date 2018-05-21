@@ -14,6 +14,7 @@ var CustomerData = new Mongoose.Schema({
     birth_date: String,
     sex: String,
     home_number: String,
+    linkavatar: String,
     address1: String,
     address2: String,
     device_token_old: String,

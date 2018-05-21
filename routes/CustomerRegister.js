@@ -9,6 +9,10 @@ const request_promise = require('request-promise');
 // file config use to config all port,
 const config = require('../config');
 const urlapi = config.urlapi;
+const urlPHP = config.APathPHP;
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 
 
 let FindProviderfollowemail = (email) =>{
@@ -81,7 +85,7 @@ let CreateWallet = (providerID) =>{
 }
 
 
-let SendMail = (email, firstname, lastname) =>{
+let SendMail = (email) =>{
     return new Promise((resolve, reject) => {
         //SEND MAIL HERE
         var options = {
@@ -89,9 +93,7 @@ let SendMail = (email, firstname, lastname) =>{
             uri: urlapi + '/qooservice/php/api_mail_register.php',
             form: {
                 // Like <input type="text" name="name">
-                PtxtMAil: email,
-                PtxtFName: firstname,
-                PtxtLName: lastname
+                PtxtMAil: email
             },
             headers: {
                 'content-type': 'application/x-www-form-urlencoded'
@@ -148,7 +150,7 @@ router.post("/", function (req, res) {
                                                     );
                                             }
                                         });
-                                        SendMail(user.email, user.firstname,user.lastname )
+                                        SendMail(user.email)
                                             .then(
                                                 result => {
                                                     if (result){
@@ -204,12 +206,114 @@ router.post("/", function (req, res) {
         });
 });
 
-router.post("/update_consumer", function (req, res) {
-       let myquery = {
+
+//upload file
+var Storage = multer.diskStorage({
+    destination: urlPHP + '/system/public/uploadfile/avatar',
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() +
+            path.extname(file.originalname));
+    }
+
+
+});
+
+var upload = multer({
+    storage: Storage,
+    fileFilter: function (req, file, callback) {
+        var ext = path.extname(file.originalname).toLowerCase();
+        if (ext !== '.png'
+            && ext !== '.jpg'
+            && ext !== '.jpeg'
+        ) {
+            return callback(new Error('Only images are allowed'))
+        }
+        callback(null, true)
+    },
+    limits: {
+        fileSize: 6000000
+    }
+}).single('avatar'); //Field name and max count
+
+
+
+router.post("/update_consumer/avata", function (req, res) {
+    upload(req, res, function (err) {
+        if (err) {
+            res.json({
+                "response": Error,
+                "value": false
+            });
+        } else {
+            try {
+                fs.unlinkSync(urlPHP + '/system/public/uploadfile/avatar/'+req.body.linkavatar);
+            } catch (err) {
+                console.log(err);
+            }
+            if (req.file.filename) {
+                let myquery =  {
+                    _id: req.body._id
+                };
+
+                let newvalues = {
+                    $set: {
+                        linkavatar:req.file.filename,
+                        updated_at: Date.now(),
+                    }
+                };
+                Customer.updateOne(myquery, newvalues, function (err, cus) {
+                    if (err) {
+                        res.json({
+                            response:err,
+                            value:false
+                        });
+                    }else{
+                        res.json({
+                            response:req.file.filename,
+                            value:true
+                        });
+                    }
+                });
+            }else{
+                res.json({
+                    response:req.file,
+                    value:false
+                });
+            }
+        }
+    });
+});
+
+router.put("/update_consumer/:cusId",function(req, res) {
+    Customer.findOneAndUpdate({_id:req.params.cusId}, req.body, {new: true}, function(err, Custom) {
+        if (err) {
+            res.json({
+                response:err,
+                value:false
+            });
+        }else{
+            if (Custom) {
+                Custom.password = undefined;
+                res.json({
+                    response:Custom,
+                    value:true
+                });
+            }else{
+                res.json({
+                    response:"id not find",
+                    value:false
+                });
+            }
+        }
+        });
+});
+
+router.post("/update_consumer/info",async function (req, res) {
+    let  myquery = await {
         _id: req.body._id
     };
 
-    let newvalues = {
+    let newvalues = await {
         $set: {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
@@ -224,11 +328,10 @@ router.post("/update_consumer", function (req, res) {
             address1: req.body.address1,
             address2: req.body.address2,
             occupation: req.body.occupation,
-            confirm_status: req.body.confirm_status,
             updated_at: Date.now(),
         }
     };
-    Customer.updateOne(myquery, newvalues, function (err, res) {
+    Customer.updateOne(myquery, newvalues, function (err, cus) {
         if (err) {
             res.json({
                 response:err,
@@ -236,12 +339,11 @@ router.post("/update_consumer", function (req, res) {
             });
         }else{
             res.json({
-                response:res.result.ok,
+                response:cus.result.ok,
                 value:true
             });
         }
     });
-
 
 });
 

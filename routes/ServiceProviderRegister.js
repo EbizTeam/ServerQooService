@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Providers = require('../models/serviceproviderdata');
-const Customer  = require('../models/customerdata');
+const Customer = require('../models/customerdata');
 //~ var passwordHash = require('password-hash');
 const passwordHash = require("node-php-password");
 const Wallet = require('../models/wallet');
@@ -9,11 +9,13 @@ const request_promise = require('request-promise');
 // file config use to config all port,
 const config = require('../config');
 const urlapi = config.urlapi;
+const urlPHP = config.APathPHP;
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 
 
-
-
-let FindProviderfollowemail = (email) =>{
+let FindProviderfollowemail = (email) => {
     return new Promise((resolve, reject) => {
         Providers.findOne({
             'email': email
@@ -24,7 +26,7 @@ let FindProviderfollowemail = (email) =>{
     });
 }
 
-let FindCustomerfollowemail = (email) =>{
+let FindCustomerfollowemail = (email) => {
     return new Promise((resolve, reject) => {
         Customer.findOne({
             'email': email
@@ -35,7 +37,7 @@ let FindCustomerfollowemail = (email) =>{
     });
 }
 
-let RegisterProvider = (provider) =>{
+let RegisterProvider = (provider) => {
     return new Promise((resolve, reject) => {
         let hashedPassword = passwordHash.hash(provider.password);
         Providers.create({
@@ -79,11 +81,11 @@ let RegisterProvider = (provider) =>{
 }
 
 
-let CreateWallet = (providerID) =>{
+let CreateWallet = (providerID) => {
     return new Promise((resolve, reject) => {
-          Wallet.create({
-              user_id: providerID,
-              balance: 0
+        Wallet.create({
+            user_id: providerID,
+            balance: 0
         }, function (err, wl) {
             if (err) return reject(new Error('CreateWallet: ' + providerID));
             resolve(wl);
@@ -92,7 +94,7 @@ let CreateWallet = (providerID) =>{
 }
 
 
-let SendMail = (email, firstname, lastname) =>{
+let SendMail = (email, firstname, lastname) => {
     return new Promise((resolve, reject) => {
         //SEND MAIL HERE
         var options = {
@@ -127,45 +129,73 @@ let SendMail = (email, firstname, lastname) =>{
 }
 
 
-router.post("/update_service_provider", function (req, res) {
-    let myquery = {
-        _id: req.body._id
-    };
+//upload file
+var Storage = multer.diskStorage({
+    destination: urlPHP + '/system/public/uploadfile/avatar',
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() +
+            path.extname(file.originalname));
+    }
 
-    let newvalues = {
-        $set: {
-            firstname: req.body.first_name,
-            lastname: req.body.last_name,
-            mobile: req.body.mobile_number,
-            building_name: req.body.building_name,
-            postal_code: req.body.postal_code,
-            city: req.body.city,
-            country: req.body.country,
-            birth_date: req.body.birth_date,
-            sex: req.body.sex,
-            company_name: req.body.company_name,
-            retail_outlets: req.body.retail_outlets,
-            any_operation_overseas: req.body.any_operation_overseas,
-            businesstitle_position: req.body.businesstitle_position,
-            job_responsibilities: req.body.job_responsibilities,
-            office_number: req.body.office_number,
-            main_office_address1: req.body.main_office_address1,
-            main_office_address2: req.body.main_office_address2,
-            maps_latitude: req.body.maps_latitude,
-            maps_longitude: req.body.maps_longitude,
-            updated_at: Date.now(),
+
+});
+
+var upload = multer({
+    storage: Storage,
+    fileFilter: function (req, file, callback) {
+        var ext = path.extname(file.originalname).toLowerCase();
+        if (ext !== '.png'
+            && ext !== '.jpg'
+            && ext !== '.jpeg'
+        ) {
+            return callback(new Error('Only images are allowed'))
         }
-    };
-    Providers.updateOne(myquery, newvalues, function (err, res) {
+        callback(null, true)
+    },
+    limits: {
+        fileSize: 6000000
+    }
+}).single('avatar'); //Field name and max count
+
+
+router.post("/update_service_provider/avatar", function (req, res) {
+
+    upload(req, res, function (err) {
         if (err) {
             res.json({
-                response:err,
-                value:false
+                "response": Error,
+                "value": false
             });
-        }else{
-            res.json({
-                response:res.result.ok,
-                value:true
+        } else {
+
+            try {
+                fs.unlinkSync(urlPHP + '/system/public/uploadfile/avatar/' + req.body.logo_provider);
+            } catch (err) {
+                console.log(err);
+            }
+
+            let myquery = {
+                _id: req.body._id
+            };
+
+            let newvalues = {
+                $set: {
+                    logo_provider: req.file.filename,
+                    updated_at: Date.now(),
+                }
+            };
+            Providers.updateOne(myquery, newvalues, function (err, pro) {
+                if (err) {
+                    res.json({
+                        response: err,
+                        value: false
+                    });
+                } else {
+                    res.json({
+                        response: req.file.filename,
+                        value: true
+                    });
+                }
             });
         }
     });
@@ -173,48 +203,122 @@ router.post("/update_service_provider", function (req, res) {
 
 });
 
+router.put("/update_service_provider/:proId",function(req, res) {
+    Providers.findOneAndUpdate({_id:req.params.proId}, req.body, {new: true}, function(err, pro) {
+        if (err) {
+            res.json({
+                response:err,
+                value:false
+            });
+        }else{
+            if (pro) {
+                pro.password = undefined;
+                res.json({
+                    response:pro,
+                    value:true
+                });
+            }else{
+                res.json({
+                    response:"id not find",
+                    value:false
+                });
+            }
+
+        }
+    });
+});
+
+router.post("/update_service_provider/info",async function (req, res) {
+
+            let myquery =await {
+                _id: req.body._id
+            };
+
+            let newvalues =await {
+                $set: {
+                    firstname: req.body.firstname,
+                    lastname: req.body.lastname,
+                    mobile: req.body.mobile,
+                    building_name: req.body.building_name,
+                    postal_code: req.body.postal_code,
+                    city: req.body.city,
+                    country: req.body.country,
+                    birth_date: req.body.birth_date,
+                    sex: req.body.sex,
+                    company_name: req.body.company_name,
+                    retail_outlets: req.body.retail_outlets,
+                    any_operation_overseas: req.body.any_operation_overseas,
+                    businesstitle_position: req.body.businesstitle_position,
+                    job_responsibilities: req.body.job_responsibilities,
+                    office_number: req.body.office_number,
+                    main_office_address1: req.body.main_office_address1,
+                    main_office_address2: req.body.main_office_address2,
+                    maps_latitude: req.body.maps_latitude,
+                    maps_longitude: req.body.maps_longitude,
+                    updated_at: Date.now(),
+                }
+            };
+            Providers.updateOne(myquery, newvalues, function (err, pro) {
+                if (err) {
+                    res.json({
+                        response: err,
+                        value: false
+                    });
+                } else {
+                    res.json({
+                        response: pro.result.ok,
+                        value: true
+                    });
+                }
+            });
+
+});
+
 router.post("/", function (req, res) {
 
     FindProviderfollowemail(req.body.email)
         .then(provider => {
-            if (provider){
+            if (provider) {
                 res.json({
                     "response": false,
-                    "value":"email Registered provider"
+                    "value": "email Registered provider"
                 });
-            }else{
+            } else {
                 FindCustomerfollowemail(req.body.email)
                     .then(customer => {
-                        if (customer){
+                        if (customer) {
                             res.json({
                                 "response": false,
-                                "value":"email Registered customer"
+                                "value": "email Registered customer"
                             });
-                        }else{
+                        } else {
                             RegisterProvider(req.body)
                                 .then(user => {
-                                    if (user){
+                                    if (user) {
                                         Wallet.findOne({
-                                            "user_id":user._id
-                                        },function (err, wlet) {
-                                            if(wlet === null){
+                                            "user_id": user._id
+                                        }, function (err, wlet) {
+                                            if (wlet === null) {
                                                 CreateWallet(user._id)
                                                     .then(
-                                                        wl => {},
-                                                        err => {console.log(err)}
+                                                        wl => {
+                                                        },
+                                                        err => {
+                                                            console.log(err)
+                                                        }
                                                     );
                                             }
                                         });
-                                        SendMail(user.email, user.firstname,user.lastname )
+                                        SendMail(user.email, user.firstname, user.lastname)
                                             .then(
                                                 result => {
-                                                    if (result){
+                                                    if (result) {
                                                         res.json({
                                                             "response": true,
                                                             "_id": user._id,
                                                             "sendmail": result
                                                         });
-                                                    }else{
+                                                    } else {
                                                         res.json({
                                                             "response": false,
                                                             "_id": user._id,
@@ -222,25 +326,25 @@ router.post("/", function (req, res) {
                                                         });
                                                     }
                                                 }
-                                                ,err=>{
+                                                , err => {
                                                     console.log(err);
                                                     res.json({
                                                         "response": false,
-                                                        "value":err
+                                                        "value": err
                                                     });
                                                 }
                                             );
-                                    }else{
+                                    } else {
                                         res.json({
                                             "response": false,
-                                            "value":"Register fail"
+                                            "value": "Register fail"
                                         });
                                     }
                                 }, err => {
                                     console.log(err);
                                     res.json({
                                         "response": false,
-                                        "value":err
+                                        "value": err
                                     });
                                 })
                         }
@@ -248,7 +352,7 @@ router.post("/", function (req, res) {
                         console.log(err);
                         res.json({
                             "response": false,
-                            "value":err
+                            "value": err
                         });
                     })
             }
@@ -256,7 +360,7 @@ router.post("/", function (req, res) {
             console.log(err);
             res.json({
                 "response": false,
-                "value":err
+                "value": err
             });
         });
 });

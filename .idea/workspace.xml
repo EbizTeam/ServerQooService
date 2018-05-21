@@ -2,31 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fc04216-1b8d-4742-a932-5e8744631058" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/models/ServiceProviderBuyAdvertiseData.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/ServiceProviderBuyBannerData.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/serviceproviderbuyadvertise.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/serviceproviderbuybanner.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524726968542.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524727445811.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524727860708.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524729285757.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524729403628.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524729672936.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524729864813.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524729945305.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524730300102.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1524730379113.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525761778887.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525761921450.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525762259467.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525764308842.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525764382424.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525764389498.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525764420768.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525764444182.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525764792692.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525764902145.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525764955898.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525765004269.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525765013662.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525765027682.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525765626885.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525765689775.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525765965639.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525840754594.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525840778974.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525840880019.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525841113337.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525841253219.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525844626856.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525844640520.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525844662418.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525845849249.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525846429434.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525846473022.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525846500321.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525846543614.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525846762716.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525846823963.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525847740853.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1525857212847.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1526004937887.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1526004962798.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1526006999692.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asset/chat/imgUploader-1526007041842.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BuyToChat.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/servicesbuytop.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/servicesbuytop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/deletebuytopservice.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/deletebuytopservice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/getorderlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/getorderlist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/gettopservice.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/gettopservice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/historypaymentr.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/historypaymentr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/searchservice.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/searchservice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/socketsendnotify.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/socketsendnotify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/search.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/search.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index_bk.js" beforeDir="false" afterPath="$PROJECT_DIR$/index_bk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/customerdata.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/customerdata.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/serviceproviderdata.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/serviceproviderdata.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/CustomerRegister.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/CustomerRegister.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/ServiceProviderRegister.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/ServiceProviderRegister.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -40,65 +62,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-252">
-              <caret line="169" column="78" lean-forward="true" selection-start-line="169" selection-start-column="78" selection-end-line="169" selection-end-column="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="searchservice.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/searchservice.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deletebuytopservice.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/deletebuytopservice.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-198">
-              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="serviceproviderbuyadvertise.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/routes/serviceproviderbuyadvertise.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="114" column="9" lean-forward="true" selection-start-line="114" selection-start-column="9" selection-end-line="114" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/services.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="15" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="serviceproviderbuybanner.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/serviceproviderbuybanner.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="113" column="78" selection-start-line="113" selection-start-column="78" selection-end-line="113" selection-end-column="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="serviceproviderdata.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/serviceproviderdata.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="15" column="8" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="16" />
+            <state relative-caret-position="520">
+              <caret line="4122" column="51" selection-start-line="4122" selection-start-column="51" selection-end-line="4122" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -114,15 +82,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.updateOn</find>
-      <find>.updateOne</find>
-      <find>.create</find>
-      <find>category</find>
-      <find>for</find>
-      <find>for (</find>
-      <find>regi</find>
-      <find>regis</find>
-      <find>get_o</find>
       <find>get_order_list</find>
       <find>.update</find>
       <find>buy</find>
@@ -144,6 +103,15 @@
       <find>ServiceProvider</find>
       <find>search</find>
       <find>servicesdara</find>
+      <find>obj</find>
+      <find>update</find>
+      <find>SerM</find>
+      <find>provider</find>
+      <find>historypayment</find>
+      <find>nodemailer</find>
+      <find>CustomerRegister</find>
+      <find>getpro</find>
+      <find>urlPHP</find>
     </findStrings>
     <replaceStrings>
       <replace>const</replace>
@@ -156,6 +124,7 @@
       <replace>SPrBuyAdvertise</replace>
       <replace>sorttopAdvertise</replace>
       <replace>advertise</replace>
+      <replace>req.body</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -164,8 +133,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/routes/appointment.js" />
-        <option value="$PROJECT_DIR$/routes/insertcommentservice.js" />
         <option value="$PROJECT_DIR$/routes/service.js" />
         <option value="$PROJECT_DIR$/routes/servicegetinfo.js" />
         <option value="$PROJECT_DIR$/routes/getservicebyproviderid.js" />
@@ -173,7 +140,6 @@
         <option value="$PROJECT_DIR$/routes/socket.js" />
         <option value="$PROJECT_DIR$/routes/updatebalance.js" />
         <option value="$PROJECT_DIR$/models/finduserfolloweid.js" />
-        <option value="$PROJECT_DIR$/models/services.js" />
         <option value="$PROJECT_DIR$/models/service_provider_comment.js" />
         <option value="$PROJECT_DIR$/routes/socketsearch.js" />
         <option value="$PROJECT_DIR$/models/auction.js" />
@@ -182,22 +148,16 @@
         <option value="$PROJECT_DIR$/models/wallet.js" />
         <option value="$PROJECT_DIR$/routes/roteswallet.js" />
         <option value="$PROJECT_DIR$/models/accountbuychat.js" />
-        <option value="$PROJECT_DIR$/models/customerdata.js" />
         <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/index.js" />
-        <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/models/CheckHaveChat.js" />
         <option value="$PROJECT_DIR$/models/BuyToChat.js" />
         <option value="$PROJECT_DIR$/models/uploadfile.js" />
         <option value="$PROJECT_DIR$/models/providersendaution.js" />
-        <option value="$PROJECT_DIR$/models/serviceproviderdata.js" />
         <option value="$PROJECT_DIR$/models/spscategory.js" />
         <option value="$PROJECT_DIR$/routes/UpdateCategoryProvider.js" />
-        <option value="$PROJECT_DIR$/routes/ServiceProviderRegister.js" />
-        <option value="$PROJECT_DIR$/routes/CustomerRegister.js" />
         <option value="$PROJECT_DIR$/models/ConsumerSendAuction.js" />
         <option value="$PROJECT_DIR$/models/notifyauction.js" />
         <option value="$PROJECT_DIR$/routes/insertauctionfile.js" />
-        <option value="$PROJECT_DIR$/routes/sendauction.js" />
         <option value="$PROJECT_DIR$/models/historypayment.js" />
         <option value="$PROJECT_DIR$/routes/getrequirimentbyaccountid.js" />
         <option value="$PROJECT_DIR$/models/autions.js" />
@@ -211,10 +171,19 @@
         <option value="$PROJECT_DIR$/models/ServiceProviderBuyAdvertiseData.js" />
         <option value="$PROJECT_DIR$/routes/historypaymentr.js" />
         <option value="$PROJECT_DIR$/routes/searchservice.js" />
-        <option value="$PROJECT_DIR$/index.js" />
-        <option value="$PROJECT_DIR$/routes/serviceproviderbuyadvertise.js" />
-        <option value="$PROJECT_DIR$/routes/serviceproviderbuybanner.js" />
         <option value="$PROJECT_DIR$/routes/deletebuytopservice.js" />
+        <option value="$PROJECT_DIR$/routes/sendauction.js" />
+        <option value="$PROJECT_DIR$/models/servicesdata.js" />
+        <option value="$PROJECT_DIR$/models/services.js" />
+        <option value="$PROJECT_DIR$/routes/serviceproviderbuybanner.js" />
+        <option value="$PROJECT_DIR$/routes/serviceproviderbuyadvertise.js" />
+        <option value="$PROJECT_DIR$/models/customerdata.js" />
+        <option value="$PROJECT_DIR$/models/serviceproviderdata.js" />
+        <option value="$PROJECT_DIR$/config.js" />
+        <option value="$PROJECT_DIR$/routes/ServiceProviderRegister.js" />
+        <option value="$PROJECT_DIR$/index_bk.js" />
+        <option value="$PROJECT_DIR$/routes/CustomerRegister.js" />
+        <option value="$PROJECT_DIR$/index.js" />
       </list>
     </option>
   </component>
@@ -237,11 +206,11 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-16" />
-    <option name="y" value="82" />
-    <option name="width" value="1400" />
-    <option name="height" value="688" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="259" />
+    <option name="y" value="41" />
+    <option name="width" value="1456" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -259,21 +228,6 @@
               <item name="ServerQooService" type="b2602c69:ProjectViewProjectNode" />
               <item name="ServerQooService" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="ServerQooService" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ServerQooService" type="462c0819:PsiDirectoryNode" />
-              <item name="asset" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ServerQooService" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ServerQooService" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ServerQooService" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ServerQooService" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -282,7 +236,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../session.socket.io" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.prettier" value="true" />
     <property name="node.js.path.for.package.prettier" value="project" />
     <property name="node.js.selected.package.prettier" value="" />
@@ -342,25 +296,39 @@
       <workItem from="1525921936078" duration="1054000" />
       <workItem from="1525924589565" duration="21126000" />
       <workItem from="1526002603430" duration="20387000" />
+      <workItem from="1526036575141" duration="307000" />
+      <workItem from="1526262653956" duration="23408000" />
+      <workItem from="1526349143912" duration="7000000" />
+      <workItem from="1526366303862" duration="978000" />
+      <workItem from="1526370931374" duration="794000" />
+      <workItem from="1526373575213" duration="371000" />
+      <workItem from="1526374152893" duration="975000" />
+      <workItem from="1526375160803" duration="1123000" />
+      <workItem from="1526376787450" duration="1866000" />
+      <workItem from="1526460054443" duration="31000" />
+      <workItem from="1526461608456" duration="318000" />
+      <workItem from="1526525685488" duration="1558000" />
+      <workItem from="1526617171984" duration="2271000" />
+      <workItem from="1526875060036" duration="302000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="278938000" />
+    <option name="totallyTimeSpent" value="320240000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <frame x="259" y="41" width="1456" height="876" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.20028208" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.15796897" />
       <window_info anchor="bottom" id="TODO" order="10" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.3286517" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.32871014" />
       <window_info id="npm" order="0" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.32871014" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.2949438" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.29403606" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -375,21 +343,21 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info id="npm" order="0" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.32871014" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" />
       <window_info id="Favorites" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.32871014" />
-      <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.33148405" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="3" weight="0.3286517" />
       <window_info anchor="bottom" id="Message" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.28490832" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="1" weight="0.29403606" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.15796897" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -421,20 +389,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/createaution.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="15" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index_bk.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1530">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/uploadfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -505,13 +459,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/CustomerRegister.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="141" column="62" lean-forward="true" selection-start-line="141" selection-start-column="62" selection-end-line="141" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/providersendaution.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -533,21 +480,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/customerdata.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/ConsumerSendAuction.js" />
-    <entry file="file://$PROJECT_DIR$/routes/ServiceProviderRegister.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2754">
-          <caret line="162" column="59" lean-forward="true" selection-start-line="162" selection-start-column="59" selection-end-line="162" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/UpdateCategoryProvider.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -582,31 +515,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/sendauction.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="190" column="47" selection-start-line="190" selection-start-column="47" selection-end-line="190" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/autions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="28" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/servicesbuytop.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/getorderlist.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="443" lean-forward="true" selection-end-line="443" />
         </state>
       </provider>
     </entry>
@@ -631,13 +543,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/insertauctionfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="90" column="85" selection-start-line="90" selection-start-column="74" selection-end-line="90" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/finduserfolloweid.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -649,20 +554,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/socketsendnotify.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -680,87 +571,164 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/historypaymentr.js">
+    <entry file="file://$PROJECT_DIR$/routes/searchservice.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="37" lean-forward="true" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+        <state relative-caret-position="18">
+          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/search.ejs">
+    <entry file="file://$PROJECT_DIR$/routes/insertauctionfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="46" column="43" lean-forward="true" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
+        <state relative-caret-position="270">
+          <caret line="90" column="85" selection-start-line="90" selection-start-column="74" selection-end-line="90" selection-end-column="85" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/servicesdata.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="15" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="15" />
+        <state relative-caret-position="306">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="15" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="15" />
+        <state relative-caret-position="180">
+          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/socketsendnotify.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/ServiceProviderBuyBannerData.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="15" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="15" />
+        <state relative-caret-position="126">
+          <caret line="7" column="23" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="7" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/ServiceProviderBuyAdvertiseData.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="90">
+          <caret line="5" column="10" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/serviceproviderdata.js">
+    <entry file="file://$PROJECT_DIR$/views/search.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="16" />
+        <state relative-caret-position="117">
+          <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/serviceproviderbuybanner.js">
+    <entry file="file://$PROJECT_DIR$/models/autions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="113" column="78" selection-start-line="113" selection-start-column="78" selection-end-line="113" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
-          <caret line="169" column="78" lean-forward="true" selection-start-line="169" selection-start-column="78" selection-end-line="169" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/searchservice.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/deletebuytopservice.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-198">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        <state relative-caret-position="126">
+          <caret line="7" column="15" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/serviceproviderbuyadvertise.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="114" column="9" lean-forward="true" selection-start-line="114" selection-start-column="9" selection-end-line="114" selection-end-column="9" />
+        <state relative-caret-position="3100">
+          <caret line="291" column="62" lean-forward="true" selection-start-line="291" selection-start-column="62" selection-end-line="291" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/customerdata.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="14" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/deletebuytopservice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/sendauction.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2002">
+          <caret line="190" column="59" selection-start-line="190" selection-start-column="59" selection-end-line="190" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/ServiceProviderRegister.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="224" column="13" selection-start-line="213" selection-start-column="12" selection-end-line="224" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index_bk22032018.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="853" column="30" selection-start-line="853" selection-start-column="19" selection-end-line="854" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/historypaymentr.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="56" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/getorderlist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="389" column="39" selection-start-line="389" selection-start-column="7" selection-end-line="389" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index_bk.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="205" column="12" selection-start-line="205" selection-start-column="12" selection-end-line="205" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/serviceproviderbuybanner.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="43" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/CustomerRegister.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3587">
+          <caret line="211" column="59" selection-start-line="211" selection-start-column="27" selection-end-line="211" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/serviceproviderdata.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="46" column="17" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="4122" column="51" selection-start-line="4122" selection-start-column="51" selection-end-line="4122" selection-end-column="51" />
         </state>
       </provider>
     </entry>
