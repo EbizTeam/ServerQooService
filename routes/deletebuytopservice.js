@@ -5,19 +5,17 @@ const Banner = require('../models/ServiceProviderBuyBannerData');
 const Advertise = require('../models/ServiceProviderBuyAdvertiseData');
 var cron = require('node-cron');
 const fs = require('fs');
-module.exports =  {
-    deletetopservice: function ()
-    {
-        cron.schedule('*/30 * * * *', function(){
+module.exports = {
+    deletetopservice: function () {
+        cron.schedule('*/30 * * * *', function () {
             console.log('running a task every thrity minutes');
             deleteBuyTop();
             deleteBannerTop();
             deleteAdvertiseTop();
         });
     },
-    deleteFileChat: function ()
-    {
-        cron.schedule('0 */12 * * *', function(){
+    deleteFileChat: function () {
+        cron.schedule('0 */12 * * *', function () {
             console.log('running a task every 12 hour');
             deletefilechat();
             deleteCommentprovider();
@@ -30,20 +28,21 @@ let deleteBannerTop = () => {
     Banner.find({}, function (err, service) {
         if (err) return;
         if (service) {
-            service.forEach(function(element) {
-               if (element.create_end <= Date.now() ) {
-                   Delservice(element._id)
-                       .then(
-                           res =>{console.log(res)}
-                           ,err =>{console.log(err)}
-                       );
-                   try {
-                       fs.unlinkSync("./asset"+element.link_banner);
-                   } catch (err) {
-                       console.log(err);
-                   }
-
-               }
+            let i = service.length;
+            service.forEach(function (element) {
+                if (element.create_end <= Date.now()) {
+                    i--;
+                    if (i > 3) {
+                        Banner.deleteOne({_id: element._id}, function (err, res) {
+                            if (err) console.log(err);
+                        });
+                        try {
+                            fs.unlinkSync("./asset" + element.link_banner);
+                        } catch (err) {
+                            console.log(err);
+                        }
+                    }
+                }
             });
         }
     });
@@ -53,39 +52,49 @@ let deleteAdvertiseTop = () => {
     Advertise.find({}, function (err, service) {
         if (err) return;
         if (service) {
-            service.forEach(function(element) {
-               if (element.create_end <= Date.now() ) {
-                   Delservice(element._id)
-                       .then(
-                           res =>{console.log(res)}
-                           ,err =>{console.log(err)}
-                       );
-                   try {
-                       fs.unlinkSync("./asset"+element.link_banner);
-                   } catch (err) {
-                       console.log(err);
-                   }
-               }
+            let i = service.length;
+            service.forEach(function (element) {
+                if (element.create_end <= Date.now()) {
+                    i--;
+                    if (i > 10) {
+                        Advertise.deleteOne({_id: element._id}, function (err, res) {
+                            if (err) console.log(err);
+                        });
+                        try {
+                            fs.unlinkSync("./asset" + element.link_banner);
+                        } catch (err) {
+                            console.log(err);
+                        }
+                    }
+                }
             });
         }
     });
 }
 
 
-
 let deleteBuyTop = () => {
     ServicesTop.find({}, function (err, service) {
         if (err) return;
         if (service) {
-            service.forEach(function(element) {
-               if (element.create_end <= Date.now() ) {
-                   Delservice(element._id)
-                       .then(
-                           res =>{console.log(res)}
-                           ,err =>{console.log(err)}
-                       );
-               }
+            let i = service.length;
+            service.forEach(function (element) {
+                if (element.create_end <= Date.now()) {
+                    i--;
+                    if (i > 10) {
+                        Delservice(element._id)
+                            .then(
+                                res => {
+                                    console.log(res)
+                                }
+                                , err => {
+                                    console.log(err)
+                                }
+                            );
+                    }
+                }
             });
+
         }
     });
 }
@@ -94,37 +103,41 @@ let deleteCommentprovider = () => {
     Comment.find({}, function (err, comment) {
         if (err) return;
         if (comment) {
-            comment.forEach(function(element) {
+            comment.forEach(function (element) {
                 var dat = new Date();
-                Date.prototype.addDays = function(days) {
+                Date.prototype.addDays = function (days) {
                     var dat = new Date(this.valueOf());
                     dat.setDate(dat.getDate() + days);
                     return dat;
                 }
-               if ((element.create_at <= dat.addDays(-2).getTime())&&(element.active == false)) {
-                   Delscomment(element._id)
-                       .then(
-                           res =>{console.log(res)}
-                           ,err =>{console.log(err)}
-                       );
-               }
+                if ((element.create_at <= dat.addDays(-2).getTime()) && (element.active == false)) {
+                    Delscomment(element._id)
+                        .then(
+                            res => {
+                                console.log(res)
+                            }
+                            , err => {
+                                console.log(err)
+                            }
+                        );
+                }
             });
         }
     });
 }
 
 let deletefilechat = () => {
-    const testFolder ='./asset/chat/';
+    const testFolder = './asset/chat/';
     var dat = new Date();
-    Date.prototype.addDays = function(days) {
+    Date.prototype.addDays = function (days) {
         var dat = new Date(this.valueOf());
         dat.setDate(dat.getDate() + days);
         return dat;
     }
 
     fs.readdirSync(testFolder).forEach(file => {
-        if(dat.addDays(-3).getTime() >=  parseInt(file.substring(12, 25))) {
-            fs.unlinkSync(testFolder+file);
+        if (dat.addDays(-3).getTime() >= parseInt(file.substring(12, 25))) {
+            fs.unlinkSync(testFolder + file);
         }
     })
 }
@@ -169,9 +182,9 @@ let deleteDocumentRequiment = () => {
     ProviderSendRequiment.find({}, function (err, Requiment) {
         if (err) return;
         if (Requiment) {
-            Requiment.forEach(function(element) {
+            Requiment.forEach(function (element) {
                 var dat = new Date();
-                Date.prototype.addDays = function(days) {
+                Date.prototype.addDays = function (days) {
                     var dat = new Date(this.valueOf());
                     dat.setDate(dat.getDate() + days);
                     return dat;
@@ -179,8 +192,12 @@ let deleteDocumentRequiment = () => {
                 if ((element.create_at <= dat.addDays(-7).getTime())) {
                     DelRequiment(element._id)
                         .then(
-                            res =>{console.log(res)}
-                            ,err =>{console.log(err)}
+                            res => {
+                                console.log(res)
+                            }
+                            , err => {
+                                console.log(err)
+                            }
                         );
                 }
             });

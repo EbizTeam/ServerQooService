@@ -1,11 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Autions = require('../models/autions');
-const Checktoken = require('../models/checktoken');
-const FindPSAuction = require('../models/findprovidersendautionfollowid');
 const Providersendaution = require('../models/providersendaution');
-const Createaution = require('../models/createaution');
-const Findauctionfollowid = require('../models/findauctionfollowid');
 const Historypayment = require('../models/historypayment');
 const Provider = require('../models/serviceproviderdata');
 const Wallet = require('../models/wallet');
@@ -86,18 +82,26 @@ let UpdateAuction = (auction_id, num_order_list) => {
     });
 }
 
-let CreateRequiment = (obj, res, balance) => {
-    //Add New
-    new_provider_auction = new Providersendaution({
-        provider_id: obj.provider_id,
-        auction_id: obj.auction_id,
-        status: "Sent Auction",
-        from_price: obj.from_price,
-        to_price: obj.to_price,
-        create_at: Date.now()
+let CreateNewAution = (obj) =>{
+    return new Promise((resolve, reject) => {
+        Providersendaution.create(
+            {
+                provider_id: obj.provider_id,
+                auction_id: obj.auction_id,
+                status: "Sent Auction",
+                from_price: obj.from_price,
+                to_price: obj.to_price,
+                create_at: Date.now()
+            }
+            ,function (err, auction) {
+            if (err) return reject(err);
+            resolve(auction);
+        });
     });
+}
 
-    Createaution(new_provider_auction)
+let CreateRequiment = (obj, res, balance) => {
+    CreateNewAution(obj)
         .then(
             new_provider_auction => {
                 if (new_provider_auction) {

@@ -351,6 +351,7 @@ let FindUserAuction  = (auction_id) => {
                             if(consumer){
                                 resolve({
                                     link_file: auction.link_file,
+                                    auction: auction,
                                     sub_category_id: auction.sub_category_id,
                                     "consumer_info":consumer,
                                     "category_id": auction.category_id,
@@ -358,6 +359,7 @@ let FindUserAuction  = (auction_id) => {
                             }else{
                                 resolve({
                                     link_file: auction.link_file,
+                                    auction: auction,
                                     sub_category_id: auction.sub_category_id,
                                     "consumer_info":{},
                                     "category_id": auction.category_id,
@@ -397,6 +399,7 @@ router.get("/get_provider_send_auction/:provider_id", function (req, res) {
         } else if (providerauction) {
             let proOder =[];
             Async.forEachOf(providerauction, function (item, key, callback) {
+                //console.log(item);
                 FindUserAuction(item.auction_id)
                 .then(
                     Cateauction => {
@@ -404,6 +407,7 @@ router.get("/get_provider_send_auction/:provider_id", function (req, res) {
                             link_file: Cateauction.link_file,
                             sub_category_id: Cateauction.sub_category_id,
                             "consumer_info": Cateauction.consumer_info,
+                            "auction": Cateauction.auction,
                             "category_id": Cateauction.category_id,
                            "_id":item._id,
                             "provider_id": item.provider_id,
@@ -411,7 +415,7 @@ router.get("/get_provider_send_auction/:provider_id", function (req, res) {
                             "status": item.status,
                             "from_price": item.from_price,
                             "to_price": item.to_price,
-                            "create_at": item.create_at,
+                            "create_at": item.create_at
                         });
                         callback();
                     }

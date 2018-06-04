@@ -46,7 +46,13 @@ var ServiceProviderData = new Mongoose.Schema({
     info_provider : String,
     logo_provider : String,
     linkweb : String,
-    logo_provider : String,
+    maps_latitude : String,
+    maps_longitude : String,
+    link_youtube : String,
+    isProvider:{
+        type:Boolean,
+        default: true
+    },
 });
 
 module.exports = Mongoose.model("service_provider", ServiceProviderData);

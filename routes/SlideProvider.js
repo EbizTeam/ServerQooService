@@ -135,6 +135,40 @@ router.put("/images/:id", function (req, res) {
 
 });
 
+router.post("/images", function (req, res) {
+    upload(req, res, function (err) {
+        if (err) {
+            res.json({
+                "response": Error,
+                "value": 1
+            });
+        } else {
+            SlProvider.findById(req.body.id, function (err, slide) {
+                if (err) throw err;
+                if (slide) {
+                    try {
+                        fs.unlinkSync(urlPHP + '/system/public/uploadfile/slide/' + slide.images);
+                    } catch (err) {
+                        console.log(err);
+                    }
+                }
+            })
+            SlProvider.findOneAndUpdate({_id: req.body.id}, {images:req.file.filename, updated_at:new Date()}, {new: true}, function (err, slide) {
+                if (err)
+                    return res.status(400).send({
+                        response: 'Update fail',
+                        value: false
+                    });
+                res.json({
+                    value: true,
+                    response: slide
+                });
+            });
+        }
+    });
+
+});
+
 router.put("/delete/:id", function (req, res) {
     SlProvider.findById(req.params.id, function (err, slide) {
         if (err) {

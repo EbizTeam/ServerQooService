@@ -12,4 +12,4 @@ var ProviderSentAuction = new Schema({
     create_at: Number,
 });
 
-module.exports = mongoose.model('providersentauction',ProviderSentAuction);
+module.exports = mongoose.model('providersentauctions',ProviderSentAuction);
