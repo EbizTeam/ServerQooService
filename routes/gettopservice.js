@@ -9,6 +9,7 @@ const sortBy = require('array-sort');
 const Historypayment = require('../models/historypayment');
 const Comment = require('../models/comments');
 const ServiceProvider = require('../models/serviceproviderdata');
+const manage_service_price = require('../models/manage_service_price');
 
 let FindServiceTop = (service) => {
     return new Promise((resolve, reject) => {
@@ -93,14 +94,14 @@ let sorttopservice = async (servicesname, res) => {
                             if (err) return callback(err)
                             if (sv) {
                                 sv.detail = '/qooservice/system/public/provider/servicedetail/' + item.detail;
-                                let images = [];
-                                Async.forEachOf(sv.image, function (image, key, callback) {
-                                    images.push('/qooservice/system/public/uploadfile/services/' + image);
-                                    callback();
-                                }, function (err) {
-                                    // configs is now a map of JSON data
-                                    sv.image = images;
-                                });
+                                // let images = [];
+                                // Async.forEachOf(sv.image, function (image, key, callback) {
+                                //     images.push('/qooservice/system/public/uploadfile/services/' + image);
+                                //     callback();
+                                // }, function (err) {
+                                //     // configs is now a map of JSON data
+                                //     sv.image = images;
+                                // });
                                 services.push(sv);
                             }
                             callback();
@@ -212,14 +213,14 @@ let FindServiceComment = (serviceCom) => {
                     if (sv) {
                         sv.detail = '/qooservice/system/public/provider/servicedetail/' + serviceComm.detail;
                         sv.top_service = serviceComm.sum;
-                        let images = [];
-                        Async.forEachOf(sv.image, function (image, key, callback) {
-                            images.push('/qooservice/system/public/uploadfile/services/' + image);
-                            callback();
-                        }, function (err) {
-                            // configs is now a map of JSON data
-                            sv.image = images;
-                        });
+                        // let images = [];
+                        // Async.forEachOf(sv.image, function (image, key, callback) {
+                        //     images.push('/qooservice/system/public/uploadfile/services/' + image);
+                        //     callback();
+                        // }, function (err) {
+                        //     // configs is now a map of JSON data
+                        //     sv.image = images;
+                        // });
                         serviceIsComm.push(sv);
                     }
                     callback();
@@ -287,14 +288,14 @@ let findOneService = (SerPros) => {
                     if (err) return callback(err)
                     if (sv) {
                         sv.detail = '/qooservice/system/public/provider/servicedetail/' + sv.detail;
-                        let images = [];
-                        Async.forEachOf(sv.image, function (image, key, callback) {
-                            images.push('/qooservice/system/public/uploadfile/services/' + image);
-                            callback();
-                        }, function (err) {
-                            // configs is now a map of JSON data
-                            sv.image = images;
-                        });
+                        // let images = [];
+                        // Async.forEachOf(sv.image, function (image, key, callback) {
+                        //     images.push('/qooservice/system/public/uploadfile/services/' + image);
+                        //     callback();
+                        // }, function (err) {
+                        //     // configs is now a map of JSON data
+                        //     sv.image = images;
+                        // });
                         serviceIsComm.push(sv);
                     }
                     callback();
@@ -357,14 +358,14 @@ router.get("/service-top-new", function (req, res) {
                     if (sv) {
                         sv.detail = '/qooservice/system/public/provider/servicedetail/' + sv.detail;
 
-                        let images = [];
-                        Async.forEachOf(sv.image, function (image, key, callback) {
-                            images.push('/qooservice/system/public/uploadfile/services/' + image);
-                            callback();
-                        }, function (err) {
-                            // configs is now a map of JSON data
-                            sv.image = images;
-                        });
+                        // let images = [];
+                        // Async.forEachOf(sv.image, function (image, key, callback) {
+                        //     images.push('/qooservice/system/public/uploadfile/services/' + image);
+                        //     callback();
+                        // }, function (err) {
+                        //     // configs is now a map of JSON data
+                        //     sv.image = images;
+                        // });
                         serviceIsComm.push(sv);
                     }
                     callback();
@@ -437,14 +438,14 @@ let FindServicePercent = (serviceCom) => {
                     if (sv) {
                         sv.detail = '/qooservice/system/public/provider/servicedetail/' + serviceComm.detail;
                         sv.flash_sale = serviceComm.percent;
-                        let images = [];
-                        Async.forEachOf(sv.image, function (image, key, callback) {
-                            images.push('/qooservice/system/public/uploadfile/services/' + image);
-                            callback();
-                        }, function (err) {
-                            // configs is now a map of JSON data
-                            sv.image = images;
-                        });
+                        // let images = [];
+                        // Async.forEachOf(sv.image, function (image, key, callback) {
+                        //     images.push('/qooservice/system/public/uploadfile/services/' + image);
+                        //     callback();
+                        // }, function (err) {
+                        //     // configs is now a map of JSON data
+                        //     sv.image = images;
+                        // });
                         serviceIsComm.push(sv);
                     }
                     callback();
@@ -543,7 +544,18 @@ let findServiceTop = (service_id) => {
     })
 }
 
-router.post("/create", function (req, res) {
+let find_manage_service_price = () => {
+    return new Promise((resolve, reject) => {
+        manage_service_price.findOne({
+            message: 0
+        }, function (err, svtop) {
+            if (err) return reject(err);
+            resolve(svtop);
+        })
+    })
+}
+
+router.post("/create",async function (req, res) {
 
     var dat = new Date();
     Date.prototype.addDays = function (days) {
@@ -557,116 +569,128 @@ router.post("/create", function (req, res) {
         dat.setDate(dat.getDate() + days);
         return dat;
     }
-    let phidv = 5;
-    let date = 7;
-    FindWallet(req.body.provider_id)
+    find_manage_service_price()
         .then(
-            wallet => {
-                if (wallet) {
-                    if (wallet.balance >= phidv) {
-                        UpdateWallet(req.body.provider_id, wallet.balance - phidv)
-                            .then(
-                                wal => {
-                                    if (wal) {
-                                        findServiceTop(req.body.service_id)
-                                            .then(
-                                                sevTop => {
-                                                    if (sevTop) {
-                                                        ServicesTop.findOneAndUpdate(
-                                                            {service_id: req.body.service_id},
-                                                            {create_end: dat.updateDays(date, sevTop.create_end).getTime()},
-                                                            {new: true},
-                                                            function (err, SVTop) {
-                                                                if (err) {
-                                                                    res.json({
-                                                                        "response": false,
-                                                                        "message": 6,
-                                                                        "value": "update service top loi"
-                                                                    });
-                                                                } else {
-                                                                    FindWallet(req.body.provider_id)
-                                                                        .then(
-                                                                            walletafter => {
+            svPrice => {
+                let {Price, date, Name, message } = svPrice;
+                FindWallet(req.body.provider_id)
+                    .then(
+                        wallet => {
+                            if (wallet) {
+                                if (wallet.balance >= Price) {
+                                    UpdateWallet(req.body.provider_id, wallet.balance - Price)
+                                        .then(
+                                            wal => {
+                                                if (wal) {
+                                                    findServiceTop(req.body.service_id)
+                                                        .then(
+                                                            sevTop => {
+                                                                if (sevTop) {
+                                                                    ServicesTop.findOneAndUpdate(
+                                                                        {service_id: req.body.service_id},
+                                                                        {create_end: dat.updateDays(date, sevTop.create_end).getTime()},
+                                                                        {new: true},
+                                                                        function (err, SVTop) {
+                                                                            if (err) {
                                                                                 res.json({
-                                                                                    "response": walletafter,
-                                                                                    "value": true
+                                                                                    "response": false,
+                                                                                    "message": 6,
+                                                                                    "value": "update service top loi"
                                                                                 });
-                                                                            },
-                                                                            err => {
-                                                                                res.json({
-                                                                                    "response": [],
-                                                                                    "value": false
-                                                                                });
-                                                                            });
-                                                                }
-                                                            });
-                                                    } else {
-                                                        ServicesTop.create({
-                                                            service_id: req.body.service_id,
-                                                            provider_id: req.body.provider_id,
-                                                            create_at: Date.now(),
-                                                            create_end: dat.addDays(date).getTime()
-                                                        }, function (err, service) {
-                                                            if (err) res.json({"response": [], "value": false});
-                                                            else
-                                                                FindWallet(req.body.provider_id)
-                                                                    .then(
-                                                                        walletafter => {
-                                                                            res.json({
-                                                                                "response": walletafter,
-                                                                                "value": true
-                                                                            });
-                                                                        },
-                                                                        err => {
-                                                                            res.json({"response": [], "value": false});
+                                                                            } else {
+                                                                                FindWallet(req.body.provider_id)
+                                                                                    .then(
+                                                                                        walletafter => {
+                                                                                            res.json({
+                                                                                                "response": walletafter,
+                                                                                                "value": true
+                                                                                            });
+                                                                                        },
+                                                                                        err => {
+                                                                                            res.json({
+                                                                                                "response": [],
+                                                                                                "value": false
+                                                                                            });
+                                                                                        });
+                                                                            }
                                                                         });
-                                                        });
-                                                    }
-                                                },
-                                                err => {
-                                                    res.json({
-                                                        "response": false,
-                                                        "message": 5,
-                                                        "value": "truyen thieu bien"
+                                                                } else {
+                                                                    ServicesTop.create({
+                                                                        service_id: req.body.service_id,
+                                                                        provider_id: req.body.provider_id,
+                                                                        create_at: Date.now(),
+                                                                        create_end: dat.addDays(date).getTime()
+                                                                    }, function (err, service) {
+                                                                        if (err) res.json({"response": [], "value": false});
+                                                                        else
+                                                                            FindWallet(req.body.provider_id)
+                                                                                .then(
+                                                                                    walletafter => {
+                                                                                        res.json({
+                                                                                            "response": walletafter,
+                                                                                            "value": true
+                                                                                        });
+                                                                                    },
+                                                                                    err => {
+                                                                                        res.json({"response": [], "value": false});
+                                                                                    });
+                                                                    });
+                                                                }
+                                                            },
+                                                            err => {
+                                                                res.json({
+                                                                    "response": false,
+                                                                    "message": 5,
+                                                                    "value": "truyen thieu bien"
+                                                                });
+                                                            }
+                                                        );
+
+                                                    Historypayment.create({
+                                                        user_id: req.body.provider_id,
+                                                        payment: Price,
+                                                        service: message,
+                                                        create_at: Date.now(),
+                                                        content_service:Name,
+                                                    }, function (err, htr) {
+                                                        if (err) console.log(err);
+                                                        else console.log(htr);
                                                     });
                                                 }
-                                            );
+                                                else {
+                                                    res.json({
+                                                        "response": false,
+                                                        "message": 4,
+                                                        "value": "Cap nhat gio hang bi loi"
+                                                    });
+                                                }
 
-                                        Historypayment.create({
-                                            payment: phidv,
-                                            user_id: req.body.provider_id,
-                                            service: 0,
-                                            create_at: Date.now()
-                                        }, function (err, htr) {
-                                            if (err) console.log(err);
-                                            else console.log(htr);
-                                        });
-                                    }
-                                    else {
-                                        res.json({
-                                            "response": false,
-                                            "message": 4,
-                                            "value": "Cap nhat gio hang bi loi"
-                                        });
-                                    }
+                                            }
+                                        );
 
+                                } else {
+                                    res.json({
+                                        "response": false,
+                                        "message": 3,
+                                        "value": wallet.balance
+                                    });
                                 }
-                            );
-
-                    } else {
-                        res.json({
-                            "response": false,
-                            "message": 3,
-                            "value": wallet.balance
-                        });
-                    }
-                } else {
-                    res.json({
-                        "response": false,
-                        "message": 2,
-                        "value": "loi gio hang khong ton tai"
-                    });
-                }
+                            } else {
+                                res.json({
+                                    "response": false,
+                                    "message": 2,
+                                    "value": "loi gio hang khong ton tai"
+                                });
+                            }
+                        },
+                        err => {
+                            res.json({
+                                "response": false,
+                                "message": 2,
+                                "value": "loi gio hang khong ton tai"
+                            });
+                        }
+                    );
             },
             err => {
                 res.json({
@@ -676,6 +700,7 @@ router.post("/create", function (req, res) {
                 });
             }
         );
+
 
 });
 

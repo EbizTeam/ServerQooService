@@ -5,13 +5,17 @@ const Banner = require('../models/ServiceProviderBuyBannerData');
 const Advertise = require('../models/ServiceProviderBuyAdvertiseData');
 var cron = require('node-cron');
 const fs = require('fs');
+const MemberShip = require("../controllers/membershipController");
+
 module.exports = {
+
     deletetopservice: function () {
         cron.schedule('*/30 * * * *', function () {
             console.log('running a task every thrity minutes');
             deleteBuyTop();
             deleteBannerTop();
             deleteAdvertiseTop();
+            MemberShip.downgrade_membership();
         });
     },
     deleteFileChat: function () {

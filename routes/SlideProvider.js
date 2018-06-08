@@ -11,7 +11,8 @@ const fs = require('fs');
 
 router.get("/:providerID", function (req, res) {
     SlProvider.find({
-        provider_id: req.params.providerID
+        provider_id: req.params.providerID,
+        active:true,
     }, function (err, slides) {
         if (err) res.json({
             value: 1,

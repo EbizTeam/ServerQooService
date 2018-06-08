@@ -4,6 +4,7 @@ const Autions = require('../models/autions');
 const Providersendaution = require('../models/providersendaution');
 const Historypayment = require('../models/historypayment');
 const Provider = require('../models/serviceproviderdata');
+const manage_service_price = require('../models/manage_service_price');
 const Wallet = require('../models/wallet');
 
 let FindProvicer = (id) => {
@@ -82,7 +83,7 @@ let UpdateAuction = (auction_id, num_order_list) => {
     });
 }
 
-let CreateNewAution = (obj) =>{
+let CreateNewAution = (obj) => {
     return new Promise((resolve, reject) => {
         Providersendaution.create(
             {
@@ -93,10 +94,10 @@ let CreateNewAution = (obj) =>{
                 to_price: obj.to_price,
                 create_at: Date.now()
             }
-            ,function (err, auction) {
-            if (err) return reject(err);
-            resolve(auction);
-        });
+            , function (err, auction) {
+                if (err) return reject(err);
+                resolve(auction);
+            });
     });
 }
 
@@ -155,95 +156,119 @@ let CreateRequiment = (obj, res, balance) => {
 
 }
 
+let find_manage_service_price = () => {
+    return new Promise((resolve, reject) => {
+        manage_service_price.findOne({
+            message: 1
+        }, function (err, svtop) {
+            if (err) return reject(err);
+            resolve(svtop);
+        })
+    })
+}
+
 //add a new to the db
 router.post('/', function (req, res) {
-    FindProvicer(req.body.provider_id)
+    find_manage_service_price()
         .then(
-            provider => {
-                if (provider) {
-                    if (provider.member_ship > 1) {
-                        CreateRequiment(req.body, res);
-                        Historypayment.create({
-                            payment: phidv,
-                            user_id: req.body.provider_id,
-                            service:1,
-                            create_at: Date.now()
-                        },function (err, htr ) {
-                            if (err) console.log(err);
-                            else console.log(htr);
-                        });
-                    } else {
-                        FindWallet(req.body.provider_id)
-                            .then(
-                                wallet => {
-                                    if (wallet) {
-                                        if (wallet.balance >= 5) {
-                                            let temp = wallet.balance - 5;
-                                            UpdateWallet(req.body.provider_id, temp).then(
-                                                wal => {
-                                                    console.log(wal);
-                                                    if (wal) {
-                                                        CreateRequiment(req.body, res);
-                                                        Historypayment.create({
-                                                            payment: phidv,
-                                                            user_id: req.body.provider_id,
-                                                            service:1,
-                                                            create_at: Date.now()
-                                                        },function (err, htr ) {
-                                                            if (err) console.log(err);
-                                                            else console.log(htr);
-                                                        });
+            svPrice => {
+                let {Price,  Name, message} = svPrice;
+                FindProvicer(req.body.provider_id)
+                    .then(
+                        provider => {
+                            if (provider) {
+                                if (provider.member_ship > 1) {
+                                    CreateRequiment(req.body, res, 0);
+                                    Historypayment.create({
+                                        user_id: req.body.provider_id,
+                                        payment: 0,
+                                        service: message,
+                                        create_at: Date.now(),
+                                        content_service: Name,
+                                    }, function (err, htr) {
+                                        if (err) console.log(err);
+                                        else console.log(htr);
+                                    });
+                                } else {
+                                    FindWallet(req.body.provider_id)
+                                        .then(
+                                            wallet => {
+                                                if (wallet) {
+                                                    if (wallet.balance >= Price) {
+                                                        let temp = wallet.balance - Price;
+                                                        UpdateWallet(req.body.provider_id, temp).then(
+                                                            wal => {
+                                                                //console.log(wal);
+                                                                if (wal) {
+                                                                    CreateRequiment(req.body, res, Price);
+                                                                    Historypayment.create({
+                                                                        user_id: req.body.provider_id,
+                                                                        payment: Price,
+                                                                        service: message,
+                                                                        create_at: Date.now(),
+                                                                        content_service: Name,
+                                                                    }, function (err, htr) {
+                                                                        if (err) console.log(err);
+                                                                        else console.log(htr);
+                                                                    });
+                                                                } else {
+                                                                    res.json({
+                                                                        "response": false,
+                                                                        "message": 4,
+                                                                        "value": "loi update wallet"
+                                                                    });
+                                                                }
+                                                            }
+                                                        );
                                                     } else {
                                                         res.json({
                                                             "response": false,
-                                                            "message": 4,
-                                                            "value": "loi update wallet"
+                                                            "message": 5,
+                                                            "value": "loi khong du tien"
                                                         });
                                                     }
+                                                } else {
+                                                    res.json({
+                                                        "response": false,
+                                                        "message": 6,
+                                                        "value": "wallet khong ton tai"
+                                                    });
                                                 }
-                                            );
-                                        } else {
-                                            res.json({
-                                                "response": false,
-                                                "message": 5,
-                                                "value": "loi khong du tien"
-                                            });
-                                        }
-                                    } else {
-                                        res.json({
-                                            "response": false,
-                                            "message": 6,
-                                            "value": "wallet khong ton tai"
-                                        });
-                                    }
-                                },
-                                err => {
-                                    res.json({
-                                        "response": false,
-                                        "message": 6,
-                                        "value": "wallet khong ton tai"
-                                    });
+                                            },
+                                            err => {
+                                                res.json({
+                                                    "response": false,
+                                                    "message": 6,
+                                                    "value": "wallet khong ton tai"
+                                                });
+                                            }
+                                        );
                                 }
-                            );
-                    }
-                } else {
-                    res.json({
-                        "response": false,
-                        "message": 7,
-                        "value": "khong tim thay provider"
-                    });
-                }
-            }
-            , err => {
+                            } else {
+                                res.json({
+                                    "response": false,
+                                    "message": 7,
+                                    "value": "khong tim thay provider"
+                                });
+                            }
+                        }
+                        , err => {
+                            res.json({
+                                "response": false,
+                                "message": 7,
+                                "value": "khong tim thay provider"
+                            });
+                        }
+                    );
+
+            },
+            err => {
                 res.json({
-                    "response": false,
-                    "message": 7,
-                    "value": "khong tim thay provider"
+                    "response": [],
+                    "value": false
                 });
             }
         );
-
-
 });
 
 module.exports = router;

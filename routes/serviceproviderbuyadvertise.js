@@ -4,6 +4,7 @@ const path = require('path');
 const router = express.Router();
 const ServiceProvider = require('../models/serviceproviderdata');
 const Wallet = require('../models/wallet');
+const manage_service_price = require('../models/manage_service_price');
 const Historypayment = require('../models/historypayment');
 const SPrBuyAdvertise = require('../models/ServiceProviderBuyAdvertiseData');
 const config = require('../config');
@@ -69,10 +70,18 @@ var upload = multer({
     }
 }).single('imageadvertise'); //Field name and max count
 
+let find_manage_service_price = () => {
+    return new Promise((resolve, reject) => {
+        manage_service_price.findOne({
+            message: 5
+        }, function (err, svtop) {
+            if (err) return reject(err);
+            resolve(svtop);
+        })
+    })
+}
 
 router.post("/inser_advertise", function (req, res) {
-    let pay = 5;
-    let date = 7;
 
     let Error = [];
     Error.push("1. update wallet success, create data buy banner fail");
@@ -93,20 +102,25 @@ router.post("/inser_advertise", function (req, res) {
                 "value": 4
             });
         } else {
+            find_manage_service_price()
+                .then(
+                    svPrice => {
+                        let {Price, date, Name, message } = svPrice;
             FindWallet(req.body.provider_id)
                 .then(
                     wallet => {
                         if (wallet) {
-                            if (wallet.balance >= pay) {
-                                UpdateWallet(req.body.provider_id, wallet.balance - pay)
+                            if (wallet.balance >= Price) {
+                                UpdateWallet(req.body.provider_id, wallet.balance - Price)
                                     .then(
                                         wal => {
                                             if (wal) {
                                                 Historypayment.create({
-                                                    payment: pay,
+                                                    payment: Price,
                                                     user_id: req.body.provider_id,
-                                                    service: 5,
-                                                    create_at: Date.now()
+                                                    service: message,
+                                                    create_at: Date.now(),
+                                                    content_service:Name,
                                                 }, function (err, htr) {
                                                     if (err) console.log(err);
                                                     else console.log(htr);
@@ -165,6 +179,15 @@ router.post("/inser_advertise", function (req, res) {
                         res.json({
                             "response": Error,
                             "value": 3
+                        });
+                    }
+                );
+                    },
+                    err => {
+                        res.json({
+                            "response": false,
+                            "message": 2,
+                            "value": "loi gio hang khong ton tai"
                         });
                     }
                 );

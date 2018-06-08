@@ -18,8 +18,11 @@ var ServiceData = new mongoose.Schema({
     sub_category_id: String,
     create_at: Number,
     isAuction: Number,
-    updated_at: Number
-
+    updated_at: Number,
+    active: {
+        type: Boolean,
+        default:false
+    },
 });
 
 

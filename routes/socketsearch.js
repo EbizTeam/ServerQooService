@@ -75,14 +75,14 @@ let sortandtoservice = async (servicesname, socket) => {
                             if (err) return callback(err)
                             if (sv) {
                                 sv.detail = '/qooservice/system/public/provider/servicedetail/' + item.detail;
-                                let images = [];
-                                Async.forEachOf(sv.image, function (image, key, callback) {
-                                    images.push('/qooservice/system/public/uploadfile/services/' + image);
-                                    callback();
-                                }, function (err) {
-                                    // configs is now a map of JSON data
-                                    sv.image = images;
-                                });
+                                // let images = [];
+                                // Async.forEachOf(sv.image, function (image, key, callback) {
+                                //     images.push('/qooservice/system/public/uploadfile/services/' + image);
+                                //     callback();
+                                // }, function (err) {
+                                //     // configs is now a map of JSON data
+                                //     sv.image = images;
+                                // });
                                 services.push(sv);
                             }
                             callback();

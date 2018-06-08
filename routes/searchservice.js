@@ -30,14 +30,14 @@ routes.post("/", function (req, res) {
                                                     if (servicesm) {
                                                         Async.forEachOf(servicesm, function (sv, key, callback) {
                                                             sv.detail = '/qooservice/system/public/provider/servicedetail/' + sv.detail;
-                                                            let images = [];
-                                                            Async.forEachOf(sv.image, function (image, key, callback) {
-                                                                images.push('/qooservice/system/public/uploadfile/services/' + image);
-                                                                callback();
-                                                            },function (err) {
-                                                                sv.image = images;
-                                                                services.push(sv);
-                                                            });
+                                                            // let images = [];
+                                                            // Async.forEachOf(sv.image, function (image, key, callback) {
+                                                            //     images.push('/qooservice/system/public/uploadfile/services/' + image);
+                                                            //     callback();
+                                                            // },function (err) {
+                                                            //     sv.image = images;
+                                                            //     services.push(sv);
+                                                            // });
                                                             callback();
                                                         }, function (err) {
 
@@ -148,14 +148,14 @@ let sortandtoservice = async (servicesname, res) => {
                             if (err) return callback(err)
                             if (sv) {
                                 sv.detail = '/qooservice/system/public/provider/servicedetail/' + item.detail;
-                                let images = [];
-                                Async.forEachOf(sv.image, function (image, key, callback) {
-                                    images.push('/qooservice/system/public/uploadfile/services/' + image);
-                                    callback();
-                                }, function (err) {
-                                    // configs is now a map of JSON data
-                                    sv.image = images;
-                                });
+                                // let images = [];
+                                // Async.forEachOf(sv.image, function (image, key, callback) {
+                                //     images.push('/qooservice/system/public/uploadfile/services/' + image);
+                                //     callback();
+                                // }, function (err) {
+                                //     // configs is now a map of JSON data
+                                //     sv.image = images;
+                                // });
                                 services.push(sv);
                             }
                             callback();

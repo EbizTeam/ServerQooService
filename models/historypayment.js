@@ -3,8 +3,17 @@ const mongoose = require('mongoose');
 var HistoryPaymentData = new mongoose.Schema({
     payment: Number,
     user_id: String,
-    create_at:Number,
     service:Number,
+    content_service:String,
+    updated_at : {
+        type: Date,
+        default:Date.now
+    },
+    created_at : {
+        type: Date,
+        default:Date.now
+    },
+
 });
 
 module.exports = mongoose.model('HistoryPaymentDatas',HistoryPaymentData);

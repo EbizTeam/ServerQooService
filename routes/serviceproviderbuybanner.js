@@ -4,6 +4,7 @@ const path = require('path');
 const router = express.Router();
 const ServiceProvider = require('../models/serviceproviderdata');
 const Wallet = require('../models/wallet');
+const manage_service_price = require('../models/manage_service_price');
 const Historypayment = require('../models/historypayment');
 const SPrBuyBanner = require('../models/ServiceProviderBuyBannerData');
 const config = require('../config');
@@ -40,6 +41,17 @@ let FindWallet = (user_id) => {
     });
 }
 
+let find_manage_service_price = () => {
+    return new Promise((resolve, reject) => {
+        manage_service_price.findOne({
+            message: 4
+        }, function (err, svtop) {
+            if (err) return reject(err);
+            resolve(svtop);
+        })
+    })
+}
+
 //upload file
 var Storage = multer.diskStorage({
 
@@ -71,8 +83,7 @@ var upload = multer({
 
 
 router.post("/inser_banner", function (req, res) {
-    let pay = 5;
-    let date = 7;
+
 
     let Error = [];
     Error.push("1. update wallet success, create data buy banner fail");
@@ -93,69 +104,82 @@ router.post("/inser_banner", function (req, res) {
                 "value": 4
             });
         } else {
-            FindWallet(req.body.provider_id)
+            find_manage_service_price()
                 .then(
-                    wallet => {
-                        if (wallet) {
-                            if (wallet.balance >= pay) {
-                                UpdateWallet(req.body.provider_id, wallet.balance - pay)
-                                    .then(
-                                        wal => {
-                                            if (wal) {
-                                                Historypayment.create({
-                                                    payment: pay,
-                                                    user_id: req.body.provider_id,
-                                                    service: 4,
-                                                    create_at: Date.now()
-                                                }, function (err, htr) {
-                                                    if (err) console.log(err);
-                                                });
+                    svPrice => {
+                        let {Price, date, Name, message} = svPrice;
+                        FindWallet(req.body.provider_id)
+                            .then(
+                                wallet => {
+                                    if (wallet) {
+                                        if (wallet.balance >= Price) {
+                                            UpdateWallet(req.body.provider_id, wallet.balance - Price)
+                                                .then(
+                                                    wal => {
+                                                        if (wal) {
+                                                            HistoryPricement.create({
+                                                                user_id: req.body.provider_id,
+                                                                payment: Price,
+                                                                service: message,
+                                                                create_at: Date.now(),
+                                                                content_service:Name,
+                                                            }, function (err, htr) {
+                                                                if (err) console.log(err);
+                                                            });
 
-                                                //insert data banner
-                                                SPrBuyBanner.create({
-                                                    provider_id: req.body.provider_id,
-                                                    link_banner: '/banner/' + req.file.filename,
-                                                    create_end: dat.addDays(date).getTime(),
-                                                    create_at: Date.now()
-                                                }, function (err, SPBBanner) {
-                                                    if (err) {
-                                                        res.json({
-                                                            "response": Error,
-                                                            "value": 1
-                                                        });
+                                                            //insert data banner
+                                                            SPrBuyBanner.create({
+                                                                provider_id: req.body.provider_id,
+                                                                link_banner: '/banner/' + req.file.filename,
+                                                                create_end: dat.addDays(date).getTime(),
+                                                                create_at: Date.now()
+                                                            }, function (err, SPBBanner) {
+                                                                if (err) {
+                                                                    res.json({
+                                                                        "response": Error,
+                                                                        "value": 1
+                                                                    });
+                                                                }
+                                                                else {
+                                                                    res.json({
+                                                                        "response": SPBBanner,
+                                                                        "value": 0
+                                                                    });
+                                                                }
+                                                                ;
+                                                            });
+
+                                                        }
+                                                        else {
+                                                            res.json({
+                                                                "response": Error,
+                                                                "value": 2
+                                                            });
+                                                        }
+
                                                     }
-                                                    else {
-                                                        res.json({
-                                                            "response": SPBBanner,
-                                                            "value": 0
-                                                        });
-                                                    }
-                                                    ;
-                                                });
+                                                );
 
-                                            }
-                                            else {
-                                                res.json({
-                                                    "response": Error,
-                                                    "value": 2
-                                                });
-                                            }
-
+                                        } else {
+                                            res.json({
+                                                "response": Error,
+                                                "value": 3
+                                            });
                                         }
-                                    );
-
-                            } else {
-                                res.json({
-                                    "response": Error,
-                                    "value": 3
-                                });
-                            }
-                        } else {
-                            res.json({
-                                "response": Error,
-                                "value": 3
-                            });
-                        }
+                                    } else {
+                                        res.json({
+                                            "response": Error,
+                                            "value": 3
+                                        });
+                                    }
+                                },
+                                err => {
+                                    res.json({
+                                        "response": Error,
+                                        "value": 3
+                                    });
+                                }
+                            );
                     },
                     err => {
                         res.json({
@@ -292,7 +316,7 @@ router.get("/get_banner_top", async function (req, res) {
                 res.json({"response": Errors, "value": 1});
             }
         }).limit(10).skip(random);
-    } else{
+    } else {
         SPrBuyBanner.find({}, function (err, svpro) {
             if (svpro) {
                 res.json({"response": svpro, "value": 0});

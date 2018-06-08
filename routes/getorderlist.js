@@ -364,7 +364,7 @@ let FindUserAuction  = (auction_id) => {
                                     "consumer_info":{},
                                     "category_id": auction.category_id,
                                 })
-                            }                              
+                            }
 
                         }
                         ,err=>{
@@ -386,10 +386,9 @@ let FindUserAuction  = (auction_id) => {
 
 //provider get provider auction
 router.get("/get_provider_send_auction/:provider_id", function (req, res) {
-    let data = [];
     Providersendaution.find({
         provider_id: req.params.provider_id,
-        status: {$not: /Sent Auction/},
+       // status: {$not: /Sent Auction/},
     }, function (err, providerauction) {
         if (err) {
             res.json({
@@ -398,6 +397,7 @@ router.get("/get_provider_send_auction/:provider_id", function (req, res) {
             });
         } else if (providerauction) {
             let proOder =[];
+            console.log(providerauction);
             Async.forEachOf(providerauction, function (item, key, callback) {
                 //console.log(item);
                 FindUserAuction(item.auction_id)
