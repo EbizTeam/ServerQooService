@@ -49,9 +49,21 @@ var ServiceProviderData = new Mongoose.Schema({
     maps_latitude : String,
     maps_longitude : String,
     link_youtube : String,
+    provider_id : {
+        type:String,
+        default: ""
+    },
+    isActived : {
+        type:Boolean,
+        default: true
+    },
     isProvider:{
         type:Boolean,
         default: true
+    },
+    sendMail:{
+        type:Number,
+        default: 0,
     },
 });
 

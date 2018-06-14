@@ -4,8 +4,20 @@ const mongoose = require('mongoose');
 const ServiceProviderBuyAdvertiseData = new mongoose.Schema({
     provider_id: String,
     link_banner: String,
-    create_at: Number,
-    create_end: Number,
+    dateApprove: Date,
+    dateEnd: Date,
+    isActived:{
+        type:Boolean,
+        default:false
+    },
+    create_at:{
+        type:Date,
+        default:Date.now
+    },
+    updated_at: {
+        type:Date,
+        default:Date.now
+    },
 });
 // Create Category Model
 module.exports = mongoose.model('ServiceProviderBuyAdvertises',ServiceProviderBuyAdvertiseData);

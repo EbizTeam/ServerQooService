@@ -1,9 +1,11 @@
 'use strict';
 const Wallet = require('../models/wallet');
 const Consumer = require('../models/customerdata');
+const Admin = require('../models/admin');
 const Provider = require('../models/serviceproviderdata');
 const Async = require("async");
 const sortBy = require('array-sort');
+const Historypayment = require('../models/historypayment');
 
 
 let findConsumerUseWallet = () => {
@@ -114,6 +116,16 @@ exports.delete_wallet_trash = function (req, res) {
 //update balance in my wallet
 //App.post("/update_balance",
 
+let FindAdmin = () => {
+    return new Promise((resolve, reject) => {
+        Admin.findOne({
+          }, function (err, wl) {
+            if (err) return reject(err);
+            resolve(wl);
+        });
+    });
+}
+
 exports.update_wallet = function (req, res){
     if (req.body.balance === undefined || req.body.sp_id === undefined) {
         res.json({"response": false, message:" params not value "});
@@ -123,13 +135,38 @@ exports.update_wallet = function (req, res){
         Wallet.findOne({"user_id": sp_id}, function (err, mywallet_info) {
             if (err) return   res.json({"response": false,  message:err});
             if (mywallet_info) {
-                var tt_balance = mywallet_info.balance;
-                Wallet.findOneAndUpdate({'user_id': sp_id}, {
-                    balance: tt_balance+balance,
-                }, {new: true}, function (err, wlupdated) {
-                    if (err) return   res.json({"response": false,  message:err});
-                    return   res.json({"response": true, MWObj:wlupdated,  message:""});
-                });
+                FindAdmin()
+                    .then(
+                        admin => {
+                            if (admin) {
+                                var tt_balance = mywallet_info.balance;
+                                Wallet.findOneAndUpdate({'user_id': sp_id}, {
+                                    balance: tt_balance+balance*admin.rateMoney,
+                                    updated_at:Date.now(),
+                                }, {new: true}, function (err, wlupdated) {
+                                    if (err) return   res.json({"response": false,  message:err});
+                                    if (wlupdated) {
+                                        Historypayment.create({
+                                            payment: balance,
+                                            user_id: sp_id,
+                                            create_at: Date.now(),
+                                            content_service:"added " +balance*admin.rateMoney+ " "+admin.displayCurentcy +" into Wallet",
+                                        }, function (err, htr) {
+                                            if (err) console.log(err);
+                                            else console.log(htr);
+                                        });
+                                        return   res.json({"response": true, MWObj:wlupdated,  message:""});
+                                    } else {
+
+                                    }
+                                });
+                            }else{
+                                return   res.json({"response": false,  message:"loi tim rate money"});
+                            }
+                        },
+                        err=>{return   res.json({"response": false,  message:err}); }
+                    )
+
             }else{
                 CreateWallet(sp_id,balance)
                     .then(

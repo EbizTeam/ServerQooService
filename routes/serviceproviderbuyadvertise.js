@@ -130,7 +130,7 @@ router.post("/inser_advertise", function (req, res) {
                                                 SPrBuyAdvertise.create({
                                                     provider_id: req.body.provider_id,
                                                     link_banner: '/advertise/' + req.file.filename,
-                                                    create_end: dat.addDays(date).getTime(),
+                                                    // create_end: dat.addDays(date).getTime(),
                                                     create_at: Date.now()
                                                 }, function (err, SPBBanner) {
                                                     if (err) {
@@ -311,21 +311,33 @@ let sorttopAdvertise = async (res) => {
 router.get("/get_advertise_top",  async function (req, res) {
     //sorttopAdvertise(res);
         let num = await SPrBuyAdvertise.count({});
+        let random = await Math.floor(Math.random() * num);
         if (num > 3) {
-            let random = await Math.floor(Math.random() * num);
-            SPrBuyAdvertise.find({}, function (err, svpro) {
-                if (svpro) {
-                    res.json({"response": svpro, "value": 0});
-                } else {
-                    res.json({"response": Errors, "value": 1});
-                }
-            }).limit(3).skip(random);
+            let tong = num - random;
+            if ( tong < 3 ) {
+                SPrBuyAdvertise.find({isActived:true}, function (err, svpro) {
+                    if (svpro) {
+                        res.json({"response": svpro.slice(0, 3), "value": 0});
+                    } else {
+                        res.json({"response": err, "value": 1});
+                    }
+                }).skip( random - 3 +tong);
+            }else{
+                SPrBuyAdvertise.find({isActived:true}, function (err, svpro) {
+                    if (svpro) {
+                        res.json({"response": svpro.slice(0, 3), "value": 0});
+                    } else {
+                        res.json({"response": err, "value": 1});
+                    }
+                }).skip(random);
+            }
+
         } else{
-            SPrBuyAdvertise.find({}, function (err, svpro) {
+            SPrBuyAdvertise.find({isActived:true}, function (err, svpro) {
                 if (svpro) {
-                    res.json({"response": svpro, "value": 0});
+                    res.json({"response": svpro.slice(0, 3), "value": 0});
                 } else {
-                    res.json({"response": Errors, "value": 1});
+                    res.json({"response": err, "value": 1});
                 }
             });
         }

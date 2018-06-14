@@ -5,6 +5,7 @@ module.exports = function(app) {
     let Wallet = require('../controllers/walletController');
     let Membership = require('../controllers/membershipController');
     let Appointment = require('../controllers/appointmentController');
+    let Admin = require('../controllers/adminController');
     // todoList Routes
     //http://localhost:4000/api/appointment/5aa0ef6d42e9261518c75b7c/1
     app.route('/api/appointment/:account_id/:page')
@@ -36,4 +37,9 @@ module.exports = function(app) {
     app.route('/api/membership/price')
         .get(Membership.get_price_member_ship)
         .post(Membership.get_price_chang_member_ship);
+    app.route('/api/admin-info')
+        .get(Admin.get_admin)
+        .post(Admin.insert_admin)
+
+
 };

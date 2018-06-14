@@ -3,9 +3,9 @@ const Wallet = require('../models/wallet');
 const Provider = require('../models/serviceproviderdata');
 const Membership = require('../models/manage_membership');
 const Historypayment = require('../models/historypayment');
-const Async = require("async");
-const sortBy = require('array-sort');
-
+const config = require('../config');
+const urlapi = config.urlapi;
+const request_promise = require('request-promise');
 
 let GetOneUserWallet = (user_id) => {
     return new Promise((resolve, reject) => {
@@ -21,7 +21,7 @@ let GetOneUserWallet = (user_id) => {
 let GetMemberShip = (mType) => {
     return new Promise((resolve, reject) => {
         Membership.findOne({
-            Id_Membership: mType
+            Id_Membership: parseInt(mType, 10)
         }, function (err, member_ship) {
             if (err) return reject(err);
             resolve(member_ship);
@@ -33,6 +33,17 @@ let checkMembership = (userID) => {
     return new Promise((resolve, reject) => {
         Provider.findOne({
             _id: userID
+        }, function (err, svProvider) {
+            if (err) return reject(err);
+            resolve(svProvider);
+        });
+    });
+}
+
+let FindSubProvider = (userID) => {
+    return new Promise((resolve, reject) => {
+        Provider.find({
+            provider_id: userID
         }, function (err, svProvider) {
             if (err) return reject(err);
             resolve(svProvider);
@@ -60,11 +71,12 @@ let SaveHistoryPayment = (newCode) => {
     });
 }
 
-let updateMembershipProvider = (user_id, membership) => {
+let updateMembershipProvider = (user_id, membership, timeEnd) => {
     return new Promise((resolve, reject) => {
         Provider.findOneAndUpdate({_id: user_id}, {
             member_ship: membership,
-            member_ship_time: Date.now()
+            member_ship_time: timeEnd,
+            sendMail:0,
         }, {new: true}, function (err, provider) {
             if (err) return reject(err);
             resolve(provider);
@@ -81,75 +93,35 @@ let updateWallet = (user_id, balance) => {
     });
 }
 
-let verifyEnough = (user_id, mType) => {
+let updateProvider = (user_id, obj) => {
     return new Promise((resolve, reject) => {
-        GetOneUserWallet(user_id)
-            .then(
-                wallet => {
-                    if (wallet) {
-                        GetMemberShip(mType)
-                            .then(
-                                member_ship => {
-                                    console.log(member_ship);
-                                    if (member_ship.Monthly_Fee <= wallet.balance) {
-                                        return resolve({member_ship: member_ship, wallet: wallet});
-                                    } else {
-                                        return reject('not enough money');
-                                    }
-                                },
-                                err => {
-                                    return reject(err);
-                                }
-                            )
-                    } else {
-                        CreateWallet(user_id)
-                            .then(
-                                wlnew => {
-                                    GetMemberShip(mType)
-                                        .then(
-                                            member_ship => {
-
-                                                if (member_ship.Monthly_Fee <= wlnew.balance) {
-                                                    return resolve({member_ship: member_ship, wallet: wlnew});
-                                                } else {
-                                                    return reject('not enough money');
-                                                }
-                                            },
-                                            err => {
-                                                return reject(err);
-                                            }
-                                        )
-                                },
-                                err => {
-                                    return reject(err)
-                                }
-                            );
-                    }
-
-                },
-                err => {
-                    return reject(err);
-                }
-            )
+        Provider.findOneAndUpdate({_id: user_id}, obj, {new: true}, function (err, WL) {
+            if (err) return reject(err);
+            resolve(WL);
+        });
     });
 }
 
-let checkDayRest = async function (days, dates) {
-    return (dates +(days*24*60*60*1000) - Date.now()) / 1000 / 60 / 60 / 24;
+
+let checkDayRest = async function (dates) {
+    return (dates - Date.now()) / 1000 / 60 / 60 / 24;
 }
 
 let checkBalance = (svprovider) => {
     return new Promise(async (resolve, reject) => {
-        let {_id, member_ship_time, member_ship} = await svprovider;
-        let day = await checkDayRest(30, member_ship_time);
-        if (member_ship_time +(30*24*60*60*1000) > Date.now()) {
+        let {member_ship_time, member_ship} = await svprovider;
+        let day = await checkDayRest(member_ship_time);
+        if (member_ship_time > Date.now()) {
             GetMemberShip(member_ship)
                 .then(
                     memberShip => {
                         if (memberShip) {
-                            resolve(Math.round(day - 0.5) * memberShip.Monthly_Fee / 30);
+                            resolve({
+                                balance: Math.round(day - 0.5) * memberShip.Monthly_Fee / 30,
+                                dayRest: Math.round(day - 0.5),
+                            });
                         } else {
-                            resolve(0);
+                            return reject("không tìm thấy membership");
                         }
                     },
                     err => {
@@ -158,54 +130,176 @@ let checkBalance = (svprovider) => {
                 )
         } else {
             // update member ship ve 1
-            resolve(0);
+            return reject(" ngày hết hạn nhỏ hon ngày hiện tại");
         }
     });
 }
 
-let upgradeMembership = (user_id, mType, res, rest) => {
-    verifyEnough(user_id, mType)
-        .then(
-            venough => {
-                let {member_ship, wallet} = venough;
-                updateWallet(user_id, wallet.balance + rest - member_ship.Monthly_Fee)
-                    .then(
-                        walletBalnce => {
-                            let newHis = new Historypayment({
-                                payment: member_ship.Monthly_Fee - rest,
-                                user_id: user_id,
-                                service: member_ship.Id_Membership*(-1),
-                                content_service: "upgrade Membership " + member_ship.Name,
-                            });
+let checkPay = (user_id, mType) => {
+    return new Promise((resolve, reject) => {
+        if (mType > 0 && mType <= 4) {
+            checkMembership(user_id)
+                .then(
+                    svprovider => {
+                        if (svprovider.member_ship > 0 && svprovider.member_ship <= 4) {
+                            if (svprovider.member_ship === 1) {
+                                GetMemberShip(mType)
+                                    .then(
+                                        memberShipPrice => {
+                                            if (memberShipPrice) {
+                                                resolve({
+                                                    balance: 0,
+                                                    pay: memberShipPrice.Monthly_Fee,
+                                                    dayRest: 0,
+                                                    type: 1,
+                                                    membership_time: Date.now(),
+                                                    member_ship_old: svprovider.member_ship
+                                                });
+                                            } else {
+                                                return reject("Không tìm thấy giá membership");
+                                            }
+                                        },
+                                        err => {
+                                            return reject(err);
+                                        }
+                                    );
+                            } else {
+                                if (svprovider.member_ship.toString() === mType.toString()) {
+                                    GetMemberShip(mType)
+                                        .then(
+                                            memberShipPrice => {
+                                                if (memberShipPrice) {
+                                                    resolve({
+                                                        balance: 0,
+                                                        pay: memberShipPrice.Monthly_Fee,
+                                                        dayRest: 0,
+                                                        type: 0,
+                                                        membership_time: svprovider.member_ship_time,
+                                                        member_ship_old: svprovider.member_ship
+                                                    });
+                                                } else {
+                                                    return reject("Không tìm thấy giá membership");
+                                                }
+                                            },
+                                            err => {
+                                                return reject(err);
+                                            }
+                                        );
+                                } else {
+                                    checkBalance(svprovider)
+                                        .then(
+                                            CheckBalance => {
+                                                if (CheckBalance.balance) {
+                                                    GetMemberShip(mType)
+                                                        .then(
+                                                            memberShip => {
+                                                                if (memberShip) {
+                                                                    resolve({
+                                                                        pay: memberShip.Monthly_Fee - CheckBalance.balance,
+                                                                        balance: CheckBalance.balance,
+                                                                        dayRest: CheckBalance.dayRest,
+                                                                        type: 1,
+                                                                        membership_time: svprovider.member_ship_time,
+                                                                        member_ship_old: svprovider.member_ship
+                                                                    });
+                                                                } else {
+                                                                    return reject("Không thấy bảng giá");
+                                                                }
+                                                            },
+                                                            err => {
+                                                                return reject(err);
+                                                            }
+                                                        )
+                                                } else {
+                                                    return reject("Không tìm thấy số tiền còn lại");
+                                                }
+                                            },
+                                            err => {
+                                                return reject(err);
+                                            }
+                                        )
+                                }
+                            }
+                        } else {
+                            return reject("Là consumer không phải provider");
+                        }
+                    },
+                    err => {
+                        return reject(err);
+                    }
+                );
+        } else {
+            return reject("type không hop le");
+        }
+    });
+}
 
-                            updateMembershipProvider(user_id, mType)
+let upgradeMembership = (user_id, mType, payBalance, balance_old) => {
+    return new Promise((resolve, reject) => {
+        let {pay} = payBalance;
+        updateWallet(user_id, balance_old - pay)
+            .then(
+                walletBalnce => {
+                    console.log(walletBalnce);
+                    if (walletBalnce) {
+                        let mTime = Date.now();
+                        if (payBalance.type === 1) {
+                            updateMembershipProvider(user_id, mType, mTime + 30 * 24 * 60 * 60 * 1000)
                                 .then(
                                     svpro => {
                                         //lưu lịch sữ giao dịch
-                                        SaveHistoryPayment(newHis);
-
-                                        return res.json({
-                                            "response": {
-                                                "balance": walletBalnce.balance,
-                                                "update": true,
-                                                "mType": svpro.member_ship,
-                                            }, "value": 0, mesage: Errors
-                                        });
+                                        GetMemberShip(mType)
+                                            .then(
+                                                membership => {
+                                                    let newHis = new Historypayment({
+                                                        payment: payBalance.pay,
+                                                        user_id: user_id,
+                                                        content_service: "Change Membership: " + membership.Name +
+                                                        "The Price: " + membership.Monthly_Fee +
+                                                        "Your remain money for Old Membership: " + payBalance.balance,
+                                                    });
+                                                    SaveHistoryPayment(newHis);
+                                                });
+                                        resolve(svpro);
                                     },
                                     err => {
-                                        return res.json({"response": err, "value": 5, mesage: Errors});
+                                        return reject("update membership provider lỗi");
                                     }
                                 );
-                        },
-                        err => {
-                            return res.json({"response": err, "value": 4, mesage: Errors});
+                        } else {
+                            updateMembershipProvider(user_id, mType, payBalance.membership_time * 1 + (30 * 24 * 60 * 60 * 1000))
+                                .then(
+                                    svpro => {
+                                        //lưu lịch sữ giao dịch
+                                        GetMemberShip(mType)
+                                            .then(
+                                                membership => {
+                                                    let newHis = new Historypayment({
+                                                        payment: payBalance.pay,
+                                                        user_id: user_id,
+                                                        content_service: "Update Membership: " + membership.Name +
+                                                        "The Price: " + membership.Monthly_Fee,
+                                                    });
+                                                    SaveHistoryPayment(newHis);
+                                                });
+                                        resolve(svpro);
+                                    },
+                                    err => {
+                                        return reject("update membership provider lỗi");
+                                    }
+                                );
                         }
-                    );
-            },
-            err => {
-                return res.json({"response": err, "value": 3, mesage: Errors});
-            }
-        );
+                    } else {
+                        return reject("update wallet lỗi");
+                    }
+
+                },
+                err => {
+                    return reject("update wallet lỗi");
+                }
+            );
+
+    });
 }
 
 let Errors = {
@@ -216,87 +310,118 @@ let Errors = {
     4: "Error when payment ",
     5: "Error when payment and update membership, please contact supplier ",
     6: "Only upgrade not downgrade ",
+    7: "mType illegal ",
+    8: "Update membership fail ",
+    9: "Find wallet fail ",
 }
 
 
 exports.change_member_ship = function (req, res) {
     let user_id = req.body.userID;
     let mType = req.body.mType;
-    checkMembership(user_id)
-        .then(
-            svprovider => {
-                if (svprovider.member_ship >= mType) {
-                    return res.json({"response": " > " + svprovider.member_ship, "value": 6, mesage: Errors});
-                } else if (svprovider.member_ship === 1) {
-                    return upgradeMembership(user_id, mType, res, 0);
-                } else if (svprovider.member_ship === 4) {
-                    return res.json({"response": "", "value": 1, mesage: Errors});
-                } else if (svprovider.member_ship > 1 && svprovider.member_ship < 4) {
-                    checkBalance(svprovider)
-                        .then(
-                            balance => {
-                                return upgradeMembership(user_id, mType, res, balance);
-                            },
-                            err=>{
-                                return res.json({"response": err, "value": 5, mesage: Errors});
-                            }
-                        )
-                } else {
+    if (mType < 1 || mType > 4) {
+        return res.json({"response": "" + svprovider.member_ship, "value": 7, mesage: Errors});
+    } else {
+        checkPay(user_id, mType)
+            .then(
+                payBalance => {
+                    console.log(payBalance);
+                    if (payBalance) {
+                        GetOneUserWallet(user_id)
+                            .then(
+                                Wallet => {
+                                    if (Wallet) {
+                                        if (payBalance.pay <= Wallet.balance) {
+                                            upgradeMembership(user_id, mType, payBalance, Wallet.balance).then(
+                                                provider => {
+                                                    if (provider) {
+                                                        console.log(provider._id,user_id);
+                                                        let url  = "/qooservice/php/api_mail_changeUpdateMemberShip.php";
+                                                        let data = {
+                                                            changeUpdateMs:payBalance.type,
+                                                            idProvider:provider._id+"",
+                                                            levelOldMemberShip:payBalance.member_ship_old,
+                                                            moneyExcess:payBalance.balance,
+                                                            numberOfDay:payBalance.dayRest,
+                                                            oldBank:Wallet.balance,
+                                                        };
+                                                        SendMail(url,data);
+                                                        return res.json({
+                                                            "response": {
+                                                                provider: provider,
+                                                                message: payBalance,
+                                                            }, "value": 0, mesage: Errors
+                                                        });
+                                                    } else {
+                                                        return res.json({"response": "", "value": 8, mesage: Errors});
+                                                    }
+                                                },
+                                                err => {
+                                                    return res.json({"response": "", "value": 8, mesage: Errors});
+                                                }
+                                            );
+                                        } else {
+                                            return res.json({"response": "", "value": 3, mesage: Errors});
+                                        }
+                                    } else {
+                                        return res.json({"response": "", "value": 9, mesage: Errors});
+                                    }
+                                },
+                                err => {
+                                    return res.json({"response": "", "value": 9, mesage: Errors});
+                                }
+                            );
+                    } else {
+                        return res.json({"response": "", "value": 2, mesage: Errors});
+                    }
+                },
+                err => {
                     return res.json({"response": "", "value": 2, mesage: Errors});
                 }
-            },
-            err => {
-                return res.json({"response": "", "value": 2, mesage: Errors});
-            }
-        );
+            );
+    }
 };
 
 exports.get_price_chang_member_ship = function (req, res) {
     let user_id = req.body.userID;
     let mType = req.body.mType;
-    checkMembership(user_id)
+    checkPay(user_id, mType)
         .then(
-            svprovider => {
-              if (svprovider.member_ship < mType && svprovider.member_ship > 0 && svprovider.member_ship < 4) {
-                    checkBalance(svprovider)
-                        .then(
-                            balance => {
-                                GetMemberShip(mType)
-                                    .then(
-                                        memberShip => {
-                                            if (memberShip) {
-                                                if (balance){
-                                                    return res.json({"response": true, "value": memberShip.Monthly_Fee - balance});
-                                                } else {
-                                                    return res.json({"response": true, "value": memberShip.Monthly_Fee });
-                                                }
-                                            } else {
-                                                return res.json({"response": false, "value": 0, err:memberShip, mType:mType});
-                                            }
-                                        },
-                                        err => {
-                                            return res.json({"response": false, "value": 0, err:err});
-                                        }
-                                    )
-                            },
-                            err=>{
-                                return res.json({"response": false, "value": 0});
+            payBalance => {
+                GetOneUserWallet(user_id)
+                    .then(
+                        Wallet => {
+                            if (Wallet) {
+                                return res.json({
+                                    "response": true,
+                                    "value": Object.assign(JSON.parse(JSON.stringify(payBalance)), {balance_old: Wallet.balance})
+                                });
+                            } else {
+                                CreateWallet(user_id)
+                                    .then(wlnew => {
+                                    }, err => {
+                                        console.log(err);
+                                    });
+                                return res.json({
+                                    "response": true,
+                                    "value": Object.assign(JSON.parse(JSON.stringify(payBalance)), {balance_old: 0})
+                                });
                             }
-                        )
-                } else {
-                  return res.json({"response": false, "value": 0});
-                }
+                        },
+                        err => {
+                            return res.json({"response": false, "value": 0, err: err});
+                        }
+                    );
             },
             err => {
-                return res.json({"response": false, "value": 0});
+                return res.json({"response": false, "value": 0, err: err});
             }
         );
 };
 
 exports.get_price_member_ship = function (req, res) {
-    Membership.find({
-    }, function (err, member_ship) {
-        if (err)  return res.json({"response": false, "value": []});
+    Membership.find({}, function (err, member_ship) {
+        if (err) return res.json({"response": false, "value": []});
         return res.json({"response": true, "value": member_ship});
     });
 };
@@ -305,24 +430,121 @@ exports.downgrade_membership = function () {
     Provider.find({
         member_ship: {
             $gte: 2
-        }
+        },
+        member_ship_time: {
+            $lte: Date.now(),
+        },
     }, function (err, svprovicers) {
-        svprovicers.map((svprovider, key) =>{
-            let {_id, member_ship_time} =  svprovider;
-            if (member_ship_time+(30*24*60*60*1000) <= Date.now()) {
-                Provider.findOneAndUpdate({_id: _id}, {
+        svprovicers.map((svprovider, key) => {
+                Provider.findOneAndUpdate({_id:svprovider._id}, {
                     member_ship: 1,
-                    member_ship_time: Date.now()
+                    member_ship_time: Date.now(),
+                    sendMail:0,
                 }, {new: true}, function (err, provider) {
-                    if (err) return  console.log(err);
+                    if (err) return console.log(err);
+                    if (provider) {
+                        let url  = "/qooservice/php/api_mail_notifyExprie.php";
+                        let data = {
+                            notifyExprie:2,
+                            idProvider:provider._id+"",
+                        };
+                        SendMail(url,data);
+                        GetMemberShip(provider.member_ship)
+                            .then(
+                                MemberShip =>{
+                                    let submem = MemberShip.Sub_Accounts;
+                                    let i = 0;
+                                    FindSubProvider(provider._id)
+                                        .then(
+                                            subprovider =>{
+                                                subprovider.map(prosub=>{
+                                                    i++;
+                                                    if(i > submem) {
+                                                        updateProvider(prosub._id, {
+                                                            isActived:false,
+                                                            member_ship:0,
+                                                        })
+                                                    }
+                                                })
+                                            }
+                                        );
+                                }
+                            );
+
+                    }
                 });
-            }
         });
 
     });
 };
 
+exports.sendmail_membership = function () {
+    Provider.find({
+        member_ship: {
+            $gte: 2
+        },
+        sendMail:0,
+        member_ship_time: {
+            $gte: Date.now() + (5*24*60*60*1000),
+            $lte: Date.now() + (6*24*60*60*1000),
+        },
+    }, function (err, svprovicers) {
+        svprovicers.map((svprovider, key) => {
+            let url  = "/qooservice/php/api_mail_notifyExprie.php";
+            let data = {
+                notifyExprie:1,
+                idProvider:svprovider._id+"",
+            };
+            SendMail(url,data);
+        });
 
+    });
+};
+
+exports.sendmail_membership2 = function () {
+    Provider.find({
+        member_ship: {
+            $gte: 2
+        },
+        sendMail:1,
+        member_ship_time: {
+            $gte: Date.now() + (2*24*60*60*1000),
+            $lte: Date.now() + (3*24*60*60*1000),
+        },
+    }, function (err, svprovicers) {
+        svprovicers.map((svprovider, key) => {
+            let url  = "/qooservice/php/api_mail_notifyExprie.php";
+            let data = {
+                notifyExprie:1,
+                idProvider:svprovider._id+"",
+            };
+            SendMail(url,data);
+        });
+
+    });
+};
+
+//http://localhost:8080/qooservice/php/api_mail_notifyExprie.php
+
+let SendMail = (url,data) =>{
+        //SEND MAIL HERE
+        var options = {
+            method: 'POST',
+            uri: urlapi + url,
+            form:data,
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded'
+            }
+        };
+        request_promise(options)
+            .then(function (body) {
+                // POST succeeded...
+                console.log(body);
+            })
+            .catch(function (err) {
+                if (err)  console.log(err);
+            });
+}
 
 
 

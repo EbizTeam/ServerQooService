@@ -16,6 +16,8 @@ module.exports = {
             deleteBannerTop();
             deleteAdvertiseTop();
             MemberShip.downgrade_membership();
+            MemberShip.sendmail_membership();
+            MemberShip.sendmail_membership2();
         });
     },
     deleteFileChat: function () {
@@ -29,21 +31,23 @@ module.exports = {
 };
 
 let deleteBannerTop = () => {
-    Banner.find({}, function (err, service) {
+    Banner.find({"isActived": true}, function (err, service) {
         if (err) return;
         if (service) {
             let i = service.length;
             service.forEach(function (element) {
-                if (element.create_end <= Date.now()) {
-                    i--;
-                    if (i > 3) {
-                        Banner.deleteOne({_id: element._id}, function (err, res) {
-                            if (err) console.log(err);
-                        });
-                        try {
-                            fs.unlinkSync("./asset" + element.link_banner);
-                        } catch (err) {
-                            console.log(err);
+                if (element.dateEnd !== undefined) {
+                    if (element.dateEnd <= Date.now()) {
+                        i--;
+                        if (i > 3) {
+                            Banner.deleteOne({_id: element._id}, function (err, res) {
+                                if (err) console.log(err);
+                            });
+                            try {
+                                fs.unlinkSync("./asset" + element.link_banner);
+                            } catch (err) {
+                                console.log(err);
+                            }
                         }
                     }
                 }
@@ -53,21 +57,23 @@ let deleteBannerTop = () => {
 }
 
 let deleteAdvertiseTop = () => {
-    Advertise.find({}, function (err, service) {
+    Advertise.find({"isActived": true}, function (err, service) {
         if (err) return;
         if (service) {
             let i = service.length;
             service.forEach(function (element) {
-                if (element.create_end <= Date.now()) {
-                    i--;
-                    if (i > 10) {
-                        Advertise.deleteOne({_id: element._id}, function (err, res) {
-                            if (err) console.log(err);
-                        });
-                        try {
-                            fs.unlinkSync("./asset" + element.link_banner);
-                        } catch (err) {
-                            console.log(err);
+                if (element.dateEnd !== undefined) {
+                    if (element.dateEnd <= Date.now()) {
+                        i--;
+                        if (i > 10) {
+                            Advertise.deleteOne({_id: element._id}, function (err, res) {
+                                if (err) console.log(err);
+                            });
+                            try {
+                                fs.unlinkSync("./asset" + element.link_banner);
+                            } catch (err) {
+                                console.log(err);
+                            }
                         }
                     }
                 }

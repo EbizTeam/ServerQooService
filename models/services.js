@@ -23,6 +23,10 @@ var ServiceData = new mongoose.Schema({
         type: Boolean,
         default:false
     },
+    countView: {
+        type:Number,
+        default:0,
+    },
 });
 
 

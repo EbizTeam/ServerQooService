@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 var ServiceData = new mongoose.Schema({
     services_id: String,
     name: String,
+    detail: String,
     image: [],
     provider_id: String,
     sell_price: String,
@@ -16,7 +17,16 @@ var ServiceData = new mongoose.Schema({
     category_id: String,
     sub_category_id: String,
     create_at: Number,
-    isAuction: Number
+    isAuction: Number,
+    updated_at: Number,
+    active: {
+        type: Boolean,
+        default:false
+    },
+    countView: {
+        type:Number,
+        default:0,
+    },
 });
 
 

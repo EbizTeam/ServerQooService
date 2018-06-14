@@ -588,7 +588,7 @@ router.post("/create",async function (req, res) {
                                                                 if (sevTop) {
                                                                     ServicesTop.findOneAndUpdate(
                                                                         {service_id: req.body.service_id},
-                                                                        {create_end: dat.updateDays(date, sevTop.create_end).getTime()},
+                                                                        {isActived: dat.updateDays(date, sevTop.create_end).getTime()},
                                                                         {new: true},
                                                                         function (err, SVTop) {
                                                                             if (err) {
