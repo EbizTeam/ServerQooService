@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
 //create service data
 var ServiceData = new mongoose.Schema({
     services_id: String,
@@ -16,7 +14,7 @@ var ServiceData = new mongoose.Schema({
     best_for_lady: Number,
     category_id: String,
     sub_category_id: String,
-    create_at: Number,
+    created_at: Number,
     isAuction: Number,
     updated_at: Number,
     active: {
@@ -27,7 +25,37 @@ var ServiceData = new mongoose.Schema({
         type:Number,
         default:0,
     },
+    rate_friendliness_s : {
+        type:Number,
+        default:0,
+    },
+    rate_price_s : {
+        type:Number,
+        default:0,
+    },
+    rate_attitude_s : {
+        type:Number,
+        default:0,
+    },
+    rate_services_s : {
+        type:Number,
+        default:0,
+    },
+    rate_friendliness_d : {
+        type:Number,
+        default:0,
+    },
+    rate_price_d : {
+        type:Number,
+        default:0,
+    },
+    rate_attitude_d : {
+        type:Number,
+        default:0,
+    },
+    rate_services_d : {
+        type:Number,
+        default:0,
+    }
 });
-
-
 module.exports = mongoose.model('services',ServiceData);

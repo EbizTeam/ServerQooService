@@ -2,6 +2,7 @@ const sortBy = require('array-sort');
 const express = require('express');
 const routes = express.Router();
 const Services = require('../models/services');
+const config = require('../config');
 const findProvider = require('../models/finduserfolloweid');
 var Async = require("async");
 
@@ -20,7 +21,7 @@ let sortOject = (service_providers) => {
     });
 }
 
-let path = {'path': '/qooservice/system/public/uploadfile/services/'};
+let path = {'path': config.url_services};
 
 let findMemberShip = (servicesname) => {
     return new Promise((resolve, reject) => {
@@ -74,10 +75,10 @@ let sortandtoservice = async (servicesname, socket) => {
                         function (err, sv) {
                             if (err) return callback(err)
                             if (sv) {
-                                sv.detail = '/qooservice/system/public/provider/servicedetail/' + item.detail;
+                                sv.detail = config.url_servicedetail + item.detail;
                                 // let images = [];
                                 // Async.forEachOf(sv.image, function (image, key, callback) {
-                                //     images.push('/qooservice/system/public/uploadfile/services/' + image);
+                                //     images.push(config.url_services + image);
                                 //     callback();
                                 // }, function (err) {
                                 //     // configs is now a map of JSON data

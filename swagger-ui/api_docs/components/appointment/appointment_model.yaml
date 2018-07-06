@@ -1,0 +1,30 @@
+properties:
+  _id:
+    type: string
+  services_name:
+    type: string
+  services_id:
+    type: string
+  time_for_appointment:
+    type: string
+  status_from_provider:
+    type: string
+  from_id:
+    type: string
+  description:
+    type: string
+  to_id:
+    type: string
+  link_file:
+    type: string
+  user_deleted:
+    type: string
+  time_insert:
+    type: number
+    format: double
+  created_at:
+    type: number
+    format: double
+  updated_at:
+    type: number
+    format: double

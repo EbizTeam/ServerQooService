@@ -4,18 +4,19 @@ const mongoose = require('mongoose');
 const ServiceProviderBuyBannerData = new mongoose.Schema({
     provider_id: String,
     link_banner: String,
-    dateApprove: Date,
-    dateEnd: Date,
+    ads_id:String,
+    dateApprove: Number,
+    dateEnd: Number,
     isActived:{
         type:Boolean,
         default:false
     },
-    create_at:{
-        type:Date,
+    created_at:{
+        type:Number,
         default:Date.now
     },
     updated_at: {
-        type:Date,
+        type:Number,
         default:Date.now
     },
 });

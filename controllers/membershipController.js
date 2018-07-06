@@ -336,7 +336,7 @@ exports.change_member_ship = function (req, res) {
                                                 provider => {
                                                     if (provider) {
                                                         console.log(provider._id,user_id);
-                                                        let url  = "/qooservice/php/api_mail_changeUpdateMemberShip.php";
+                                                        let url  = config.api_mail_changeUpdateMemberShip;
                                                         let data = {
                                                             changeUpdateMs:payBalance.type,
                                                             idProvider:provider._id+"",
@@ -346,6 +346,7 @@ exports.change_member_ship = function (req, res) {
                                                             oldBank:Wallet.balance,
                                                         };
                                                         SendMail(url,data);
+                                                        deleteSubProvider(provider);
                                                         return res.json({
                                                             "response": {
                                                                 provider: provider,
@@ -426,6 +427,30 @@ exports.get_price_member_ship = function (req, res) {
     });
 };
 
+let deleteSubProvider = (provider)=>{
+    GetMemberShip(provider.member_ship)
+        .then(
+            MemberShip =>{
+                let submem = MemberShip.Sub_Accounts;
+                let i = 0;
+                FindSubProvider(provider._id)
+                    .then(
+                        subprovider =>{
+                            subprovider.map(prosub=>{
+                                i++;
+                                if(i > submem) {
+                                    updateProvider(prosub._id, {
+                                        isActived:false,
+                                        member_ship:0,
+                                    })
+                                }
+                            })
+                        }
+                    );
+            }
+        );
+}
+
 exports.downgrade_membership = function () {
     Provider.find({
         member_ship: {
@@ -435,7 +460,8 @@ exports.downgrade_membership = function () {
             $lte: Date.now(),
         },
     }, function (err, svprovicers) {
-        svprovicers.map((svprovider, key) => {
+        if (svprovicers.length > 0){
+            svprovicers.map((svprovider, key) => {
                 Provider.findOneAndUpdate({_id:svprovider._id}, {
                     member_ship: 1,
                     member_ship_time: Date.now(),
@@ -443,38 +469,18 @@ exports.downgrade_membership = function () {
                 }, {new: true}, function (err, provider) {
                     if (err) return console.log(err);
                     if (provider) {
-                        let url  = "/qooservice/php/api_mail_notifyExprie.php";
+                        let url  = config.api_mail_notifyExprie;
                         let data = {
                             notifyExprie:2,
                             idProvider:provider._id+"",
                         };
                         SendMail(url,data);
-                        GetMemberShip(provider.member_ship)
-                            .then(
-                                MemberShip =>{
-                                    let submem = MemberShip.Sub_Accounts;
-                                    let i = 0;
-                                    FindSubProvider(provider._id)
-                                        .then(
-                                            subprovider =>{
-                                                subprovider.map(prosub=>{
-                                                    i++;
-                                                    if(i > submem) {
-                                                        updateProvider(prosub._id, {
-                                                            isActived:false,
-                                                            member_ship:0,
-                                                        })
-                                                    }
-                                                })
-                                            }
-                                        );
-                                }
-                            );
-
+                        deleteSubProvider(provider);
                     }
                 });
-        });
+            });
 
+        }
     });
 };
 
@@ -489,15 +495,16 @@ exports.sendmail_membership = function () {
             $lte: Date.now() + (6*24*60*60*1000),
         },
     }, function (err, svprovicers) {
-        svprovicers.map((svprovider, key) => {
-            let url  = "/qooservice/php/api_mail_notifyExprie.php";
-            let data = {
-                notifyExprie:1,
-                idProvider:svprovider._id+"",
-            };
-            SendMail(url,data);
-        });
-
+        if (svprovicers.length > 0) {
+            svprovicers.map((svprovider, key) => {
+                let url = config.api_mail_notifyExprie;
+                let data = {
+                    notifyExprie: 1,
+                    idProvider: svprovider._id + "",
+                };
+                SendMail(url, data);
+            });
+        }
     });
 };
 
@@ -512,19 +519,18 @@ exports.sendmail_membership2 = function () {
             $lte: Date.now() + (3*24*60*60*1000),
         },
     }, function (err, svprovicers) {
-        svprovicers.map((svprovider, key) => {
-            let url  = "/qooservice/php/api_mail_notifyExprie.php";
-            let data = {
-                notifyExprie:1,
-                idProvider:svprovider._id+"",
-            };
-            SendMail(url,data);
-        });
-
+        if (svprovicers.length > 0) {
+            svprovicers.map((svprovider, key) => {
+                let url = config.api_mail_notifyExprie;
+                let data = {
+                    notifyExprie: 1,
+                    idProvider: svprovider._id + "",
+                };
+                SendMail(url, data);
+            });
+        }
     });
 };
-
-//http://localhost:8080/qooservice/php/api_mail_notifyExprie.php
 
 let SendMail = (url,data) =>{
         //SEND MAIL HERE

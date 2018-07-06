@@ -1,0 +1,19 @@
+properties:
+  _id:
+    type: string
+  provider_id:
+    type: string
+  auction_id:
+    type: string
+  status:
+    type: string
+  from_price:
+    type: integer
+  to_price:
+    type: integer
+  created_at:
+    type: number
+    format: double
+  updated_at:
+    type: number
+    format: double

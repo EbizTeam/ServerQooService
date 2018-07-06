@@ -1,0 +1,67 @@
+#../components/service_comment/create.yaml
+tags:
+  - Requirement
+summary: Add a new Requirement File
+description: ''
+operationId: addNewRequirementFile
+consumes:
+  - application/json
+produces:
+  - application/json
+parameters:
+- name: "price_id"
+  in: "formData"
+  description: "id of manager price"
+  required: false
+  type: "string"
+  example: 5b15075a3add3b12e400126f
+- name: "customer_id"
+  in: "formData"
+  description: "id of consumer"
+  required: false
+  type: "string"
+  example: 5aa0dff5eb462c147020ed49
+- name: "category_id"
+  in: "formData"
+  description: "id of category"
+  required: false
+  type: "string"
+  example: 5ab1ff0ed9088219a0007d25
+- name: "sub_category_id"
+  in: "formData"
+  description: "id of sub category"
+  required: false
+  type: "string"
+  example: 15ab1ff0ed9088219a0007d25
+- name: "time_auction"
+  in: "formData"
+  description: "time want service start"
+  required: false
+  type: "number"
+  format: double
+  example:
+- name: "AuctionFile"
+  in: "formData"
+  description: "file to upload"
+  required: false
+  type: "file"
+responses:
+  'true':
+    description: insert success
+    schema:
+      $ref: 'requiriment_model.yaml'
+  'false':
+    description: Create Appointment fail
+    schema:
+      type: "array"
+      items:
+        type: string
+        example:
+        - "0.  create success"
+        - "1. update wallet success, create auctions fail"
+        - "2. update wallet fail"
+        - "3. Not enough money"
+        - "4. Upload file fail"
+        - "5. Not find provider"
+
+

@@ -1,0 +1,29 @@
+properties:
+  response:
+    type: object
+    properties:
+      _id:
+        type: string
+      user_id:
+        type: string
+      balance:
+        type: integer
+      created_at:
+        type: number
+        format: double
+      updated_at:
+        type: number
+        format: double
+      service_id:
+        type: string
+      provider_id:
+        type: string
+      create_end:
+        type: number
+        format: double
+      create_at:
+        type: number
+        format: double
+  value:
+    type: integer
+    example: 0

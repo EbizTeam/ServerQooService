@@ -24,8 +24,14 @@ var CustomerData = new Mongoose.Schema({
     member_ship: Number,
     member_ship_time: Number,
     confirm_status: Number,
-    isPlatform: Number,
-    create_at: Number,
+    isPlatform:{
+       type: Number,
+        default:0,  //1 là android else ios
+    },
+    created_at: {
+        type: Number,
+        default:Date.now(),
+    },
     updated_at: Number,
 
 });

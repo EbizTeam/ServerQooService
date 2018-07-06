@@ -4,7 +4,10 @@ const Schema = mongoose.Schema;
 
 //AUCTION FUNCTION
 var ManageServicePrice = new Schema({
-    Name : String,
+    Name : {
+        type: String,
+        lowercase: true,
+    },
     Price : Number,
     Description : String,
     message : Number,

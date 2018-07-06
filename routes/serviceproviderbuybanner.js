@@ -10,6 +10,7 @@ const SPrBuyBanner = require('../models/ServiceProviderBuyBannerData');
 const config = require('../config');
 const Async = require("async");
 const sortBy = require('array-sort');
+const SendMail = require('../controllers/sendMailController');
 
 
 let UpdateWallet = (userID, balance) => {
@@ -28,7 +29,7 @@ let UpdateWallet = (userID, balance) => {
             resolve(res);
         });
     });
-}
+};
 
 let FindWallet = (user_id) => {
     return new Promise((resolve, reject) => {
@@ -39,7 +40,7 @@ let FindWallet = (user_id) => {
             resolve(wl);
         });
     });
-}
+};
 
 let find_manage_service_price = () => {
     return new Promise((resolve, reject) => {
@@ -50,21 +51,18 @@ let find_manage_service_price = () => {
             resolve(svtop);
         })
     })
-}
+};
 
 //upload file
-var Storage = multer.diskStorage({
-
+let Storage = multer.diskStorage({
     destination: config.APath + '/asset/banner/',
     filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() +
             path.extname(file.originalname));
     }
-
-
 });
 
-var upload = multer({
+let upload = multer({
     storage: Storage,
     fileFilter: function (req, file, callback) {
         var ext = path.extname(file.originalname).toLowerCase();
@@ -83,20 +81,24 @@ var upload = multer({
 
 
 router.post("/inser_banner", function (req, res) {
-
+    return res.json({
+        "response": "api ngừng hoạt động 06/28/2018",
+        "value": 5
+    });
 
     let Error = [];
     Error.push("1. update wallet success, create data buy banner fail");
     Error.push("2. update wallet fail");
     Error.push("3. Not enough money");
     Error.push("4. Upload Image banner fail");
+    Error.push("5. Upload Image banner fail");
 
-    var dat = new Date();
+    let dat = new Date();
     Date.prototype.addDays = function (days) {
-        var dat = new Date(this.valueOf());
+        let dat = new Date(this.valueOf());
         dat.setDate(dat.getDate() + days);
         return dat;
-    }
+    };
     upload(req, res, function (err) {
         if (err) {
             res.json({
@@ -117,11 +119,11 @@ router.post("/inser_banner", function (req, res) {
                                                 .then(
                                                     wal => {
                                                         if (wal) {
-                                                            HistoryPricement.create({
+                                                            //lưu lịch sử giao dịch
+                                                            Historypayment.create({
                                                                 user_id: req.body.provider_id,
                                                                 payment: Price,
                                                                 service: message,
-                                                                create_at: Date.now(),
                                                                 content_service:Name,
                                                             }, function (err, htr) {
                                                                 if (err) console.log(err);
@@ -132,7 +134,6 @@ router.post("/inser_banner", function (req, res) {
                                                                 provider_id: req.body.provider_id,
                                                                 link_banner: '/banner/' + req.file.filename,
                                                                 // create_end: dat.addDays(date).getTime(),
-                                                                create_at: Date.now()
                                                             }, function (err, SPBBanner) {
                                                                 if (err) {
                                                                     res.json({
@@ -141,12 +142,18 @@ router.post("/inser_banner", function (req, res) {
                                                                     });
                                                                 }
                                                                 else {
+                                                                    let data = {
+                                                                        idProvider:req.body.provider_id+"",
+                                                                        notifyCreate:1//Banner
+                                                                        //notifyCreate:2//slide
+                                                                        //notifyCreate:3//service
+                                                                    };
+                                                                    SendMail.send_mail(config.url_mail_notify,data);
                                                                     res.json({
                                                                         "response": SPBBanner,
                                                                         "value": 0
                                                                     });
                                                                 }
-                                                                ;
                                                             });
 
                                                         }
@@ -200,7 +207,7 @@ let FindBanner = () => {
             resolve(res);
         });
     });
-}
+};
 
 let FindProviderID = (id) => {
     return new Promise((resolve, reject) => {
@@ -211,7 +218,7 @@ let FindProviderID = (id) => {
             resolve(user);
         });
     });
-}
+};
 
 let findMemberShip = (Baner) => {
     return new Promise((resolve, reject) => {
@@ -224,7 +231,7 @@ let findMemberShip = (Baner) => {
                             service_providers.push({
                                 provider_id: item.provider_id,
                                 link_banner: item.link_banner,
-                                create_at: item.create_at,
+                                created_at: item.created_at,
                                 create_end: item.create_end,
                                 member_ship: provider.member_ship,
                                 no_of_hight_recommended: provider.no_of_hight_recommended,
@@ -244,7 +251,7 @@ let findMemberShip = (Baner) => {
             resolve(service_providers);
         });
     });
-}
+};
 
 let sortOject = (service_providers) => {
     return new Promise((resolve, reject) => {
@@ -257,7 +264,7 @@ let sortOject = (service_providers) => {
         }
         else return reject(new Error('loi tim id: ' + id));
     });
-}
+};
 
 
 let sorttopBanner = async (res) => {
@@ -302,7 +309,7 @@ let sorttopBanner = async (res) => {
             //console.log(err);
         }
     );
-}
+};
 
 //add a new to the db
 router.get("/get_banner_top", async function (req, res) {

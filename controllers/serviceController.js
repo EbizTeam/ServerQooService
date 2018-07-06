@@ -3,8 +3,20 @@ const Services = require('../models/services');
 const ServicesTop = require('../models/servicesbuytop');
 const Async = require("async");
 const sortBy = require('array-sort');
-const Comment = require('../models/comments');
-const ServiceProvider = require('../models/serviceproviderdata');
+const Comment = require('../models/serviceComments');
+const config = require('../config');
+const Provider = require('../controllers/providerController');
+
+let findOneServiceId = (_id) => {
+    return new Promise((resolve, reject) => {
+        Services.findOne({_id:_id}, function (err, sv) {
+            if (err) return reject(err);
+                // configs is now a map of JSON data
+                resolve(sv);
+        });
+    });
+};
+exports.findOneServiceId = findOneServiceId;
 
 let FindServiceTop = () => {
     return new Promise((resolve, reject) => {
@@ -15,7 +27,7 @@ let FindServiceTop = () => {
                 Services.findOne({"_id": item.service_id, active: true}, function (err, service) {
                     if (err) return callback(err);
                     if (service) {
-                        service.updated_at = item.create_at;
+                        service.updated_at = item.created_at;
                         allService.push(service);
                     } else {
                         return callback(err);
@@ -37,29 +49,26 @@ let findProviderService = (service) => {
     return new Promise((resolve, reject) => {
         let allProvider = [];
         Async.forEachOf(service, function (item, key, callback) {
-            ServiceProvider.findOne({"_id": item.provider_id}, function (err, SVPro) {
-                if (err) return callback(err);
-                if (SVPro) {
-                    item.detail = '/qooservice/system/public/provider/servicedetail/' + item.detail;
-                    // let images = [];
-                    // Async.forEachOf(item.image, function (image, key, callback) {
-                    //     images.push('/qooservice/system/public/uploadfile/services/' + image);
-                    //     callback();
-                    // }, function (err) {
-                    //     // configs is now a map of JSON data
-                    //     item.image = images;
-                    // });
-                    allProvider.push(Object.assign(JSON.parse(JSON.stringify(item)), {
-                        member_ship: SVPro.member_ship,
-                        member_ship_time: SVPro.member_ship_time,
-                        no_of_hight_recommended: SVPro.no_of_hight_recommended,
-                        no_of_recommended: SVPro.no_of_recommended,
-                        no_of_neutral: SVPro.no_of_neutral,
-                        no_of_not_recommended: SVPro.no_of_not_recommended,
-                    }));
-                }
-                callback();
-            });
+            Provider.GetOneProvider(item.provider_id)
+                .then(
+                    SVPro => {
+                        if (SVPro) {
+                            item.detail = config.url_servicedetail + item.detail;
+                            allProvider.push(Object.assign(JSON.parse(JSON.stringify(item)), {
+                                member_ship: SVPro.member_ship,
+                                member_ship_time: SVPro.member_ship_time,
+                                no_of_hight_recommended: SVPro.no_of_hight_recommended,
+                                no_of_recommended: SVPro.no_of_recommended,
+                                no_of_neutral: SVPro.no_of_neutral,
+                                no_of_not_recommended: SVPro.no_of_not_recommended,
+                            }));
+                        }
+                        callback();
+                    },
+                    err => {
+                        return callback(err);
+                    }
+                );
         }, function (err) {
             if (err) reject(err);
             // configs is now a map of JSON data
@@ -122,15 +131,7 @@ let FindServiceTopComment = () => {
         Services.find({active: true}, function (err, services) {
             if (err) return reject(err);
             Async.forEachOf(services, function (item, key, callback) {
-                item.detail = '/qooservice/system/public/provider/servicedetail/' + item.detail;
-                // let images = [];
-                // Async.forEachOf(item.image, function (image, key, callback) {
-                //     images.push('/qooservice/system/public/uploadfile/services/' + image);
-                //     callback();
-                // }, function (err) {
-                //     // configs is now a map of JSON data
-                //     item.image = images;
-                // });
+                item.detail = config.url_servicedetail + item.detail;
                 Comment.find({services_id: item._id}, function (err, comms) {
                     if (err) return callback(err)
                     if (comms) {
@@ -182,7 +183,6 @@ let FindServiceTopComment = () => {
                                     break;
                                 default:
                             }
-
                             callback();
                         }, function (err) {
                             // configs is now a map of JSON data
@@ -271,46 +271,41 @@ let pagingTopServiceComment = (page) => {
 let FindServiceProvider = () => {
     return new Promise((resolve, reject) => {
         let allService = [];
-        ServiceProvider.find({isActived: true}, function (err, providers) {
-            if (err) return reject(err);
-            Async.forEachOf(providers, function (svprovider, key, callback) {
-                Services.find({provider_id: svprovider._id, active: true}, function (err, services) {
-                    if (err) return callback(err);
-                    if (services.length > 0) {
-                        Async.forEachOf(services.slice(0, 3), function (serv, key, callback) {
-                            serv.detail = '/qooservice/system/public/provider/servicedetail/' + serv.detail;
-                            // let images = [];
-                            // Async.forEachOf(serv.image, function (image, key, callback) {
-                            //     images.push('/qooservice/system/public/uploadfile/services/' + image);
-                            //     callback();
-                            // }, function (err) {
-                            //     // configs is now a map of JSON data
-                            //     if (err) reject(err);
-                            //     serv.image = images;
-                            // });
-                            allService.push(Object.assign(JSON.parse(JSON.stringify(serv)), {
-                                member_ship: svprovider.member_ship,
-                                member_ship_time: svprovider.member_ship_time,
-                                no_of_hight_recommended: svprovider.no_of_hight_recommended,
-                                no_of_recommended: svprovider.no_of_recommended,
-                                no_of_neutral: svprovider.no_of_neutral,
-                                no_of_not_recommended: svprovider.no_of_not_recommended,
-                            }));
+        Provider.GetAllProviderActive()
+            .then(
+                providers => {
+                    Async.forEachOf(providers, function (svprovider, key, callback) {
+                        Services.find({provider_id: svprovider._id, active: true}, function (err, services) {
+                            if (err) return callback(err);
+                            if (services.length > 0) {
+                                Async.forEachOf(services.slice(0, 3), function (serv, key, callback) {
+                                    serv.detail = config.url_servicedetail + serv.detail;
+                                    allService.push(Object.assign(JSON.parse(JSON.stringify(serv)), {
+                                        member_ship: svprovider.member_ship,
+                                        member_ship_time: svprovider.member_ship_time,
+                                        no_of_hight_recommended: svprovider.no_of_hight_recommended,
+                                        no_of_recommended: svprovider.no_of_recommended,
+                                        no_of_neutral: svprovider.no_of_neutral,
+                                        no_of_not_recommended: svprovider.no_of_not_recommended,
+                                    }));
+                                    callback();
+                                }, function (err) {
+                                });
+                            }
                             callback();
-                        }, function (err) {
                         });
-                    }
-                    callback();
-                });
-            }, function (err) {
-                // configs is now a map of JSON data
-                if (err) reject(err);
-                else {
-                    resolve(allService);
+                    }, function (err) {
+                        // configs is now a map of JSON data
+                        if (err) reject(err);
+                        else {
+                            resolve(allService);
+                        }
+                    });
+                },
+                err => {
+                    return reject(err);
                 }
-            });
-        });
-
+            );
     });
 }
 
@@ -361,15 +356,7 @@ let FindServiceNew = () => {
         Services.find({active: true}, function (err, services) {
             if (err) return reject(err);
             Async.forEachOf(services, function (item, key, callback) {
-                item.detail = '/qooservice/system/public/provider/servicedetail/' + item.detail;
-                // let images = [];
-                // Async.forEachOf(item.image, function (image, key, callback) {
-                //     images.push('/qooservice/system/public/uploadfile/services/' + image);
-                //     callback();
-                // }, function (err) {
-                //     // configs is now a map of JSON data
-                //     item.image = images;
-                // });
+                item.detail = config.url_servicedetail + item.detail;
                 allService.push(item);
                 callback();
             }, function (err) {
@@ -388,7 +375,7 @@ let FindServiceNew = () => {
 let sortServiceNew = (services) => {
     return new Promise(async (resolve, reject) => {
         if (services) {
-            let ascending = await sortBy(services, 'name',{reverse: false});
+            let ascending = await sortBy(services, 'name', {reverse: false});
             let create_at = await sortBy(ascending, 'create_at', {reverse: true});
             resolve(create_at);
         }
@@ -429,17 +416,9 @@ let FindServiceSale = () => {
         Services.find({active: true}, function (err, services) {
             if (err) return reject(err);
             Async.forEachOf(services, function (item, key, callback) {
-                item.detail = '/qooservice/system/public/provider/servicedetail/' + item.detail;
-                // let images = [];
-                // Async.forEachOf(item.image, function (image, key, callback) {
-                //     images.push('/qooservice/system/public/uploadfile/services/' + image);
-                //     callback();
-                // }, function (err) {
-                //     // configs is now a map of JSON data
-                //     item.image = images;
-                // });
-                allService.push(Object.assign(JSON.parse(JSON.stringify(item)),{
-                    percent:item.old_price/item.sell_price
+                item.detail = config.url_servicedetail + item.detail;
+                allService.push(Object.assign(JSON.parse(JSON.stringify(item)), {
+                    percent: item.old_price / item.sell_price
                 }));
                 callback();
             }, function (err) {
@@ -458,7 +437,7 @@ let FindServiceSale = () => {
 let sortServiceSale = (services) => {
     return new Promise(async (resolve, reject) => {
         if (services) {
-            let ascending = await sortBy(services, 'name',{reverse: false});
+            let ascending = await sortBy(services, 'name', {reverse: false});
             let percent = await sortBy(ascending, 'percent', {reverse: true});
             resolve(percent);
         }
@@ -494,12 +473,12 @@ let pagingTopServiceSale = (page) => {
 exports.list_all_services = async function (req, res) {
     let page = 1;
     let allServices = [];
-   await pagingTopService(page)
+    await pagingTopService(page)
         .then(
             serSor => {
                 allServices.push({
-                    type:1,
-                    topbuy:serSor
+                    type: 1,
+                    topbuy: serSor
                 })
             },
             err => {
@@ -511,8 +490,8 @@ exports.list_all_services = async function (req, res) {
         .then(
             serSor => {
                 allServices.push({
-                    type:2,
-                    topComment:serSor
+                    type: 2,
+                    topComment: serSor
                 })
             },
             err => {
@@ -523,8 +502,8 @@ exports.list_all_services = async function (req, res) {
         .then(
             serSor => {
                 allServices.push({
-                    type:3,
-                    topMembership:serSor
+                    type: 3,
+                    topMembership: serSor
                 })
             },
             err => {
@@ -536,8 +515,8 @@ exports.list_all_services = async function (req, res) {
         .then(
             serSor => {
                 allServices.push({
-                    type:4,
-                    servicenew:serSor
+                    type: 4,
+                    servicenew: serSor
                 })
             },
             err => {
@@ -548,8 +527,8 @@ exports.list_all_services = async function (req, res) {
         .then(
             serSor => {
                 allServices.push({
-                    type:5,
-                    servicesale:serSor
+                    type: 5,
+                    servicesale: serSor
                 })
             },
             err => {
@@ -570,6 +549,20 @@ exports.list_all_top_buy_services = function (req, res) {
                 return res.json({"response": err, "value": false});
             }
         );
+};
+
+exports.list_all_top_membership_services_page = function (page) {
+    return new Promise(async (resolve, reject) => {
+        pagingTopServiceMembership(page)
+            .then(
+                serSor => {
+                    return resolve(serSor.slice((0 + page - 1) * 10, page * 10));
+                },
+                err => {
+                    return reject(err);
+                }
+            );
+    });
 };
 
 exports.list_all_top_comment_services = function (req, res) {
@@ -629,9 +622,9 @@ exports.list_all_services_sale = function (req, res) {
 let FindServiceProviderID = (providerID) => {
     return new Promise(async (resolve, reject) => {
         Services.find({
-            provider_id:providerID,
+            provider_id: providerID,
             active: true,
-        },function (err, services) {
+        }, function (err, services) {
             if (err) return reject(err);
             resolve(services);
         });
@@ -642,7 +635,7 @@ let FindServiceProviderID = (providerID) => {
 let sortService = (services) => {
     return new Promise(async (resolve, reject) => {
         if (services) {
-            let ascending = await sortBy(services, 'create_at',{reverse: false});
+            let ascending = await sortBy(services, 'create_at', {reverse: false});
             let percent = await sortBy(ascending, 'name', {reverse: true});
             resolve(percent);
         }
@@ -652,7 +645,7 @@ let sortService = (services) => {
 
 
 // paging service new
-let pagingServiceProvider = (page,provierID) => {
+let pagingServiceProvider = (page, provierID) => {
     return new Promise(async (resolve, reject) => {
         FindServiceProviderID(provierID)
             .then(
@@ -677,7 +670,7 @@ let pagingServiceProvider = (page,provierID) => {
 
 exports.list_service_follow_provider = function (req, res) {
     let {page, provider_id} = req.body;
-    pagingServiceProvider(page,provider_id)
+    pagingServiceProvider(page, provider_id)
         .then(
             serSor => {
                 return res.json({"response": serSor, "value": true});

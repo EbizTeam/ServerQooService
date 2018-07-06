@@ -1,0 +1,25 @@
+properties:
+  _id:
+    type: string
+  customer_id:
+    type: string
+  category_id:
+    type: string
+  sub_category_id:
+    type: string
+  status:
+    type: string
+  time_auction:
+    type: integer
+  num_of_order_list:
+    type: integer
+  link_file:
+    type: string
+  user_deleted:
+    type: string
+  created_at:
+    type: number
+    format: double
+  updated_at:
+    type: number
+    format: double

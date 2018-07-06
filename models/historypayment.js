@@ -6,14 +6,13 @@ var HistoryPaymentData = new mongoose.Schema({
     service:Number,
     content_service:String,
     updated_at : {
-        type: Date,
+        type: Number,
         default:Date.now
     },
     created_at : {
-        type: Date,
+        type: Number,
         default:Date.now
     },
-
 });
 
 module.exports = mongoose.model('HistoryPaymentDatas',HistoryPaymentData);

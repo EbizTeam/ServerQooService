@@ -52,6 +52,11 @@ let find_manage_service_price = () => {
 
 //add a new to the db
 router.post('/', function (req, res) {
+    return  res.json({
+        "response": false,
+        "message": 1000,
+        "value": "loi api khong con su dung nua"
+    });
     var storage = multer.diskStorage({ //multers disk storage settings
         destination: function (req, file, cb) {
             cb(null, config.APath + '/asset/auction_file/');
@@ -94,7 +99,6 @@ router.post('/', function (req, res) {
                                                                 payment: Price,
                                                                 user_id: req.body.customer_id,
                                                                 service: message,
-                                                                create_at: Date.now(),
                                                                 content_service:Name,
                                                             }, function (err, htr) {
                                                                 if (err) console.log(err);
@@ -111,7 +115,6 @@ router.post('/', function (req, res) {
                                                                 num_of_order_list: 0,
                                                                 user_deleted: "",
                                                                 link_file: "auction_file/" + req.file.filename,
-                                                                create_at: Date.now(),
                                                             });
 
                                                             Createaution(new_auction)
@@ -144,7 +147,6 @@ router.post('/', function (req, res) {
                                                                 "value": "Cap nhat gio hang bi loi"
                                                             });
                                                         }
-
                                                     }
                                                 );
 

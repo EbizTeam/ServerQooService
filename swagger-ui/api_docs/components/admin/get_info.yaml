@@ -1,0 +1,14 @@
+tags:
+  - Admin
+summary: Get admin info
+description: ''
+operationId: getAdminInfo
+produces:
+  - application/json
+responses:
+  'true':
+    description: successful return array value
+    schema:
+      $ref: 'admin_model.yaml'
+  'false':
+    description: Invalid price supplied

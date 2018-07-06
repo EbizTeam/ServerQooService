@@ -1,0 +1,72 @@
+#../components/service_comment/create.yaml
+tags:
+  - Appointment
+summary: Add a new Appointment File
+description: ''
+operationId: addNewAppointmentFile
+consumes:
+  - application/json
+produces:
+  - application/json
+parameters:
+- name: "price_id"
+  in: "formData"
+  description: "id of manager price"
+  required: false
+  type: "string"
+  example: 5b35dc759b42660f84002ef7
+- name: "from_id"
+  in: "formData"
+  description: "id of consumer"
+  required: false
+  type: "string"
+  example: 5aa0dff5eb462c147020ed49
+- name: "to_id"
+  in: "formData"
+  description: "id of service provider"
+  required: false
+  type: "string"
+  example: 5aa0ddeceb462c147020ed46
+- name: "services_id"
+  in: "formData"
+  description: "id services"
+  required: false
+  type: "string"
+  example: 5aa7826339cd5c11a02d76ab
+- name: "services_name"
+  in: "formData"
+  description: "name services"
+  required: false
+  type: "string"
+  example: "Air Condition Repair"
+- name: "time_for_appointment"
+  in: "formData"
+  description: "time for appointment"
+  required: false
+  type: "number"
+  format: "double"
+  example: 1530263820000
+- name: "Appointment"
+  in: "formData"
+  description: "file to upload"
+  required: false
+  type: "file"
+responses:
+  'true':
+    description: insert success
+    schema:
+      $ref: 'appointment_model.yaml'
+  'false':
+    description: Create Appointment fail
+    schema:
+      type: "array"
+      items:
+        type: string
+        example:
+        - "0.  create success"
+        - "1.  update wallet success, create appoint fail"
+        - "2. update wallet fail"
+        - "3. Not enough money"
+        - "4. Upload Image banner fail"
+
+

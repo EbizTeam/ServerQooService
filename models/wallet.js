@@ -4,11 +4,11 @@ var MyWallet = new Mongoose.Schema({
     user_id: String,
     balance: Number,
     updated_at : {
-        type: Date,
+        type: Number,
         default:Date.now
     },
     created_at : {
-        type: Date,
+        type: Number,
         default:Date.now
     }
 });

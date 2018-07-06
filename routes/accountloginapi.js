@@ -15,7 +15,7 @@ var passwordHash = require("node-php-password");
 //add a new to the db
 router.post('/', function (req, res, next) {
     //check account on service provider
-    pathavatar = '/qooservice/system/public/uploadfile/avatar/';
+    pathavatar = config.pathavatar;
 
     FindEmail(req.body.email).then((account) => {
         if (account) {

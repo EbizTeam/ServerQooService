@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Providers = require('../models/serviceproviderdata');
 const Customer  = require('../models/customerdata');
+const CountRegister  = require('../controllers/countRegisterController');
 //~ var passwordHash = require('password-hash');
 const passwordHash = require("node-php-password");
 const Wallet = require('../models/wallet');
@@ -60,7 +61,6 @@ let RegisterCustomer = (customer) =>{
             occupation: customer.occupation,
             //Set true value for test
             isActived: false,
-            create_at: Date.now(),
             member_ship: 0,
             member_ship_time: 0,
             confirm_status: 0
@@ -90,7 +90,7 @@ let SendMail = (email) =>{
         //SEND MAIL HERE
         var options = {
             method: 'POST',
-            uri: urlapi + '/qooservice/php/api_mail_register.php',
+            uri: urlapi + config.api_mail_register,
             form: {
                 // Like <input type="text" name="name">
                 PtxtMAil: email
@@ -150,6 +150,11 @@ router.post("/", function (req, res) {
                                                     );
                                             }
                                         });
+                                        // count số lượng đăng ký
+                                        if (req.body.isPlatform !== undefined && req.body.isPlatform === 1) {
+                                            CountRegister.count_register(1,false);
+                                        } else { CountRegister.count_register(2,false); }
+
                                         SendMail(user.email)
                                             .then(
                                                 result => {

@@ -1,0 +1,14 @@
+tags:
+  - Full Page Ads Display
+summary: Get price Full Page Ads Display
+description: ''
+operationId: GetPriceFullPageAdsDisplay
+produces:
+  - application/json
+responses:
+  'true':
+    description: successful return array value
+    schema:
+      $ref: 'price_model.yaml'
+  'false':
+    description: Invalid price supplied

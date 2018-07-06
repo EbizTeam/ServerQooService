@@ -10,10 +10,10 @@ var TrendsSchema = new Schema({
         default:0
     },
     updated_at : {
-        type: Date,
+        type: Number,
     },
     created_at : {
-        type: Date,
+        type: Number,
         default:Date.now
     },
 });

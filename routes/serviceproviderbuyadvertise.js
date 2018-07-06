@@ -10,7 +10,7 @@ const SPrBuyAdvertise = require('../models/ServiceProviderBuyAdvertiseData');
 const config = require('../config');
 const Async = require("async");
 const sortBy = require('array-sort');
-
+const SendMail = require('../controllers/sendMailController');
 
 let UpdateWallet = (userID, balance) => {
     return new Promise((resolve, reject) => {
@@ -88,7 +88,10 @@ router.post("/inser_advertise", function (req, res) {
     Error.push("2. update wallet fail");
     Error.push("3. Not enough money");
     Error.push("4. Upload Image banner fail");
-
+    return res.json({
+        "response": "ngung hoat dong 29/06/2017",
+        "value": 4
+    });
     var dat = new Date();
     Date.prototype.addDays = function (days) {
         var dat = new Date(this.valueOf());
@@ -119,7 +122,6 @@ router.post("/inser_advertise", function (req, res) {
                                                     payment: Price,
                                                     user_id: req.body.provider_id,
                                                     service: message,
-                                                    create_at: Date.now(),
                                                     content_service:Name,
                                                 }, function (err, htr) {
                                                     if (err) console.log(err);
@@ -131,7 +133,6 @@ router.post("/inser_advertise", function (req, res) {
                                                     provider_id: req.body.provider_id,
                                                     link_banner: '/advertise/' + req.file.filename,
                                                     // create_end: dat.addDays(date).getTime(),
-                                                    create_at: Date.now()
                                                 }, function (err, SPBBanner) {
                                                     if (err) {
                                                         console.log(err);
@@ -141,6 +142,14 @@ router.post("/inser_advertise", function (req, res) {
                                                         });
                                                     }
                                                     else {
+                                                        let url  = config.url_mail_notify;
+                                                        let data = {
+                                                            idProvider:req.body.provider_id+"",
+                                                            //notifyCreate:1//Banner
+                                                            notifyCreate:2//slide
+                                                            //notifyCreate:3//service
+                                                        };
+                                                        SendMail.send_mail(url,data);
                                                         res.json({
                                                             "response": SPBBanner,
                                                             "value": 0
@@ -227,7 +236,7 @@ let findMemberShip = (Baner) => {
                             service_providers.push({
                                 provider_id: item.provider_id,
                                 link_banner: item.link_banner,
-                                create_at: item.create_at,
+                                created_at: item.created_at,
                                 create_end: item.create_end,
                                 member_ship: provider.member_ship,
                                 no_of_hight_recommended: provider.no_of_hight_recommended,

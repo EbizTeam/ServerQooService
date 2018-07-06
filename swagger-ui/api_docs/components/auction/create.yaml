@@ -1,0 +1,59 @@
+#../components/service_comment/create.yaml
+tags:
+  - Auction
+summary: Add a new Auction service provider for consummer
+description: ''
+operationId: addNewAuction
+consumes:
+- application/x-www-form-urlencoded
+produces:
+  - application/json
+parameters:
+- name: "price_id"
+  in: "formData"
+  description: "id of manager price"
+  required: false
+  type: "string"
+  example: 5b1507113add3b12e400126d
+- name: "provider_id"
+  in: "formData"
+  description: "id of service provider"
+  required: false
+  type: "string"
+  example: 5aa0ddeceb462c147020ed46
+- name: "auction_id"
+  in: "formData"
+  description: "id of auction"
+  required: false
+  type: "string"
+  example: 5b3c32a8e177164c13000029
+- name: "from_price"
+  in: "formData"
+  description: ""
+  required: false
+  type: "integer"
+  example: 10
+- name: "to_price"
+  in: "formData"
+  description: ""
+  required: false
+  type: "integer"
+  example: 10
+responses:
+  'true':
+    description: insert success
+    schema:
+      $ref: 'auction_model.yaml'
+  'false':
+    description: Create Auction service provider fail
+    schema:
+      type: "array"
+      items:
+        type: string
+        example:
+        - "0. create success"
+        - "1. update wallet success, create Auction service provider fail"
+        - "2. update wallet fail"
+        - "3. Not enough money"
+
+

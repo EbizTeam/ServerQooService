@@ -24,8 +24,8 @@ module.exports = {
         cron.schedule('0 */12 * * *', function () {
             console.log('running a task every 12 hour');
             deletefilechat();
-            deleteCommentprovider();
-            deleteDocumentRequiment();
+            //deleteCommentprovider();
+            //deleteDocumentRequiment();
         });
     }
 };
@@ -120,7 +120,7 @@ let deleteCommentprovider = () => {
                     dat.setDate(dat.getDate() + days);
                     return dat;
                 }
-                if ((element.create_at <= dat.addDays(-2).getTime()) && (element.active == false)) {
+                if ((element.created_at <= dat.addDays(-2).getTime()) && (element.active == false)) {
                     Delscomment(element._id)
                         .then(
                             res => {
@@ -199,7 +199,7 @@ let deleteDocumentRequiment = () => {
                     dat.setDate(dat.getDate() + days);
                     return dat;
                 }
-                if ((element.create_at <= dat.addDays(-7).getTime())) {
+                if ((element.created_at <= dat.addDays(-7).getTime())) {
                     DelRequiment(element._id)
                         .then(
                             res => {

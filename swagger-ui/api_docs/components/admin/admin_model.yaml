@@ -1,0 +1,31 @@
+properties:
+  displayCurentcy:
+    type: string
+    example: "Chips"
+  rateMoney:
+    type: number
+    format: double
+    example: 0.5
+  curentcy:
+    type: string
+    example: "SGD"
+  price:
+    type: array
+    items:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: "5b1a2be47afed81b44004cbb"
+        name:
+          type: string
+          example: "Send Appointment to Service provider"
+        price:
+          type: integer
+          example: 150
+        message:
+          type: integer
+          example: 0
+        date:
+          type: integer
+          example: 7

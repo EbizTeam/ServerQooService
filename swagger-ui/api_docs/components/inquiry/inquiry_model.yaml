@@ -1,0 +1,25 @@
+properties:
+  _id:
+    type: string
+  serviceID:
+    type: string
+  consumerID:
+    type: string
+  providerID:
+    type: string
+  content:
+    type: string
+  agree:
+    type: integer
+  consumer:
+    type: object
+  provider:
+    type: object
+  services:
+    type: object
+  created_at:
+    type: number
+    format: double
+  updated_at:
+    type: number
+    format: double

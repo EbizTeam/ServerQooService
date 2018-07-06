@@ -7,6 +7,7 @@ const Services = require('../models/services');
 const spspayment = require('../models/payments');
 const spscategory = require('../models/spscategory');
 const categoryM = require('../models/category');
+const config = require('../config');
 
 
 
@@ -45,8 +46,8 @@ router.get("/get_sp_category/:category_id/:provider_id", function (req, res) {
 // get category
 router.get("/get_all_category", function (req, res) {
     // đường dẫn tới hình ảnh web admin
-    let path = "/qooservice/system/public/uploadfile/category/";
-    let pathsub = "/qooservice/system/public/uploadfile/category/sub/";
+    let path = config.url_category;
+    let pathsub = config.url_category+"sub/";
     categoryM.find({}, function (err, cates) {
         res.json({
             "value": cates,
@@ -58,8 +59,8 @@ router.get("/get_all_category", function (req, res) {
 });
 router.get("/get_service", function (req, res) {
     let data = [];
-    let path = {'path': '/qooservice/system/public/uploadfile/services/'};
-    let pathdetail = {'pathdetail': '/qooservice/system/public/provider/servicedetail/'};
+    let path = {'path': config.url_services};
+    let pathdetail = {'pathdetail': config.url_servicedetail};
 
 
     Services.find({'flash_sale': 1}, function (err, flash_sale) {
@@ -83,7 +84,7 @@ router.get("/get_service", function (req, res) {
 //get flash sale
 
 router.get("/get_flash_sale", function (req, res) {
-    let pathdetail = {'pathdetail': '/qooservice/system/public/provider/servicedetail/'};
+    let pathdetail = {'pathdetail': config.url_servicedetail};
     Services.find({'flash_sale': 1}, function (err, flash_sale) {
         res.json({'values': flash_sale, 'pathdetail': pathdetail});
     }).sort({"_id": -1});
@@ -91,7 +92,7 @@ router.get("/get_flash_sale", function (req, res) {
 });
 
 router.get("/get_for_your_family", function (req, res) {
-    let pathdetail = {'pathdetail': '/qooservice/system/public/provider/servicedetail/'};
+    let pathdetail = {'pathdetail': config.url_servicedetail};
     Services.find({'for_your_family': 1}, function (err, for_your_family) {
         res.json({'values': for_your_family, 'pathdetail': pathdetail});
     }).sort({"_id": -1});
@@ -99,7 +100,7 @@ router.get("/get_for_your_family", function (req, res) {
 });
 
 router.get("/get_top_service", function (req, res) {
-    let pathdetail = {'pathdetail': '/qooservice/system/public/provider/servicedetail/'};
+    let pathdetail = {'pathdetail': config.url_servicedetail};
     Services.find({'top_service': 1}, function (err, top_service) {
         res.json({'values': top_service, 'pathdetail': pathdetail});
     }).sort({"_id": -1});
@@ -107,7 +108,7 @@ router.get("/get_top_service", function (req, res) {
 });
 
 router.get("/get_best_for_lady", function (req, res) {
-    let pathdetail = {'pathdetail': '/qooservice/system/public/provider/servicedetail/'};
+    let pathdetail = {'pathdetail': config.url_servicedetail};
     Services.find({'best_for_lady': 1}, function (err, best_for_lady) {
         res.json({'values': best_for_lady, 'pathdetail': pathdetail});
     }).sort({"_id": -1});
@@ -115,7 +116,7 @@ router.get("/get_best_for_lady", function (req, res) {
 });
 
 router.get("/get_service_category/:subcategory", function (req, res) {
-    var path = '/qooservice/system/public/uploadfile/services/';
+    var path = config.url_services;
     Services.find({'sub_category_id': req.params.subcategory}, function (err, services) {
         if (err) {
             res.json({'result': false});

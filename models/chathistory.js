@@ -10,7 +10,15 @@ const ChatHistorySchema = new Schema({
     Type: String,
     mFistName: String,
     mLastName: String,
-    mImage:String
+    mImage:String,
+    updated_at : {
+        type: Number,
+        default:Date.now
+    },
+    created_at : {
+        type: Number,
+        default:Date.now
+    },
 });
 
 const Chathistory = mongoose.model('Chathistory', ChatHistorySchema);

@@ -1,0 +1,41 @@
+#../components/service_comment/create.yaml
+tags:
+  - Classified Ads Display
+summary: Add a new Classified Ads Display
+description: ''
+operationId: addClassifiedAdsDisplay
+consumes:
+- application/x-www-form-urlencoded
+produces:
+- application/json
+parameters:
+- name: "service_id"
+  in: "formData"
+  description: "id of services"
+  required: false
+  type: "string"
+- name: "provider_id"
+  in: "formData"
+  description: "id of service provider"
+  required: false
+  type: "string"
+- name: "ads_id"
+  in: "formData"
+  description: "id of classified ads displayprice"
+  required: false
+  type: "string"
+responses:
+  'true':
+    description: insert success
+    schema:
+      $ref: 'reponse_model.yaml'
+  'false':
+    description: Add a new Classified Ads Display fail
+    schema:
+      type: "array"
+      items:
+        type: string
+        example:
+        - "1. update wallet success, AddClassified store fail"
+        - "2. update wallet fail"
+        - "3. Not enough money"

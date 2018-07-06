@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Checktoken = require('../models/checktoken');
-const CustomerComment = require('../models/comments');
+const CustomerComment = require('../models/serviceComments');
 const Useraccount = require('../models/useraccount');
 
 

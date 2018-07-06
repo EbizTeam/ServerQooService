@@ -6,8 +6,7 @@ const Provider = require('../models/serviceproviderdata');
 const Async = require("async");
 const sortBy = require('array-sort');
 const Historypayment = require('../models/historypayment');
-
-
+const Revenue = require('../controllers/revenueController');
 let findConsumerUseWallet = () => {
     return new Promise((resolve, reject) => {
         let AllWallet = [];
@@ -34,8 +33,7 @@ let findConsumerUseWallet = () => {
             });
         });
     });
-}
-
+};
 let findProviderUseWallet = (wallets) => {
     return new Promise((resolve, reject) => {
         let AllWallet = [];
@@ -58,48 +56,43 @@ let findProviderUseWallet = (wallets) => {
         });
 
     });
-}
-
+};
 let DeleteWalletNotFoundUser = () => {
     return new Promise((resolve, reject) => {
-            findConsumerUseWallet()
-                .then(
-                    walletsCon => {
-                        findProviderUseWallet(walletsCon)
-                            .then(
-                                walletsAll => {
-                                    let AllDelete;
-                                    Async.forEachOf(walletsAll, function (item, key, callback) {
-                                        if (item.have === 0) {
-                                            Wallet.remove({_id: item._id}, function (err, obj) {
-                                                AllDelete += obj.result.n;
-                                                callback();
-                                            });
-                                        }else{
+        findConsumerUseWallet()
+            .then(
+                walletsCon => {
+                    findProviderUseWallet(walletsCon)
+                        .then(
+                            walletsAll => {
+                                let AllDelete;
+                                Async.forEachOf(walletsAll, function (item, key, callback) {
+                                    if (item.have === 0) {
+                                        Wallet.remove({_id: item._id}, function (err, obj) {
+                                            AllDelete += obj.result.n;
                                             callback();
-                                        }
+                                        });
+                                    } else {
+                                        callback();
+                                    }
 
                                 }, function (err) {
                                     if (err) reject(err);
                                     // configs is now a map of JSON data
                                     resolve(AllDelete);
                                 });
-                    },
-                    err => {
-                        console.log(err);
-                    }
-                );
-        },
-        err => {
-            console.log(err);
-        }
-    );
-}
-)
-;
-}
-
-
+                            },
+                            err => {
+                                console.log(err);
+                            }
+                        );
+                },
+                err => {
+                    console.log(err);
+                }
+            );
+    });
+};
 exports.delete_wallet_trash = function (req, res) {
     DeleteWalletNotFoundUser()
         .then(
@@ -111,75 +104,73 @@ exports.delete_wallet_trash = function (req, res) {
             }
         );
 };
-
-
 //update balance in my wallet
 //App.post("/update_balance",
-
 let FindAdmin = () => {
     return new Promise((resolve, reject) => {
-        Admin.findOne({
-          }, function (err, wl) {
+        Admin.findOne({}, function (err, wl) {
             if (err) return reject(err);
             resolve(wl);
         });
     });
-}
-
-exports.update_wallet = function (req, res){
+};
+exports.update_wallet = function (req, res) {
     if (req.body.balance === undefined || req.body.sp_id === undefined) {
-        res.json({"response": false, message:" params not value "});
+        res.json({"response": false, message: " params not value "});
     } else {
         var sp_id = req.body.sp_id;
         var balance = parseFloat(req.body.balance);
         Wallet.findOne({"user_id": sp_id}, function (err, mywallet_info) {
-            if (err) return   res.json({"response": false,  message:err});
+            if (err) return res.json({"response": false, message: err});
             if (mywallet_info) {
                 FindAdmin()
                     .then(
                         admin => {
                             if (admin) {
-                                var tt_balance = mywallet_info.balance;
+                                var tt_balance = mywallet_info.balance + Math.round(balance * admin.rateMoney);
                                 Wallet.findOneAndUpdate({'user_id': sp_id}, {
-                                    balance: tt_balance+balance*admin.rateMoney,
-                                    updated_at:Date.now(),
+                                    balance: tt_balance,
+                                    updated_at: Date.now(),
                                 }, {new: true}, function (err, wlupdated) {
-                                    if (err) return   res.json({"response": false,  message:err});
+                                    if (err) return res.json({"response": false, message: err});
                                     if (wlupdated) {
+                                        Revenue.add_money(sp_id, balance);
                                         Historypayment.create({
                                             payment: balance,
                                             user_id: sp_id,
-                                            create_at: Date.now(),
-                                            content_service:"added " +balance*admin.rateMoney+ " "+admin.displayCurentcy +" into Wallet",
+                                            content_service: "added " + Math.round(balance * admin.rateMoney) + " " + admin.displayCurentcy + " into Wallet",
                                         }, function (err, htr) {
                                             if (err) console.log(err);
                                             else console.log(htr);
                                         });
-                                        return   res.json({"response": true, MWObj:wlupdated,  message:""});
+                                        return res.json({"response": true, MWObj: wlupdated, message: ""});
                                     } else {
 
                                     }
                                 });
-                            }else{
-                                return   res.json({"response": false,  message:"loi tim rate money"});
+                            } else {
+                                return res.json({"response": false, message: "loi tim rate money"});
                             }
                         },
-                        err=>{return   res.json({"response": false,  message:err}); }
+                        err => {
+                            return res.json({"response": false, message: err});
+                        }
                     )
 
-            }else{
-                CreateWallet(sp_id,balance)
+            } else {
+                CreateWallet(sp_id, balance)
                     .then(
                         wl => {
-                            res.json({"response": true, MWObj:wl,  message:""});
+                            res.json({"response": true, MWObj: wl, message: ""});
                         },
-                        err=>{return   res.json({"response": false,  message:err});}
+                        err => {
+                            return res.json({"response": false, message: err});
+                        }
                     );
             }
         });
     }
 }
-
 let CreateWallet = (providerID, balance) => {
     return new Promise((resolve, reject) => {
         Wallet.create({
@@ -190,28 +181,50 @@ let CreateWallet = (providerID, balance) => {
             resolve(wl);
         });
     });
-}
-
-
-
-exports.get_wallet = function (req, res){
+};
+exports.get_wallet = function (req, res) {
     Wallet.findOne({
         'user_id': req.params.user_id
     }, function (err, wl) {
-        if (err) res.json({ "value": false,"response": err});
+        if (err) res.json({"value": false, "response": err});
         if (wl) {
-            res.json({ "value": true,
-                "response": wl.balance});
+            res.json({
+                "value": true,
+                "response": wl.balance
+            });
         } else
-            CreateWallet( req.params.user_id,0)
+            CreateWallet(req.params.user_id, 0)
                 .then(
                     wlcre => {
-                        res.json({ "value": true,
-                            "response": wlcre.balance});
+                        res.json({
+                            "value": true,
+                            "response": wlcre.balance
+                        });
                     },
-                    err=>{return   res.json({ "value": false,"response": err});}
+                    err => {
+                        return res.json({"value": false, "response": err});
+                    }
                 );
 
     });
 }
-
+let FindOneWallet = (user_id) => {
+    return new Promise((resolve, reject) => {
+        Wallet.findOne({
+            'user_id': user_id
+        }, function (err, wl) {
+            if (err) return reject(err);
+            resolve(wl);
+        });
+    });
+};
+exports.find_wallet_user_id = FindOneWallet;
+let updateWalletUserID = (obj) => {
+    return new Promise((resolve, reject) => {
+        Wallet.findOneAndUpdate({'user_id': obj.user_id},obj, {new: true}, function (err, aa) {
+            if (err) return reject(err);
+            resolve(aa);
+        });
+    });
+};
+exports.update_wallet_user_id = updateWalletUserID;

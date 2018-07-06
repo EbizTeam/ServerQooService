@@ -16,7 +16,7 @@ let FindProvicer = (id) => {
             resolve(provider);
         });
     });
-}
+};
 
 let FindWallet = (user_id) => {
     return new Promise((resolve, reject) => {
@@ -27,7 +27,7 @@ let FindWallet = (user_id) => {
             resolve(wl);
         });
     });
-}
+};
 
 let UpdateWallet = (userID, balance) => {
     return new Promise((resolve, reject) => {
@@ -85,16 +85,13 @@ let UpdateAuction = (auction_id, num_order_list) => {
 
 let CreateNewAution = (obj) => {
     return new Promise((resolve, reject) => {
-        Providersendaution.create(
-            {
+        Providersendaution.create({
                 provider_id: obj.provider_id,
                 auction_id: obj.auction_id,
                 status: "Sent Auction",
                 from_price: obj.from_price,
                 to_price: obj.to_price,
-                create_at: Date.now()
-            }
-            , function (err, auction) {
+            }, function (err, auction) {
                 if (err) return reject(err);
                 resolve(auction);
             });
@@ -167,8 +164,26 @@ let find_manage_service_price = () => {
     })
 }
 
+let find_manage_service_prices = () => {
+
+        manage_service_price.find({
+
+        }, function (err, svtop) {
+            if (err) return console.log(err);
+            console.log(svtop);
+        })
+
+}
+
 //add a new to the db
 router.post('/', function (req, res) {
+
+    return  res.json({
+        "response": false,
+        "message": 1000,
+        "value": "loi api khong con su dung nua"
+    })
+
     find_manage_service_price()
         .then(
             svPrice => {
@@ -183,7 +198,6 @@ router.post('/', function (req, res) {
                                         user_id: req.body.provider_id,
                                         payment: 0,
                                         service: message,
-                                        create_at: Date.now(),
                                         content_service: Name,
                                     }, function (err, htr) {
                                         if (err) console.log(err);
@@ -205,7 +219,6 @@ router.post('/', function (req, res) {
                                                                         user_id: req.body.provider_id,
                                                                         payment: Price,
                                                                         service: message,
-                                                                        create_at: Date.now(),
                                                                         content_service: Name,
                                                                     }, function (err, htr) {
                                                                         if (err) console.log(err);

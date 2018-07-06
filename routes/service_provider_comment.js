@@ -17,19 +17,4 @@ router.get("/:provider_id", function (req, res) {
     });
 });
 
-router.post("/create", function (req, res) {
-    Comment.create({
-        provider_id: req.body.provider_id,
-        user_name: req.body.user_name,
-        comment_title: req.body.comment_title,
-        comment_content: req.body.comment_content,
-        rating_star: req.body.rating_star,
-        active:false,
-        create_at: Date.now()
-    }, function (err, comment) {
-        if (err) res.json({"response": [], "value": false});
-        res.json({"response": comment, "value": true});
-    });
-});
-
 module.exports = router;

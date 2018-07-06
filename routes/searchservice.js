@@ -2,15 +2,20 @@ const sortBy = require('array-sort');
 const express = require('express');
 const routes = express.Router();
 const Services = require('../models/services');
+const config = require('../config');
 const ServiceProvider = require('../models/serviceproviderdata');
 const findProvider = require('../models/finduserfolloweid');
+const searchService = require('../controllers/searchServiceController');
+const searchProvider = require('../controllers/searchProviderController');
 var Async = require("async");
 
 
 //add a new to the db
 routes.post("/", function (req, res) {
     if (req.body.searchtext) {
-        if (req.body.filter == 1) {
+        if (req.body.filter+"" === "1") {
+            // lưu key search của người dùng
+            searchProvider.insert_key(req.body.searchtext);
             let query = {company_name: {$regex: req.body.searchtext, $options: 'i'}};
             ServiceProvider.find(query,
                 function (err, provider) {
@@ -22,33 +27,15 @@ routes.post("/", function (req, res) {
                             .then(
                                 providers => {
                                     if (providers.length > 0) {
-                                        let services = [];
+                                        let servicesPro = [];
                                         Async.forEachOf(providers, function (serPro, key, callback) {
-                                            Services.find({provider_id: serPro._id},
-                                                function (err, servicesm) {
-                                                    if (err) return callback(err)
-                                                    if (servicesm) {
-                                                        Async.forEachOf(servicesm, function (sv, key, callback) {
-                                                            sv.detail = '/qooservice/system/public/provider/servicedetail/' + sv.detail;
-                                                            // let images = [];
-                                                            // Async.forEachOf(sv.image, function (image, key, callback) {
-                                                            //     images.push('/qooservice/system/public/uploadfile/services/' + image);
-                                                            //     callback();
-                                                            // },function (err) {
-                                                            //     sv.image = images;
-                                                            //     services.push(sv);
-                                                            // });
-                                                            callback();
-                                                        }, function (err) {
-
-                                                        });
-                                                    }
-                                                    callback();
-                                                });
+                                            serPro.logo_provider = config.pathavatar + serPro.logo_provider;
+                                            servicesPro.push(serPro);
+                                            callback();
                                         }, function (err) {
                                             // configs is now a map of JSON data
                                             if (err)  res.json({"response": [], "value": false});
-                                            res.json({"response": services, "value": true});
+                                            res.json({"response": servicesPro, "value": true});
                                         });
                                     } else {
                                         res.json({"response": [], "value": false});
@@ -63,6 +50,9 @@ routes.post("/", function (req, res) {
                     }
                 });
         } else {
+            // lưu key search của người dùng
+            searchService.insert_key(req.body.searchtext);
+
             let query = {name: {$regex: req.body.searchtext, $options: 'i'}};
             Services.find(query,
                 function (err, servicesname) {
@@ -93,7 +83,7 @@ let sortOject = (service_providers) => {
     });
 }
 
-let path = {'path': '/qooservice/system/public/uploadfile/services/'};
+let path = {'path': config.url_services};
 
 let findMemberShip = (servicesname) => {
     return new Promise((resolve, reject) => {
@@ -147,10 +137,10 @@ let sortandtoservice = async (servicesname, res) => {
                         function (err, sv) {
                             if (err) return callback(err)
                             if (sv) {
-                                sv.detail = '/qooservice/system/public/provider/servicedetail/' + item.detail;
+                                sv.detail = config.url_servicedetail + item.detail;
                                 // let images = [];
                                 // Async.forEachOf(sv.image, function (image, key, callback) {
-                                //     images.push('/qooservice/system/public/uploadfile/services/' + image);
+                                //     images.push(config.url_services + image);
                                 //     callback();
                                 // }, function (err) {
                                 //     // configs is now a map of JSON data

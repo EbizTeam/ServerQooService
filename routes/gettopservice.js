@@ -7,9 +7,12 @@ const findProvider = require('../models/finduserfolloweid');
 const Async = require("async");
 const sortBy = require('array-sort');
 const Historypayment = require('../models/historypayment');
-const Comment = require('../models/comments');
+const Comment = require('../models/serviceComments');
 const ServiceProvider = require('../models/serviceproviderdata');
 const manage_service_price = require('../models/manage_service_price');
+const SendMail = require('../controllers/sendMailController');
+const config = require('../config');
+
 
 let FindServiceTop = (service) => {
     return new Promise((resolve, reject) => {
@@ -93,10 +96,10 @@ let sorttopservice = async (servicesname, res) => {
                         function (err, sv) {
                             if (err) return callback(err)
                             if (sv) {
-                                sv.detail = '/qooservice/system/public/provider/servicedetail/' + item.detail;
+                                sv.detail = config.url_servicedetail + item.detail;
                                 // let images = [];
                                 // Async.forEachOf(sv.image, function (image, key, callback) {
-                                //     images.push('/qooservice/system/public/uploadfile/services/' + image);
+                                //     images.push(config.url_services + image);
                                 //     callback();
                                 // }, function (err) {
                                 //     // configs is now a map of JSON data
@@ -211,11 +214,11 @@ let FindServiceComment = (serviceCom) => {
                 function (err, sv) {
                     if (err) return callback(err)
                     if (sv) {
-                        sv.detail = '/qooservice/system/public/provider/servicedetail/' + serviceComm.detail;
+                        sv.detail =config.url_servicedetail + serviceComm.detail;
                         sv.top_service = serviceComm.sum;
                         // let images = [];
                         // Async.forEachOf(sv.image, function (image, key, callback) {
-                        //     images.push('/qooservice/system/public/uploadfile/services/' + image);
+                        //     images.push(config.url_services + image);
                         //     callback();
                         // }, function (err) {
                         //     // configs is now a map of JSON data
@@ -287,10 +290,10 @@ let findOneService = (SerPros) => {
                 function (err, sv) {
                     if (err) return callback(err)
                     if (sv) {
-                        sv.detail = '/qooservice/system/public/provider/servicedetail/' + sv.detail;
+                        sv.detail = config.url_servicedetail+ sv.detail;
                         // let images = [];
                         // Async.forEachOf(sv.image, function (image, key, callback) {
-                        //     images.push('/qooservice/system/public/uploadfile/services/' + image);
+                        //     images.push(config.url_services + image);
                         //     callback();
                         // }, function (err) {
                         //     // configs is now a map of JSON data
@@ -300,7 +303,7 @@ let findOneService = (SerPros) => {
                     }
                     callback();
                 }).sort({
-                create_at: -1
+                created_at: -1
             });
         }, function (err) {
             // configs is now a map of JSON data
@@ -356,11 +359,11 @@ router.get("/service-top-new", function (req, res) {
                 let serviceIsComm = [];
                 Async.forEachOf(service, function (sv, key, callback) {
                     if (sv) {
-                        sv.detail = '/qooservice/system/public/provider/servicedetail/' + sv.detail;
+                        sv.detail = config.url_servicedetail + sv.detail;
 
                         // let images = [];
                         // Async.forEachOf(sv.image, function (image, key, callback) {
-                        //     images.push('/qooservice/system/public/uploadfile/services/' + image);
+                        //     images.push(config.url_services + image);
                         //     callback();
                         // }, function (err) {
                         //     // configs is now a map of JSON data
@@ -380,7 +383,7 @@ router.get("/service-top-new", function (req, res) {
             }
         }
     }).sort({
-        create_at: -1
+        created_at: -1
     }).limit(10);
 });
 
@@ -436,11 +439,11 @@ let FindServicePercent = (serviceCom) => {
                 function (err, sv) {
                     if (err) return callback(err)
                     if (sv) {
-                        sv.detail = '/qooservice/system/public/provider/servicedetail/' + serviceComm.detail;
+                        sv.detail = config.url_servicedetail + serviceComm.detail;
                         sv.flash_sale = serviceComm.percent;
                         // let images = [];
                         // Async.forEachOf(sv.image, function (image, key, callback) {
-                        //     images.push('/qooservice/system/public/uploadfile/services/' + image);
+                        //     images.push(config.url_services + image);
                         //     callback();
                         // }, function (err) {
                         //     // configs is now a map of JSON data
@@ -556,19 +559,22 @@ let find_manage_service_price = () => {
 }
 
 router.post("/create",async function (req, res) {
-
-    var dat = new Date();
+    return res.json({
+        "response": false,
+        "message": 10,
+        "value": "api ngung hoat dong"
+    });
+    let dat = new Date();
     Date.prototype.addDays = function (days) {
         let dat = new Date(this.valueOf());
         dat.setDate(dat.getDate() + days);
         return dat;
-    }
-
+    };
     Date.prototype.updateDays = function (days, dates) {
         let dat = new Date(dates);
         dat.setDate(dat.getDate() + days);
         return dat;
-    }
+    };
     find_manage_service_price()
         .then(
             svPrice => {
@@ -598,6 +604,14 @@ router.post("/create",async function (req, res) {
                                                                                     "value": "update service top loi"
                                                                                 });
                                                                             } else {
+                                                                                let url  = config.url_mail_notify;
+                                                                                let data = {
+                                                                                    idProvider:req.body.provider_id+"",
+                                                                                    //notifyCreate:1//Banner
+                                                                                    //notifyCreate:2//slide
+                                                                                    notifyCreate:3//service
+                                                                                };
+                                                                                SendMail.send_mail(url,data);
                                                                                 FindWallet(req.body.provider_id)
                                                                                     .then(
                                                                                         walletafter => {
@@ -618,7 +632,6 @@ router.post("/create",async function (req, res) {
                                                                     ServicesTop.create({
                                                                         service_id: req.body.service_id,
                                                                         provider_id: req.body.provider_id,
-                                                                        create_at: Date.now(),
                                                                         create_end: dat.addDays(date).getTime()
                                                                     }, function (err, service) {
                                                                         if (err) res.json({"response": [], "value": false});
@@ -626,6 +639,14 @@ router.post("/create",async function (req, res) {
                                                                             FindWallet(req.body.provider_id)
                                                                                 .then(
                                                                                     walletafter => {
+                                                                                        let url  = config.url_mail_notify;
+                                                                                        let data = {
+                                                                                            idProvider:req.body.provider_id+"",
+                                                                                            //notifyCreate:1//Banner
+                                                                                            //notifyCreate:2//slide
+                                                                                            notifyCreate:3//service
+                                                                                        };
+                                                                                        SendMail.send_mail(url,data);
                                                                                         res.json({
                                                                                             "response": walletafter,
                                                                                             "value": true
@@ -650,7 +671,6 @@ router.post("/create",async function (req, res) {
                                                         user_id: req.body.provider_id,
                                                         payment: Price,
                                                         service: message,
-                                                        create_at: Date.now(),
                                                         content_service:Name,
                                                     }, function (err, htr) {
                                                         if (err) console.log(err);

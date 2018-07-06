@@ -3,8 +3,15 @@ const mongoose = require('mongoose');
 var ServiceBuyTopData = new mongoose.Schema({
     service_id: String,
     provider_id: String,
-    create_at:Number,
-    create_end:Number,
+    ads_id: String,
+    created_at:{
+        type: Number,
+        default: Date.now,
+    },
+    create_end:{
+        type: Number,
+        default: Date.now,
+    },
 });
 
 module.exports = mongoose.model('servicesbuytop',ServiceBuyTopData);

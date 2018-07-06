@@ -1,0 +1,18 @@
+properties:
+  _id:
+    type: string
+  service_id:
+    type: string
+  provider_id:
+    type: string
+  ads_id:
+    type: string
+  create_end:
+    type: number
+    format: double
+  created_at:
+    type: number
+    format: double
+  updated_at:
+    type: number
+    format: double

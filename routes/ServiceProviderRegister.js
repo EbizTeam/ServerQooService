@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Providers = require('../models/serviceproviderdata');
 const Customer = require('../models/customerdata');
+const CountRegister = require('../controllers/countRegisterController');
 //~ var passwordHash = require('password-hash');
 const passwordHash = require("node-php-password");
 const Wallet = require('../models/wallet');
@@ -24,7 +25,7 @@ let FindProviderfollowemail = (email) => {
             resolve(user);
         });
     });
-}
+};
 
 let FindCustomerfollowemail = (email) => {
     return new Promise((resolve, reject) => {
@@ -35,50 +36,23 @@ let FindCustomerfollowemail = (email) => {
             resolve(user);
         });
     });
-}
+};
 
 let RegisterProvider = (provider) => {
-    return new Promise((resolve, reject) => {
-        let hashedPassword = passwordHash.hash(provider.password);
-        Providers.create({
-            firstname: provider.first_name,
-            lastname: provider.last_name,
-            email: provider.email,
-            password: hashedPassword,
-            mobile: provider.mobile_number,
-            building_name: provider.building_name,
-            postal_code: provider.postal_code,
-            city: provider.city,
-            country: provider.country,
-            birth_date: provider.birth_date,
-            sex: provider.sex,
-            company_name: provider.company_name,
-            retail_outlets: provider.retail_outlets,
-            any_operation_overseas: provider.any_operation_overseas,
-            status: provider.status,
-            businesstitle_position: provider.businesstitle_position,
-            job_responsibilities: provider.job_responsibilities,
-            office_number: provider.office_number,
-            main_office_address1: provider.main_office_address1,
-            main_office_address2: provider.main_office_address2,
-            device_token: provider.device_token,
-            device_token_old: "",
-            isActived: false,
-            create_at: Date.now(),
-            member_ship: 1,
-            member_ship_time: 0,
-            confirm_status: 0,
-            no_of_not_recommended: 0,
-            no_of_hight_recommended: 0,
-            no_of_recommended: 0,
-            no_of_neutral: 0,
-            no_of_not_recommended: 0
-        }, function (err, user) {
+    return new Promise(async (resolve, reject) => {
+        let hashedPassword = await passwordHash.hash(provider.password);
+        let newProvider = await new Providers(provider);
+            newProvider.password = await hashedPassword;
+            newProvider.firstname = await provider.first_name;
+            newProvider.linkweb = await provider.company_name;
+            newProvider.lastname = await provider.last_name;
+            newProvider.mobile = await provider.mobile_number;
+        newProvider.save( function (err, user) {
             if (err) return reject(new Error('RegisterProvider: ' + provider));
             resolve(user);
         });
     });
-}
+};
 
 
 let CreateWallet = (providerID) => {
@@ -99,7 +73,7 @@ let SendMail = (email, firstname, lastname) => {
         //SEND MAIL HERE
         var options = {
             method: 'POST',
-            uri: urlapi + '/qooservice/php/api_mail_register.php',
+            uri: urlapi + config.api_mail_register,
             form: {
                 // Like <input type="text" name="name">
                 PtxtMAil: email,
@@ -309,6 +283,10 @@ router.post("/", function (req, res) {
                                                     );
                                             }
                                         });
+                                        // count số lượng đăng ký
+                                        if (req.body.isPlatform !== undefined && req.body.isPlatform === 1) {
+                                            CountRegister.count_register(1,true);
+                                        } else { CountRegister.count_register(2,true); }
                                         SendMail(user.email, user.firstname, user.lastname)
                                             .then(
                                                 result => {

@@ -1,0 +1,2 @@
+get:
+  $ref: '../components/admin/get_info.yaml'

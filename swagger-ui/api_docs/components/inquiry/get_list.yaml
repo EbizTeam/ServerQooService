@@ -1,0 +1,27 @@
+#../components/service_comment/create.yaml
+tags:
+  - Inquiry
+summary: Get list inquiry follow consumes or service provider
+description: ''
+operationId: getListInquiry
+consumes:
+- application/x-www-form-urlencoded
+produces:
+- application/json
+parameters:
+- name: "id"
+  in: "formData"
+  description: "id of consumer or service provider"
+  type: "string"
+responses:
+  'true':
+    description: insert success
+    schema:
+      $ref: 'inquiry_model.yaml'
+  'false':
+    description: Get list inquiry fail
+    schema:
+      type: string
+      example: errors
+
+
